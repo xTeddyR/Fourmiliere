@@ -3,11 +3,14 @@ using System.Collections.Generic;
 
 namespace FourmilliereAL.Fabriques
 {
-    public abstract class Case
+    public class Case
     {
         protected Objet objetSurCase;
 
         protected List<Creature> creaturesSurCase;
+
+        public int X { get; set; }
+        public int Y { get; set; }
 
         public Case()
         {

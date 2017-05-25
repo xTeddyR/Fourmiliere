@@ -12,8 +12,8 @@ namespace FourmilliereAL
     public class FourmilliereModel
     {
         public string TitreApplication { get; set; }
-        public ObservableCollection<Fourmis> FourmisList { get; set; }
-        public Fourmis FourmisSelect { get; set; }
+        public ObservableCollection<Fourmi> FourmisList { get; set; }
+        public Fourmi FourmisSelect { get; set; }
         public int DimensionX { get; set; }
         public int DimensionY { get; set; }
         public bool EnCours { get; set; }
@@ -24,15 +24,15 @@ namespace FourmilliereAL
             DimensionX = 20;
             DimensionY = 30;
             VitesseExecution = 500;
-            FourmisList = new ObservableCollection<Fourmis>();
-            FourmisList.Add(new Fourmis("Alain"));
-            FourmisList.Add(new Fourmis("Cecile"));
-            FourmisList.Add(new Fourmis("Pierre"));
-            FourmisList.Add(new Fourmis("Denis"));
+            FourmisList = new ObservableCollection<Fourmi>();
+            FourmisList.Add(new Fourmi("Alain"));
+            FourmisList.Add(new Fourmi("Cecile"));
+            FourmisList.Add(new Fourmi("Pierre"));
+            FourmisList.Add(new Fourmi("Denis"));
         }
         public void AjouterFourmis()
         {
-            FourmisList.Add(new Fourmis("Fourmis N°"+ FourmisList.Count));
+            FourmisList.Add(new Fourmi("Fourmis N°"+ FourmisList.Count));
         }
         public void SupprimerFourmis()
         {
@@ -41,7 +41,7 @@ namespace FourmilliereAL
 
         public void TourSuivant()
         {
-            foreach(Fourmis fourmis in FourmisList)
+            foreach(Fourmi fourmis in FourmisList)
             {
                 fourmis.AvanceUnTour(DimensionX, DimensionY);
             }

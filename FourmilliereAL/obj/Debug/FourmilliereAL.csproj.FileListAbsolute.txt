@@ -3,6 +3,7 @@ C:\Users\Teddy\Documents\4 AL\DesignPattern\ProjetFourmilliere\Fourmiliere\fourm
 C:\Users\Teddy\Documents\4 AL\DesignPattern\ProjetFourmilliere\Fourmiliere\fourmilliereALIHM\obj\Debug\App.g.cs
 C:\Users\Teddy\Documents\4 AL\DesignPattern\ProjetFourmilliere\Fourmiliere\fourmilliereALIHM\obj\Debug\FourmilliereAL_MarkupCompile.cache
 C:\Users\Teddy\Documents\4 AL\DesignPattern\ProjetFourmilliere\Fourmiliere\fourmilliereALIHM\obj\Debug\FourmilliereAL_MarkupCompile.lref
+C:\Users\Teddy\Documents\4 AL\DesignPattern\ProjetFourmilliere\Fourmiliere\FourmilliereAL\obj\Debug\FourmilliereAL.csprojResolveAssemblyReference.cache
 C:\Users\Teddy\Documents\4 AL\DesignPattern\ProjetFourmilliere\Fourmiliere\FourmilliereAL\obj\Debug\MainWindow.g.cs
 C:\Users\Teddy\Documents\4 AL\DesignPattern\ProjetFourmilliere\Fourmiliere\FourmilliereAL\obj\Debug\App.g.cs
 C:\Users\Teddy\Documents\4 AL\DesignPattern\ProjetFourmilliere\Fourmiliere\FourmilliereAL\obj\Debug\FourmilliereAL_MarkupCompile.cache

@@ -77,19 +77,27 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Fabriques\Cases\Eau.cs" />
+    <Compile Include="Fabriques\Cases\Herbe.cs" />
+    <Compile Include="Fabriques\Creatures\BebeFourmi.cs" />
+    <Compile Include="Fabriques\Creatures\FourmiCombattante.cs" />
+    <Compile Include="Fabriques\Creatures\FourmiCueilleuse.cs" />
+    <Compile Include="Fabriques\Creatures\FourmiGarou.cs" />
+    <Compile Include="Fabriques\Creatures\FourmiRouge.cs" />
+    <Compile Include="Fabriques\Creatures\ReineFourmi.cs" />
     <Compile Include="Fabriques\Etape.cs" />
-    <Compile Include="Fabriques\Creature\Creature.cs" />
-    <Compile Include="Fabriques\Environnement\Environnement.cs" />
-    <Compile Include="Fabriques\Case\Case.cs" />
+    <Compile Include="Fabriques\Creatures\Creature.cs" />
+    <Compile Include="Fabriques\Environnements\Environnement.cs" />
+    <Compile Include="Fabriques\Cases\Case.cs" />
     <Compile Include="Fabriques\FabriqueCase.cs" />
-    <Compile Include="Fabriques\Case\Terrain.cs" />
+    <Compile Include="Fabriques\Cases\Terrain.cs" />
     <Compile Include="Fabriques\FabriqueCreature.cs" />
     <Compile Include="Fabriques\FabriqueEnvironnement.cs" />
     <Compile Include="Fabriques\FabriqueFourmilliere.cs" />
     <Compile Include="Fabriques\FabriqueObjet.cs" />
-    <Compile Include="Fabriques\Objet\Objet.cs" />
+    <Compile Include="Fabriques\Objets\Objet.cs" />
     <Compile Include="FourmilliereModel.cs" />
-    <Compile Include="Fabriques\Creature\Fourmis.cs" />
+    <Compile Include="Fabriques\Creatures\Fourmi.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

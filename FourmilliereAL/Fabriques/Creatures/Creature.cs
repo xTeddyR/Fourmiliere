@@ -3,31 +3,16 @@ using System.Collections.ObjectModel;
 
 namespace FourmilliereAL.Fabriques
 {
-    public class Fourmis : Creature
+    public class Creature
     {
-        private static Random Hasard = new Random();
+        protected static Random Hasard = new Random();
         public string Nom { get; set; }
+        public int Vie { get; set; }
         public ObservableCollection<Etape> ListEtape { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
-        public Fourmis(string v)
-        {
-            this.Nom = v;
-            ListEtape = new ObservableCollection<Etape>();
-            X = 10;
-            Y = 10;
-            int nbEtapes = Hasard.Next(10);
-            for(int i = 0; i < nbEtapes; i++)
-            {
-                ListEtape.Add(new Etape());
-            }
-        }
-        public override string ToString()
-        {
-            return "Ma fourmis" + this.Nom;
-        }
 
-        public void AvanceUnTour(int dimX, int dimY)
+        public virtual void AvanceUnTour(int dimX, int dimY)
         {
             AvanceHasard(dimX, dimY);
             ListEtape.Add(new Etape());

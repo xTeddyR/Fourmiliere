@@ -45,7 +45,7 @@ namespace FourmilliereAL
         public void Dessine()
         {
             InitPlateau();
-            foreach(Fourmis fourmi in App.fourmilliereVM.FourmisList)
+            foreach(Fourmi fourmi in App.fourmilliereVM.FourmisList)
             {
                 Image img = new Image();
                 Uri uri = new Uri("fourmis.png", UriKind.Relative);

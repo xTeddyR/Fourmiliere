@@ -77,6 +77,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Etape.cs" />
     <Compile Include="Fabriques\Cases\Eau.cs" />
     <Compile Include="Fabriques\Cases\Herbe.cs" />
     <Compile Include="Fabriques\Creatures\BebeFourmi.cs" />
@@ -85,17 +86,21 @@
     <Compile Include="Fabriques\Creatures\FourmiGarou.cs" />
     <Compile Include="Fabriques\Creatures\FourmiRouge.cs" />
     <Compile Include="Fabriques\Creatures\ReineFourmi.cs" />
-    <Compile Include="Fabriques\Etape.cs" />
     <Compile Include="Fabriques\Creatures\Creature.cs" />
     <Compile Include="Fabriques\Environnements\Environnement.cs" />
     <Compile Include="Fabriques\Cases\Case.cs" />
+    <Compile Include="Fabriques\Environnements\Jour.cs" />
+    <Compile Include="Fabriques\Environnements\Nuit.cs" />
     <Compile Include="Fabriques\FabriqueCase.cs" />
     <Compile Include="Fabriques\Cases\Terrain.cs" />
     <Compile Include="Fabriques\FabriqueCreature.cs" />
     <Compile Include="Fabriques\FabriqueEnvironnement.cs" />
     <Compile Include="Fabriques\FabriqueFourmilliere.cs" />
     <Compile Include="Fabriques\FabriqueObjet.cs" />
+    <Compile Include="Fabriques\Objets\Baton.cs" />
     <Compile Include="Fabriques\Objets\Objet.cs" />
+    <Compile Include="Fabriques\Objets\Panier.cs" />
+    <Compile Include="Fabriques\Objets\Pomme.cs" />
     <Compile Include="FourmilliereModel.cs" />
     <Compile Include="Fabriques\Creatures\Fourmi.cs" />
     <Compile Include="MainWindow.xaml.cs">

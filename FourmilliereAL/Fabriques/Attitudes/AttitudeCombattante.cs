@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace FourmilliereAL.Fabriques
 {
-    class BebeFourmi : Creature
+    class AttitudeCombattante : Attitude
     {
+        public override void Execute(Fourmi fourmi)
+        {
+             
+        }
     }
 }

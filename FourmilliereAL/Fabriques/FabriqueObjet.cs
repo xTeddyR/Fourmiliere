@@ -9,11 +9,6 @@ namespace FourmilliereAL.Fabriques
             throw new NotImplementedException();
         }
 
-        public override Creature CreerCreature()
-        {
-            throw new NotImplementedException();
-        }
-
         public override Environnement CreerEnvironnement()
         {
             throw new NotImplementedException();

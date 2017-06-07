@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FourmilliereAL.Fabriques
 {
-    class FourmiGarou : Creature
+    class AttitudeGarou : Attitude
     {
     }
 }

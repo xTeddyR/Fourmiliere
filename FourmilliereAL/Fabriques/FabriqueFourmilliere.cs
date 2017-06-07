@@ -14,7 +14,5 @@ namespace FourmilliereAL.Fabriques
         public abstract Objet CreerObjet();
 
         public abstract Environnement CreerEnvironnement();
-
-        public abstract Creature CreerCreature();
     }
 }

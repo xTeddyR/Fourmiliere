@@ -22,7 +22,7 @@ namespace FourmilliereAL
         public int VitesseExecution {get;set;}
         public FourmilliereModel()
         {
-            TitreApplication = "Application FourmilliereAL";
+            TitreApplication = Config.ApplicationTitle;
             DimensionX = 20;
             DimensionY = 30;
             VitesseExecution = 500;
@@ -30,6 +30,7 @@ namespace FourmilliereAL
             plateauManager.CreationDesCases();
 
             FourmisList = new ObservableCollection<Fourmi>();
+<<<<<<< Updated upstream
 
             fourmiFactory = new FabriqueFourmi();
             AddFourmiWithName("Teddy", 0, 10);
@@ -48,6 +49,17 @@ namespace FourmilliereAL
         public void AjouterFourmis()
         {
             AddFourmiWithName("Fourmis N°" + FourmisList.Count, 10, 10);
+=======
+            
+            FourmisList.Add(new Fourmi("Alain", Config.FourmilierePositionX, Config.FourmilierePositionY));
+            FourmisList.Add(new Fourmi("Cecile", Config.FourmilierePositionX, Config.FourmilierePositionY));
+            FourmisList.Add(new Fourmi("Pierre", Config.FourmilierePositionX, Config.FourmilierePositionY));
+            FourmisList.Add(new Fourmi("Denis", Config.FourmilierePositionX, Config.FourmilierePositionY));
+        }
+        public void AjouterFourmis()
+        {
+            FourmisList.Add(new Fourmi("Fourmis N°"+ FourmisList.Count, Config.FourmilierePositionX, Config.FourmilierePositionY));
+>>>>>>> Stashed changes
         }
 
         public void SupprimerFourmis()

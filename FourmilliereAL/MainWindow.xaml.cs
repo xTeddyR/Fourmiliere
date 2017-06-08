@@ -45,10 +45,11 @@ namespace FourmilliereAL
         public void Dessine()
         {
             InitPlateau();
+            AddingGround();
             foreach(Fourmi fourmi in App.fourmilliereVM.FourmisList)
             {
                 Image img = new Image();
-                Uri uri = new Uri("fourmis.png", UriKind.Relative);
+                Uri uri = new Uri("Media/warrior-ant.png", UriKind.Relative);
                 img.Source = new BitmapImage(uri);
 
                 Plateau.Children.Add(img);
@@ -69,6 +70,28 @@ namespace FourmilliereAL
             for (int i = 0; i < App.fourmilliereVM.DimensionY; i++)
             {
                 Plateau.RowDefinitions.Add(new RowDefinition());
+            }
+        }
+
+        private void AddingGround() 
+        {
+            for (int i = 0; i < App.fourmilliereVM.DimensionX; i++) 
+            {
+                for (int j = 0; j < App.fourmilliereVM.DimensionY; j++) 
+                {
+                    Image img = new Image();
+                    Uri uri = new Uri("Media/ground-png.png", UriKind.Relative);
+                    img.Source = new BitmapImage(uri);
+                    img.HorizontalAlignment = HorizontalAlignment.Stretch;
+                    img.VerticalAlignment = VerticalAlignment.Stretch;
+                    img.Stretch = Stretch.Fill;
+
+                    Plateau.Children.Add(img);
+                    Grid.SetColumn(img, i);
+                    Grid.SetRow(img, j);
+
+                }
+
             }
         }
 

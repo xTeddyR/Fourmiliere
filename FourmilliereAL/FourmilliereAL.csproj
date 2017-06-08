@@ -120,10 +120,7 @@
     <Compile Include="Objets\Objet.cs" />
     <Compile Include="Objets\Panier.cs" />
     <Compile Include="Objets\Pomme.cs" />
-<<<<<<< Updated upstream
-=======
     <Compile Include="FourmiliereItem\FourmiliereItem.cs" />
->>>>>>> Stashed changes
     <Compile Include="FourmilliereModel.cs" />
     <Compile Include="Creatures\Fourmi.cs" />
     <Compile Include="Location.cs" />

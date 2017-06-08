@@ -72,6 +72,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controles\Fourmi\FourmiListControle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\Fourmi\FourmiListItemControle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -79,6 +87,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controles\Fourmi\FourmiListControle.xaml.cs">
+      <DependentUpon>FourmiListControle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Fourmi\FourmiListItemControle.xaml.cs">
+      <DependentUpon>FourmiListItemControle.xaml</DependentUpon>
     </Compile>
     <Compile Include="Etape.cs" />
     <Compile Include="Fabriques\Cases\Eau.cs" />
@@ -136,12 +150,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="aviatrix.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="fourmis.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Media\ground-png.png" />

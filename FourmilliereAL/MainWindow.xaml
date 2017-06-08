@@ -19,22 +19,12 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        <ListBox Grid.Row="1" Grid.Column="0" ItemsSource="{Binding FourmisList}" SelectedItem="{Binding FourmisSelect}" HorizontalContentAlignment="Stretch">
-        <ListBox.ItemTemplate>
-            <DataTemplate>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="60"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Image Source="fourmis.png" Width="30" Grid.Column="0"></Image>
-                    <TextBlock Text="{Binding Nom}" Grid.Column="1"></TextBlock>
-                    <TextBlock Text="{Binding ListEtape.Count}" Grid.Column="2"></TextBlock>
-                </Grid>
-            </DataTemplate>
-        </ListBox.ItemTemplate>
-        </ListBox>
+        <!-- Side Left Menu -->
+
+        <local:FourmiListControle Grid.Column="0" Grid.Row="1" />
+
+
+
         <TextBlock Grid.Row="0" Grid.Column="1" FontSize="20" Text="{Binding TitreApplication}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
         <TextBlock Grid.Row="0" Grid.Column="2" FontSize="20" Text="{Binding FourmisList.Count}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
         <Viewbox Grid.Row="2" Grid.Column="2" Grid.RowSpan="2">

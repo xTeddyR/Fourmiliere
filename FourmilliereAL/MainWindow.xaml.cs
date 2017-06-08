@@ -1,6 +1,4 @@
-using FourmilliereAL;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
@@ -49,10 +47,11 @@ namespace FourmilliereAL
                     foreach(Fourmi fourmi in creatureSurCase)
                     {
                         Image img = new Image();
+
                         switch (fourmi.Comportement.ToString())
                         {
                             case "AttitudeAucune":
-                                Uri uriAucune = new Uri("Media/warrior-ant.png", UriKind.Relative); // A Remplacer par fourmi normal
+                                Uri uriAucune = new Uri("Media/default-ant.png", UriKind.Relative); // A Remplacer par fourmi normal
                                 img.Source = new BitmapImage(uriAucune);
                                 break;
                             case "AttitudeCombattante":

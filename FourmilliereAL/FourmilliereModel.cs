@@ -36,6 +36,12 @@ namespace FourmilliereAL
             AddFourmiWithName("Jeremy", 10, 0);
             AddFourmiWithName("Maxime", 19, 10);
             AddFourmiWithName("Julien", 10, 29);
+
+            var fourmi = fourmiFactory.CreerFourmi("Warrior", 19, 29);
+            fourmi.Comportement = new AttitudeCombattante();
+            plateauManager.CasesList.Where(c => c.Position.X == fourmi.Position.X && c.Position.Y == fourmi.Position.Y).First().AjouterCreature(fourmi);
+            
+            FourmisList.Add(fourmi);
         }
 
         public void AddFourmiWithName(string name, int x, int y)

@@ -33,6 +33,8 @@ namespace FourmilliereAL
         {
             AvanceHasard(dimX, dimY);
             ListEtape.Add(new Etape());
+            Vie--;
+            RegardeVieFourmi();
         }
 
         private void AvanceHasard(int dimX, int dimY)
@@ -43,6 +45,14 @@ namespace FourmilliereAL
             if (newX >= 0 && newX < dimX) Position.X = newX;flag = true;
             if (newY >= 0 && newY < dimY) Position.Y = newY;flag = true;
             if (flag) plateauManager.DeplacementCreature(this, plateauManager.CasesList.Where(c => c.Position.X == Position.X && c.Position.Y == Position.Y).First());
+        }
+
+        private void RegardeVieFourmi()
+        {
+            if (Vie <= 0)
+            {
+                plateauManager.SupprimerFourmi(this);
+            }
         }
 
         public override string ToString()

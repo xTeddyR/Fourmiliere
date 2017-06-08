@@ -8,9 +8,14 @@ namespace FourmilliereAL
 {
     class AttitudeCombattante : Attitude
     {
-        public override void Execute(Fourmi fourmi)
+        public AttitudeCombattante() : base() { }
+
+        public override void ExecuteFourmi(Fourmi destFourmi)
         {
-             
+            if (destFourmi.Comportement.ToString().Equals("AttitudeEnnemi"))
+            {
+                destFourmi.Vie -= 5;
+            }
         }
     }
 }

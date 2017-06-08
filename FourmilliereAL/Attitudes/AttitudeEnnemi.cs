@@ -8,5 +8,15 @@ namespace FourmilliereAL
 {
     class AttitudeEnnemi : Attitude
     {
+        public AttitudeEnnemi() : base() { }
+
+        public override void ExecuteFourmi(Fourmi destFourmi)
+        {
+            destFourmi.Vie -= 5;
+            if (destFourmi.Vie <= 0)
+            {
+                plateauManager.SupprimerFourmi(destFourmi);
+            }
+        }
     }
 }

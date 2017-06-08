@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Threading;
 
 namespace FourmilliereAL
 {
@@ -47,14 +49,28 @@ namespace FourmilliereAL
 
         public void DeplacementCreature(Fourmi fourmi, Case destCase)
         {
-            var crtCase = GetCaseDeFourmi(fourmi);
+            var crtCase = GetCaseFromFourmi(fourmi);
             crtCase.RetirerCreature(fourmi);
             destCase.AjouterCreature(fourmi);
         }
 
-        public Case GetCaseDeFourmi(Fourmi fourmi)
+        public void SupprimerFourmi(Fourmi fourmiASupprimer)
+        {
+            GetCaseFromFourmi(fourmiASupprimer).RetirerCreature(fourmiASupprimer);
+            Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, (Action) delegate()
+            {
+                App.fourmilliereVM.FourmisList.Remove(fourmiASupprimer); // Pour gérer le multi-thread
+            });
+        }
+
+        public Case GetCaseFromFourmi(Fourmi fourmi)
         {
             return CasesList.Where(c => c.GetCreaturesSurCase().Contains(fourmi)).First();
+        }
+
+        public Case GetCaseFromPosition(int x, int y)
+        {
+            return CasesList.Where(c => c.Position.X == x && c.Position.Y == y).First();
         }
     }
 }

@@ -38,28 +38,29 @@ namespace FourmilliereAL
             AddFourmiWithName("Julien", 10, 29);
         }
 
-        public void AddFourmiWithName(string name, int x, int y)
+        public void AddFourmiWithName(string name, int x, int y, Attitude comportement = null)
         {
             var fourmi = fourmiFactory.CreerFourmi(name, x, y);
-            plateauManager.CasesList.Where(c => c.Position.X == fourmi.Position.X && c.Position.Y == fourmi.Position.Y).First().AjouterCreature(fourmi);
+            if (comportement != null) fourmi.Comportement = comportement;
+            plateauManager.GetCaseFromPosition(fourmi.Position.X, fourmi.Position.Y).AjouterCreature(fourmi);
             FourmisList.Add(fourmi);
         }
         public void AjouterFourmis()
         {
             AddFourmiWithName("Fourmis N°" + FourmisList.Count, 10, 10);
         }
+
         public void SupprimerFourmis()
         {
-            var caseARetirerFourmi = plateauManager.CasesList.Where(c => c.GetCreaturesSurCase().Contains(FourmisSelect)).First();
-            caseARetirerFourmi.RetirerCreature(FourmisSelect);
+            plateauManager.GetCaseFromFourmi(FourmisSelect).RetirerCreature(FourmisSelect);
             FourmisList.Remove(FourmisSelect);
         }
 
         public void TourSuivant()
         {
-            foreach(Fourmi fourmis in FourmisList)
+            for(int i = 0; i < FourmisList.Count; i++)
             {
-                fourmis.AvanceUnTour(DimensionX, DimensionY);
+                FourmisList[i].AvanceUnTour(DimensionX, DimensionY);
             }
         }
 

@@ -16,12 +16,14 @@ namespace FourmilliereAL
     /// </summary>
     public partial class MainWindow : Window
     {
+        private PlateauManager plateauManager;
         DispatcherTimer dt = new DispatcherTimer();
         Stopwatch stopWatch = new Stopwatch();
         public MainWindow()
         {
             InitializeComponent();
             DataContext = App.fourmilliereVM;
+            plateauManager = PlateauManager.Instance;
             dt.Tick += Redessine_Tick;
             dt.Interval = new TimeSpan(0, 0, 0, 0, App.fourmilliereVM.VitesseExecution);      
         }
@@ -37,16 +39,33 @@ namespace FourmilliereAL
         public void Dessine()
         {
             InitPlateau();
+            foreach(Case caseNotEmpty in plateauManager.CasesList)
             AddingGround();
-            foreach(Fourmi fourmi in App.fourmilliereVM.FourmisList)
             {
+                var creatureSurCase = caseNotEmpty.GetCreaturesSurCase().Where(f => f != null);
+                if (creatureSurCase.Count() > 0)
+                {
+                    foreach(Fourmi fourmi in creatureSurCase)
+                    {
+                        Image img = new Image();
+                        switch (fourmi.Comportement.ToString())
+                        {
+                            case "AttitudeAucune":
+                                Uri uri = new Uri("fourmis.png", UriKind.Relative);
+                                img.Source = new BitmapImage(uri);
+                                break;
+                            default:
+                                break;
+                        }                                             
                 Image img = new Image();
                 Uri uri = new Uri("Media/warrior-ant.png", UriKind.Relative);
                 img.Source = new BitmapImage(uri);
 
-                Plateau.Children.Add(img);
-                Grid.SetColumn(img, fourmi.Position.X);
-                Grid.SetRow(img, fourmi.Position.Y);
+                        Plateau.Children.Add(img);
+                        Grid.SetColumn(img, fourmi.Position.X);
+                        Grid.SetRow(img, fourmi.Position.Y);
+                    }
+                }
             }            
         }
 

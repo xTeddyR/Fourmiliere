@@ -41,7 +41,7 @@ namespace FourmilliereAL
 
         public override string ToString()
         {
-            return "Ma fourmi" + this.Nom;
+            return this.Nom;
         }
     }
 }

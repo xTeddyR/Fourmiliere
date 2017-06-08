@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 
 namespace FourmilliereAL
 {
-    public class Location
+    class ReineFourmi
     {
-        public int X { get; set; }
-        public int Y { get; set; }
+        public Location Position { get; set; }
 
-        public Location(int x, int y)
+        public ReineFourmi()
         {
-            this.X = x;
-            this.Y = y;
+
         }
     }
 }

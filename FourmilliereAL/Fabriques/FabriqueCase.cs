@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FourmilliereAL.Fabriques
+namespace FourmilliereAL
 {
     public class FabriqueCase : FabriqueFourmilliere
     {
@@ -10,6 +10,11 @@ namespace FourmilliereAL.Fabriques
         }
 
         public override Environnement CreerEnvironnement()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override Fourmi CreerFourmi(string nom, int x, int y)
         {
             throw new NotImplementedException();
         }

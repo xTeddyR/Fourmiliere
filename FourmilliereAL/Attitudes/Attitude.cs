@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 
 namespace FourmilliereAL
 {
-    public class Location
+    public class Attitude
     {
-        public int X { get; set; }
-        public int Y { get; set; }
+        public virtual void Execute(Fourmi fourmi) { }
 
-        public Location(int x, int y)
+        public override string ToString()
         {
-            this.X = x;
-            this.Y = y;
+            return this.GetType().Name;
         }
     }
 }

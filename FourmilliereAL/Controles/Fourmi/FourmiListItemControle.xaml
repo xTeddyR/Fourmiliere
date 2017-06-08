@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="FourmilliereAL.FourmiListItemControle"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FourmilliereAL"
+             mc:Ignorable="d" 
+             Height="60"
+             d:DesignHeight="60" d:DesignWidth="300">
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <!-- Selecteur de la fourmi -->
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <!-- Image de la fourmi -->
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <!-- Informations sur la fourmi -->
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <!-- Selecteur de la fourmi -->
+        <Border Background="#FF4C4CA0" Width="5"></Border>
+
+        <!-- Image de la fourmi -->
+        <Border Grid.Column="1" Padding="8">
+            <Border Background="Red" 
+                    Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" 
+                    CornerRadius="{Binding ActualHeight, RelativeSource={RelativeSource Self}}">
+                <Image Source="../../Media/warrior-ant.png" 
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Center"
+                       Width="30">
+                </Image>
+            </Border>
+        </Border>
+
+        <!-- Informations sur la fourmi -->
+        <StackPanel Grid.Column="2" VerticalAlignment="Center">
+            <!-- Nom de la fourmi -->
+            <TextBlock Text="{Binding Nom, FallbackValue=TEST}"
+                       TextAlignment="Left"
+                       VerticalAlignment="Center"
+                       Foreground="OrangeRed"
+                       TextTrimming="CharacterEllipsis"
+                       Padding="0,0,0,3">
+            </TextBlock>
+
+            <!-- Tour de la fourmi -->
+            <TextBlock Text="{Binding ListEtape.Count, FallbackValue=5}"
+                       TextAlignment="Left"
+                       VerticalAlignment="Center"
+                       TextTrimming="CharacterEllipsis" FontSize="10">
+            </TextBlock>
+        </StackPanel>
+        
+    </Grid>
+</UserControl>

@@ -33,7 +33,7 @@
                                 <Border Background="Red" 
                                         Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" 
                                         CornerRadius="{Binding ActualHeight, RelativeSource={RelativeSource Self}}">
-                                    <Image Source="../../Media/warrior-ant.png" 
+                                    <Image Source="{Binding Comportement, Converter={local:ConvertisseurAttitudeVersImage}}" 
                                            HorizontalAlignment="Center" 
                                            VerticalAlignment="Center"
                                            Width="30">

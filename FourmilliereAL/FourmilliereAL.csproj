@@ -95,6 +95,8 @@
       <DependentUpon>FourmiListItemControle.xaml</DependentUpon>
     </Compile>
     <Compile Include="Config.cs" />
+    <Compile Include="ConvertisseurValeur\ConvertisseurAttitudeVersImage.cs" />
+    <Compile Include="ConvertisseurValeur\ConvertisseurValeurBase.cs" />
     <Compile Include="Etape.cs" />
     <Compile Include="Attitudes\Attitude.cs" />
     <Compile Include="Attitudes\AttitudeAucune.cs" />
@@ -174,6 +176,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Media\Logo\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Media\default-ant.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

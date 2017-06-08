@@ -18,6 +18,11 @@ namespace FourmilliereAL
             Position = new Location(x, y);
         }
 
+        public Objet GetObjetSurCase()
+        {
+            return objetSurCase;
+        }
+
         public void AjouterObjet(Objet objet)
         {
             objetSurCase = objet;
@@ -26,6 +31,11 @@ namespace FourmilliereAL
         public void RetirerObjet()
         {
             objetSurCase = null;
+        }
+
+        public Fourmi[] GetCreaturesSurCase()
+        {
+            return creaturesSurCase;
         }
 
         public void AjouterCreature(Fourmi creature)

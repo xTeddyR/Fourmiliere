@@ -1,19 +1,12 @@
-﻿using System;
+using FourmilliereAL;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace FourmilliereAL
@@ -23,12 +16,14 @@ namespace FourmilliereAL
     /// </summary>
     public partial class MainWindow : Window
     {
+        private PlateauManager plateauManager;
         DispatcherTimer dt = new DispatcherTimer();
         Stopwatch stopWatch = new Stopwatch();
         public MainWindow()
         {
             InitializeComponent();
             DataContext = App.fourmilliereVM;
+            plateauManager = PlateauManager.Instance;
             dt.Tick += Redessine_Tick;
             dt.Interval = new TimeSpan(0, 0, 0, 0, App.fourmilliereVM.VitesseExecution);      
         }
@@ -44,15 +39,33 @@ namespace FourmilliereAL
         public void Dessine()
         {
             InitPlateau();
-            foreach(Fourmi fourmi in App.fourmilliereVM.FourmisList)
+            foreach(Case caseNotEmpty in plateauManager.CasesList)
+            AddingGround();
             {
+                var creatureSurCase = caseNotEmpty.GetCreaturesSurCase().Where(f => f != null);
+                if (creatureSurCase.Count() > 0)
+                {
+                    foreach(Fourmi fourmi in creatureSurCase)
+                    {
+                        Image img = new Image();
+                        switch (fourmi.Comportement.ToString())
+                        {
+                            case "AttitudeAucune":
+                                Uri uri = new Uri("fourmis.png", UriKind.Relative);
+                                img.Source = new BitmapImage(uri);
+                                break;
+                            default:
+                                break;
+                        }                                             
                 Image img = new Image();
-                Uri uri = new Uri("fourmis.png", UriKind.Relative);
+                Uri uri = new Uri("Media/warrior-ant.png", UriKind.Relative);
                 img.Source = new BitmapImage(uri);
 
-                Plateau.Children.Add(img);
-                Grid.SetColumn(img, fourmi.Position.X);
-                Grid.SetRow(img, fourmi.Position.Y);
+                        Plateau.Children.Add(img);
+                        Grid.SetColumn(img, fourmi.Position.X);
+                        Grid.SetRow(img, fourmi.Position.Y);
+                    }
+                }
             }            
         }
 
@@ -68,6 +81,28 @@ namespace FourmilliereAL
             for (int i = 0; i < App.fourmilliereVM.DimensionY; i++)
             {
                 Plateau.RowDefinitions.Add(new RowDefinition());
+            }
+        }
+
+        private void AddingGround() 
+        {
+            for (int i = 0; i < App.fourmilliereVM.DimensionX; i++) 
+            {
+                for (int j = 0; j < App.fourmilliereVM.DimensionY; j++) 
+                {
+                    Image img = new Image();
+                    Uri uri = new Uri("Media/ground-png.png", UriKind.Relative);
+                    img.Source = new BitmapImage(uri);
+                    img.HorizontalAlignment = HorizontalAlignment.Stretch;
+                    img.VerticalAlignment = VerticalAlignment.Stretch;
+                    img.Stretch = Stretch.Fill;
+
+                    Plateau.Children.Add(img);
+                    Grid.SetColumn(img, i);
+                    Grid.SetRow(img, j);
+
+                }
+
             }
         }
 

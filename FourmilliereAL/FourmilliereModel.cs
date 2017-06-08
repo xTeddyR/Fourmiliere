@@ -10,6 +10,9 @@ namespace FourmilliereAL
 {
     public class FourmilliereModel
     {
+        private FabriqueFourmi fourmiFactory;
+        private PlateauManager plateauManager;
+
         public string TitreApplication { get; set; }
         public ObservableCollection<Fourmi> FourmisList { get; set; }
         public Fourmi FourmisSelect { get; set; }
@@ -23,20 +26,32 @@ namespace FourmilliereAL
             DimensionX = 20;
             DimensionY = 30;
             VitesseExecution = 500;
+            plateauManager = PlateauManager.Instance;
+            plateauManager.CreationDesCases();
 
             FourmisList = new ObservableCollection<Fourmi>();
-            
-            FourmisList.Add(new Fourmi("Alain", 10, 10));
-            FourmisList.Add(new Fourmi("Cecile", 10, 10));
-            FourmisList.Add(new Fourmi("Pierre", 10, 10));
-            FourmisList.Add(new Fourmi("Denis", 10, 10));
+
+            fourmiFactory = new FabriqueFourmi();
+            AddFourmiWithName("Teddy", 0, 10);
+            AddFourmiWithName("Jeremy", 10, 0);
+            AddFourmiWithName("Maxime", 19, 10);
+            AddFourmiWithName("Julien", 10, 29);
+        }
+
+        public void AddFourmiWithName(string name, int x, int y)
+        {
+            var fourmi = fourmiFactory.CreerFourmi(name, x, y);
+            plateauManager.CasesList.Where(c => c.Position.X == fourmi.Position.X && c.Position.Y == fourmi.Position.Y).First().AjouterCreature(fourmi);
+            FourmisList.Add(fourmi);
         }
         public void AjouterFourmis()
         {
-            FourmisList.Add(new Fourmi("Fourmis N°"+ FourmisList.Count, 10, 10));
+            AddFourmiWithName("Fourmis N°" + FourmisList.Count, 10, 10);
         }
         public void SupprimerFourmis()
         {
+            var caseARetirerFourmi = plateauManager.CasesList.Where(c => c.GetCreaturesSurCase().Contains(FourmisSelect)).First();
+            caseARetirerFourmi.RetirerCreature(FourmisSelect);
             FourmisList.Remove(FourmisSelect);
         }
 

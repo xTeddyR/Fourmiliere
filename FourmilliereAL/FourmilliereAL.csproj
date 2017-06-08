@@ -48,6 +48,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Media\Logo\icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -69,6 +72,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controles\Fourmi\FourmiListControle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\Fourmi\FourmiListItemControle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -77,6 +88,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controles\Fourmi\FourmiListControle.xaml.cs">
+      <DependentUpon>FourmiListControle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Fourmi\FourmiListItemControle.xaml.cs">
+      <DependentUpon>FourmiListItemControle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Config.cs" />
     <Compile Include="Etape.cs" />
     <Compile Include="Attitudes\Attitude.cs" />
     <Compile Include="Attitudes\AttitudeAucune.cs" />
@@ -97,6 +115,7 @@
     <Compile Include="Fabriques\FabriqueFourmi.cs" />
     <Compile Include="Fabriques\FabriqueFourmilliere.cs" />
     <Compile Include="Fabriques\FabriqueObjet.cs" />
+    <Compile Include="FourmiliereItem\FourmiliereItem.cs" />
     <Compile Include="Objets\Baton.cs" />
     <Compile Include="Objets\Objet.cs" />
     <Compile Include="Objets\Panier.cs" />
@@ -110,6 +129,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PlateauManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -136,12 +156,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="aviatrix.jpg" />
+    <Resource Include="Media\ground-png.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="fourmis.png" />
-  </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>
@@ -153,6 +169,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Media\warrior-ant.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Media\Logo\icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

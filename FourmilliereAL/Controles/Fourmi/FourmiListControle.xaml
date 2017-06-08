@@ -8,13 +8,13 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid d:DataContext="{x:Static local:App.fourmilliereVM}" Background="#FFD8D8D8">
         <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <ListBox ItemsSource="{Binding FourmisList}" SelectedItem="{Binding FourmisSelect}">
-                <ListBox.ItemTemplate>
+            <ItemsControl ItemsSource="{Binding FourmisList}">
+                <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <local:FourmiListItemControle></local:FourmiListItemControle>
                     </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </ScrollViewer>
     </Grid>
 </UserControl>

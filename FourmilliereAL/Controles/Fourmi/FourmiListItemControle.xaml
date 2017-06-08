@@ -7,50 +7,87 @@
              mc:Ignorable="d" 
              Height="60"
              d:DesignHeight="60" d:DesignWidth="300">
-    <Grid Background="White">
-        <Grid.ColumnDefinitions>
-            <!-- Selecteur de la fourmi -->
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <!-- Image de la fourmi -->
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <!-- Informations sur la fourmi -->
-            <ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
 
-        <!-- Selecteur de la fourmi -->
-        <Border Background="#FF4C4CA0" Width="5"></Border>
+    <UserControl.Resources>
+        <Style x:Key="ContentStyle" TargetType="{x:Type ContentControl}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ContentControl}">
+                        
+                        <!-- Content -->
+                        <Grid x:Name="container" Background="White">
+                            <Grid.ColumnDefinitions>
+                                <!-- Selecteur de la fourmi -->
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <!-- Image de la fourmi -->
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <!-- Informations sur la fourmi -->
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
 
-        <!-- Image de la fourmi -->
-        <Border Grid.Column="1" Padding="8">
-            <Border Background="Red" 
-                    Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" 
-                    CornerRadius="{Binding ActualHeight, RelativeSource={RelativeSource Self}}">
-                <Image Source="../../Media/warrior-ant.png" 
-                       HorizontalAlignment="Center" 
-                       VerticalAlignment="Center"
-                       Width="30">
-                </Image>
-            </Border>
-        </Border>
+                            <!-- Selecteur de la fourmi -->
+                            <Border Background="#FF4C4CA0" Width="5"></Border>
 
-        <!-- Informations sur la fourmi -->
-        <StackPanel Grid.Column="2" VerticalAlignment="Center">
-            <!-- Nom de la fourmi -->
-            <TextBlock Text="{Binding Nom, FallbackValue=TEST}"
-                       TextAlignment="Left"
-                       VerticalAlignment="Center"
-                       Foreground="OrangeRed"
-                       TextTrimming="CharacterEllipsis"
-                       Padding="0,0,0,3">
-            </TextBlock>
+                            <!-- Image de la fourmi -->
+                            <Border Grid.Column="1" Padding="8">
+                                <Border Background="Red" 
+                                        Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" 
+                                        CornerRadius="{Binding ActualHeight, RelativeSource={RelativeSource Self}}">
+                                    <Image Source="../../Media/warrior-ant.png" 
+                                           HorizontalAlignment="Center" 
+                                           VerticalAlignment="Center"
+                                           Width="30">
+                                    </Image>
+                                </Border>
+                            </Border>
 
-            <!-- Tour de la fourmi -->
-            <TextBlock Text="{Binding ListEtape.Count, FallbackValue=5}"
-                       TextAlignment="Left"
-                       VerticalAlignment="Center"
-                       TextTrimming="CharacterEllipsis" FontSize="10">
-            </TextBlock>
-        </StackPanel>
-        
-    </Grid>
+                            <!-- Informations sur la fourmi -->
+                            <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                                <!-- Nom de la fourmi -->
+                                <TextBlock Text="{Binding Nom, FallbackValue=TEST}"
+                                           TextAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Foreground="OrangeRed"
+                                           TextTrimming="CharacterEllipsis"
+                                           Padding="0,0,0,3">
+                                </TextBlock>
+
+                                <!-- Tour de la fourmi -->
+                                <TextBlock Text="{Binding ListEtape.Count, FallbackValue=5}"
+                                           TextAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           TextTrimming="CharacterEllipsis" FontSize="10">
+                                </TextBlock>
+                            </StackPanel>
+
+                        </Grid>
+                        
+                        <!-- Hover -->
+                        <ControlTemplate.Triggers>
+                            <EventTrigger RoutedEvent="MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation To="#ffcc80" Duration="0:0:0.3" Storyboard.TargetName="container" Storyboard.TargetProperty="Background.Color" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation To="White" Duration="0:0:0.3" Storyboard.TargetName="container" Storyboard.TargetProperty="Background.Color" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Background" TargetName="container" Value="Brown"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <ContentControl Style="{StaticResource ContentStyle}" />
 </UserControl>

@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FourmilliereAL.Fabriques
+namespace FourmilliereAL
 {
-    class Herbe : Case
+    class AttitudeAucune : Attitude
     {
-        public Herbe(int x, int y) : base(x, y)
-        {
-        }
     }
 }

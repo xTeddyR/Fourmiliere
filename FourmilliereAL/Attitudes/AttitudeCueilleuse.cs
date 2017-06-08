@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FourmilliereAL.Fabriques
+namespace FourmilliereAL
 {
-    class AttitudeAucune : Attitude
+    class AttitudeCueilleuse : Attitude
     {
     }
 }

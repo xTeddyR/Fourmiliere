@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FourmilliereAL.Fabriques
+namespace FourmilliereAL
 {
-    class Panier : Objet
+    class Eau : Case
     {
-        public Panier(int x, int y) : base(x, y)
+        public Eau(int x, int y) : base(x, y)
         {
         }
     }

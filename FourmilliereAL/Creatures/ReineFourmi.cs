@@ -4,12 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FourmilliereAL.Fabriques
+namespace FourmilliereAL
 {
-    class Baton : Objet
+    class ReineFourmi
     {
-        public Baton(int x, int y) : base(x, y)
+        public Location Position { get; set; }
+
+        public ReineFourmi()
         {
+
         }
     }
 }

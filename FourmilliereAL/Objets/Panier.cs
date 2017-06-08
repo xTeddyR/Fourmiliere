@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FourmilliereAL.Fabriques
+namespace FourmilliereAL
 {
-    class AttitudeCombattante : Attitude
+    class Panier : Objet
     {
-        public override void Execute(Fourmi fourmi)
+        public Panier(int x, int y) : base(x, y)
         {
-             
         }
     }
 }

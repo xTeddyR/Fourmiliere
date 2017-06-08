@@ -2,6 +2,7 @@ using FourmilliereAL;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,12 +17,14 @@ namespace FourmilliereAL
     /// </summary>
     public partial class MainWindow : Window
     {
+        private PlateauManager plateauManager;
         DispatcherTimer dt = new DispatcherTimer();
         Stopwatch stopWatch = new Stopwatch();
         public MainWindow()
         {
             InitializeComponent();
             DataContext = App.fourmilliereVM;
+            plateauManager = PlateauManager.Instance;
             dt.Tick += Redessine_Tick;
             dt.Interval = new TimeSpan(0, 0, 0, 0, App.fourmilliereVM.VitesseExecution);      
         }
@@ -38,15 +41,33 @@ namespace FourmilliereAL
         {
             InitPlateau();
             AddingGround();
-            foreach(Fourmi fourmi in App.fourmilliereVM.FourmisList)
+            foreach (Case caseNotEmpty in plateauManager.CasesList)
             {
-                Image img = new Image();
-                Uri uri = new Uri("Media/warrior-ant.png", UriKind.Relative);
-                img.Source = new BitmapImage(uri);
+                var creatureSurCase = caseNotEmpty.GetCreaturesSurCase().Where(f => f != null);
+                if (creatureSurCase.Count() > 0)
+                {
+                    foreach(Fourmi fourmi in creatureSurCase)
+                    {
+                        Image img = new Image();
+                        switch (fourmi.Comportement.ToString())
+                        {
+                            case "AttitudeAucune":
+                                Uri uriAucune = new Uri("Media/warrior-ant.png", UriKind.Relative); // A Remplacer par fourmi normal
+                                img.Source = new BitmapImage(uriAucune);
+                                break;
+                            case "AttitudeCombattante":
+                                Uri uriCombat = new Uri("Media/warrior-ant.png", UriKind.Relative);
+                                img.Source = new BitmapImage(uriCombat);
+                                break;
+                            default:
+                                break;
+                        }                                         
 
-                Plateau.Children.Add(img);
-                Grid.SetColumn(img, fourmi.Position.X);
-                Grid.SetRow(img, fourmi.Position.Y);
+                        Plateau.Children.Add(img);
+                        Grid.SetColumn(img, fourmi.Position.X);
+                        Grid.SetRow(img, fourmi.Position.Y);
+                    }
+                }
             }            
         }
 
@@ -81,9 +102,7 @@ namespace FourmilliereAL
                     Plateau.Children.Add(img);
                     Grid.SetColumn(img, i);
                     Grid.SetRow(img, j);
-
                 }
-
             }
         }
 

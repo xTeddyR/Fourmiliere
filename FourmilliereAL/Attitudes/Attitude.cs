@@ -9,5 +9,10 @@ namespace FourmilliereAL
     public class Attitude
     {
         public virtual void Execute(Fourmi fourmi) { }
+
+        public override string ToString()
+        {
+            return this.GetType().Name;
+        }
     }
 }

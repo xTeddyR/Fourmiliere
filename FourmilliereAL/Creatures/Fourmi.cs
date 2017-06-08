@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace FourmilliereAL
 {
     public class Fourmi
     {
+        private PlateauManager plateauManager;
+
         protected static Random Hasard = new Random();
         public string Nom { get; set; }
         public int Vie { get; set; }
@@ -18,6 +21,7 @@ namespace FourmilliereAL
             this.Vie = 20;
             ListEtape = new ObservableCollection<Etape>();
             Position = new Location(x, y);
+            plateauManager = PlateauManager.Instance;
             Comportement = new AttitudeAucune();
             int nbEtapes = Hasard.Next(10);
             for(int i = 0; i < nbEtapes; i++)
@@ -35,13 +39,15 @@ namespace FourmilliereAL
         {
             int newX = Position.X + Hasard.Next(3) - 1;
             int newY = Position.Y + Hasard.Next(3) - 1;
-            if (newX >= 0 && newX < dimX) Position.X = newX;
-            if (newY >= 0 && newY < dimY) Position.Y = newY;
+            bool flag = false;
+            if (newX >= 0 && newX < dimX) Position.X = newX;flag = true;
+            if (newY >= 0 && newY < dimY) Position.Y = newY;flag = true;
+            if (flag) plateauManager.DeplacementCreature(this, plateauManager.CasesList.Where(c => c.Position.X == Position.X && c.Position.Y == Position.Y).First());
         }
 
         public override string ToString()
         {
-            return "Ma fourmi" + this.Nom;
+            return this.Nom;
         }
     }
 }

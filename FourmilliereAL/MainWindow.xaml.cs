@@ -52,8 +52,8 @@ namespace FourmilliereAL
                 img.Source = new BitmapImage(uri);
 
                 Plateau.Children.Add(img);
-                Grid.SetColumn(img, fourmi.X);
-                Grid.SetRow(img, fourmi.Y);
+                Grid.SetColumn(img, fourmi.Position.X);
+                Grid.SetRow(img, fourmi.Position.Y);
             }            
         }
 

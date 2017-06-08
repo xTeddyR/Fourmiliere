@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace FourmilliereAL.Fabriques
 {
-    class Pomme : Objet
+    class AttitudeAucune : Attitude
     {
-        public Pomme(int x, int y) : base(x, y)
-        {
-        }
     }
 }

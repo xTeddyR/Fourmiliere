@@ -4,14 +4,9 @@ namespace FourmilliereAL.Fabriques
 {
     public class FabriqueCase : FabriqueFourmilliere
     {
-        public override Case CreerCase()
+        public override Case CreerCase(int x, int y)
         {
-            return new Case();
-        }
-
-        public override Creature CreerCreature()
-        {
-            throw new NotImplementedException();
+            return new Case(x, y);
         }
 
         public override Environnement CreerEnvironnement()
@@ -19,7 +14,7 @@ namespace FourmilliereAL.Fabriques
             throw new NotImplementedException();
         }
 
-        public override Objet CreerObjet()
+        public override Objet CreerObjet(int x, int y)
         {
             throw new NotImplementedException();
         }

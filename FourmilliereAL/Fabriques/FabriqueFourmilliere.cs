@@ -9,12 +9,10 @@ namespace FourmilliereAL.Fabriques
     public abstract class FabriqueFourmilliere
     {
 
-        public abstract Case CreerCase();
+        public abstract Case CreerCase(int x, int y);
 
-        public abstract Objet CreerObjet();
+        public abstract Objet CreerObjet(int x, int y);
 
         public abstract Environnement CreerEnvironnement();
-
-        public abstract Creature CreerCreature();
     }
 }

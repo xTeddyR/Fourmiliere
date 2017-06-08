@@ -25,14 +25,14 @@ namespace FourmilliereAL
             DimensionY = 30;
             VitesseExecution = 500;
             FourmisList = new ObservableCollection<Fourmi>();
-            FourmisList.Add(new Fourmi("Alain"));
-            FourmisList.Add(new Fourmi("Cecile"));
-            FourmisList.Add(new Fourmi("Pierre"));
-            FourmisList.Add(new Fourmi("Denis"));
+            FourmisList.Add(new Fourmi("Alain", 10, 10));
+            FourmisList.Add(new Fourmi("Cecile", 10, 10));
+            FourmisList.Add(new Fourmi("Pierre", 10, 10));
+            FourmisList.Add(new Fourmi("Denis", 10, 10));
         }
         public void AjouterFourmis()
         {
-            FourmisList.Add(new Fourmi("Fourmis N°"+ FourmisList.Count));
+            FourmisList.Add(new Fourmi("Fourmis N°"+ FourmisList.Count, 10, 10));
         }
         public void SupprimerFourmis()
         {

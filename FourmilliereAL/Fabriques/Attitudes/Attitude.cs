@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace FourmilliereAL.Fabriques
 {
-    class FourmiCueilleuse : Creature
+    public class Attitude
     {
-
+        public virtual void Execute(Fourmi fourmi) { }
     }
 }

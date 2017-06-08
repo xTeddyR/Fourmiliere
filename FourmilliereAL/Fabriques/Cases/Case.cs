@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FourmilliereAL.Fabriques
 {
@@ -7,14 +8,14 @@ namespace FourmilliereAL.Fabriques
     {
         protected Objet objetSurCase;
 
-        protected List<Creature> creaturesSurCase;
+        protected Fourmi[] creaturesSurCase;
 
-        public int X { get; set; }
-        public int Y { get; set; }
+        public Location Position;
 
-        public Case()
+        public Case(int x, int y)
         {
-            creaturesSurCase = new List<Creature>();
+            creaturesSurCase = new Fourmi[2];
+            Position = new Location(x, y);
         }
 
         public void AjouterObjet(Objet objet)
@@ -27,14 +28,32 @@ namespace FourmilliereAL.Fabriques
             objetSurCase = null;
         }
 
-        public void AjouterCreature(Creature creature)
+        public void AjouterCreature(Fourmi creature)
         {
-            creaturesSurCase.Add(creature);
+            if(creaturesSurCase[0] == null)
+            {
+                creaturesSurCase[0] = creature;
+            }
+            else
+            {
+                creaturesSurCase[1] = creature;
+            }
         }
 
-        public void RetirerCreature(Creature creature)
+        public void RetirerCreature(Fourmi creature)
         {
-            creaturesSurCase.Remove(creature);
+            if (creaturesSurCase[0] == creature)
+            {
+                creaturesSurCase[0] = null;
+                if(creaturesSurCase[1] != null)
+                {
+                    creaturesSurCase[0] = creaturesSurCase[1];
+                }
+            }
+            else
+            {
+                creaturesSurCase[1] = null;
+            }
         }
     }
 }

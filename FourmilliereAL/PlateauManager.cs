@@ -47,7 +47,14 @@ namespace FourmilliereAL
 
         public void DeplacementCreature(Fourmi fourmi, Case destCase)
         {
+            var crtCase = GetCaseDeFourmi(fourmi);
+            crtCase.RetirerCreature(fourmi);
+            destCase.AjouterCreature(fourmi);
+        }
 
+        public Case GetCaseDeFourmi(Fourmi fourmi)
+        {
+            return CasesList.Where(c => c.GetCreaturesSurCase().Contains(fourmi)).First();
         }
     }
 }

@@ -2,6 +2,7 @@ using FourmilliereAL;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -39,8 +40,8 @@ namespace FourmilliereAL
         public void Dessine()
         {
             InitPlateau();
-            foreach(Case caseNotEmpty in plateauManager.CasesList)
             AddingGround();
+            foreach (Case caseNotEmpty in plateauManager.CasesList)
             {
                 var creatureSurCase = caseNotEmpty.GetCreaturesSurCase().Where(f => f != null);
                 if (creatureSurCase.Count() > 0)
@@ -51,15 +52,16 @@ namespace FourmilliereAL
                         switch (fourmi.Comportement.ToString())
                         {
                             case "AttitudeAucune":
-                                Uri uri = new Uri("fourmis.png", UriKind.Relative);
-                                img.Source = new BitmapImage(uri);
+                                Uri uriAucune = new Uri("Media/warrior-ant.png", UriKind.Relative); // A Remplacer par fourmi normal
+                                img.Source = new BitmapImage(uriAucune);
+                                break;
+                            case "AttitudeCombattante":
+                                Uri uriCombat = new Uri("Media/warrior-ant.png", UriKind.Relative);
+                                img.Source = new BitmapImage(uriCombat);
                                 break;
                             default:
                                 break;
-                        }                                             
-                Image img = new Image();
-                Uri uri = new Uri("Media/warrior-ant.png", UriKind.Relative);
-                img.Source = new BitmapImage(uri);
+                        }                                         
 
                         Plateau.Children.Add(img);
                         Grid.SetColumn(img, fourmi.Position.X);
@@ -100,9 +102,7 @@ namespace FourmilliereAL
                     Plateau.Children.Add(img);
                     Grid.SetColumn(img, i);
                     Grid.SetRow(img, j);
-
                 }
-
             }
         }
 

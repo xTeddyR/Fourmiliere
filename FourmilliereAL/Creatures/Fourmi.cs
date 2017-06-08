@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 
-namespace FourmilliereAL.Fabriques
+namespace FourmilliereAL
 {
     public class Fourmi
     {

@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace FourmilliereAL
 {
-    public class FabriqueObjet : FabriqueFourmilliere
+    class FabriqueFourmi : FabriqueFourmilliere
     {
         public override Case CreerCase(int x, int y)
         {
@@ -16,12 +20,12 @@ namespace FourmilliereAL
 
         public override Fourmi CreerFourmi(string nom, int x, int y)
         {
-            throw new NotImplementedException();
+            return new Fourmi(nom, x, y);
         }
 
         public override Objet CreerObjet(int x, int y)
         {
-            return new Objet(x, y);
+            throw new NotImplementedException();
         }
     }
 }

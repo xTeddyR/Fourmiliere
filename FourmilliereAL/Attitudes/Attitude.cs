@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FourmilliereAL.Fabriques
+namespace FourmilliereAL
 {
-    class Eau : Case
+    public class Attitude
     {
-        public Eau(int x, int y) : base(x, y)
-        {
-        }
+        public virtual void Execute(Fourmi fourmi) { }
     }
 }

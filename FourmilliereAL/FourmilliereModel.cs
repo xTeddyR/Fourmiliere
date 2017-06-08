@@ -1,5 +1,4 @@
-﻿using FourmilliereAL.Fabriques;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -18,13 +17,15 @@ namespace FourmilliereAL
         public int DimensionY { get; set; }
         public bool EnCours { get; set; }
         public int VitesseExecution {get;set;}
-        public  FourmilliereModel()
+        public FourmilliereModel()
         {
             TitreApplication = "Application FourmilliereAL";
             DimensionX = 20;
             DimensionY = 30;
             VitesseExecution = 500;
+
             FourmisList = new ObservableCollection<Fourmi>();
+            
             FourmisList.Add(new Fourmi("Alain", 10, 10));
             FourmisList.Add(new Fourmi("Cecile", 10, 10));
             FourmisList.Add(new Fourmi("Pierre", 10, 10));

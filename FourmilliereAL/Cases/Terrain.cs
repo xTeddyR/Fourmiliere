@@ -1,4 +1,4 @@
-﻿namespace FourmilliereAL.Fabriques
+﻿namespace FourmilliereAL
 {
     public class Terrain : Case
     {

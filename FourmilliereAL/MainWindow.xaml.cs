@@ -1,4 +1,4 @@
-using FourmilliereAL.Fabriques;
+using FourmilliereAL;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

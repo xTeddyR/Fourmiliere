@@ -115,15 +115,11 @@
     <Compile Include="Fabriques\FabriqueFourmi.cs" />
     <Compile Include="Fabriques\FabriqueFourmilliere.cs" />
     <Compile Include="Fabriques\FabriqueObjet.cs" />
+    <Compile Include="FourmiliereItem\FourmiliereItem.cs" />
     <Compile Include="Objets\Baton.cs" />
     <Compile Include="Objets\Objet.cs" />
     <Compile Include="Objets\Panier.cs" />
     <Compile Include="Objets\Pomme.cs" />
-    <Compile Include="Fabriques\FourmiliereItem\FourmiliereItem.cs" />
-    <Compile Include="Fabriques\Objets\Baton.cs" />
-    <Compile Include="Fabriques\Objets\Objet.cs" />
-    <Compile Include="Fabriques\Objets\Panier.cs" />
-    <Compile Include="Fabriques\Objets\Pomme.cs" />
     <Compile Include="FourmilliereModel.cs" />
     <Compile Include="Creatures\Fourmi.cs" />
     <Compile Include="Location.cs" />

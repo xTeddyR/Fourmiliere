@@ -10,12 +10,12 @@ namespace FourmilliereAL.Fabriques
 
         protected Fourmi[] creaturesSurCase;
 
-        public int X { get; set; }
-        public int Y { get; set; }
+        public Location Position;
 
-        public Case()
+        public Case(int x, int y)
         {
             creaturesSurCase = new Fourmi[2];
+            Position = new Location(x, y);
         }
 
         public void AjouterObjet(Objet objet)

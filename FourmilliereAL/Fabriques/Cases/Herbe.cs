@@ -8,5 +8,8 @@ namespace FourmilliereAL.Fabriques
 {
     class Herbe : Case
     {
+        public Herbe(int x, int y) : base(x, y)
+        {
+        }
     }
 }

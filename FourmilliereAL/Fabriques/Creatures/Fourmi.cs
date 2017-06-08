@@ -12,12 +12,12 @@ namespace FourmilliereAL.Fabriques
         public Location Position { get; set; }
         public Attitude Comportement { get; set; }
 
-        public Fourmi(string v)
+        public Fourmi(string v, int x, int y)
         {
             this.Nom = v;
             this.Vie = 20;
             ListEtape = new ObservableCollection<Etape>();
-            Position = new Location(10, 10);
+            Position = new Location(x, y);
             Comportement = new AttitudeAucune();
             int nbEtapes = Hasard.Next(10);
             for(int i = 0; i < nbEtapes; i++)

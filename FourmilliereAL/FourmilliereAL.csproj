@@ -77,6 +77,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Config.cs" />
     <Compile Include="Etape.cs" />
     <Compile Include="Attitudes\Attitude.cs" />
     <Compile Include="Attitudes\AttitudeAucune.cs" />
@@ -101,6 +102,11 @@
     <Compile Include="Objets\Objet.cs" />
     <Compile Include="Objets\Panier.cs" />
     <Compile Include="Objets\Pomme.cs" />
+    <Compile Include="Fabriques\FourmiliereItem\FourmiliereItem.cs" />
+    <Compile Include="Fabriques\Objets\Baton.cs" />
+    <Compile Include="Fabriques\Objets\Objet.cs" />
+    <Compile Include="Fabriques\Objets\Panier.cs" />
+    <Compile Include="Fabriques\Objets\Pomme.cs" />
     <Compile Include="FourmilliereModel.cs" />
     <Compile Include="Creatures\Fourmi.cs" />
     <Compile Include="Location.cs" />

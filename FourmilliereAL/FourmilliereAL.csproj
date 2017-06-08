@@ -95,6 +95,7 @@
       <DependentUpon>FourmiListItemControle.xaml</DependentUpon>
     </Compile>
     <Compile Include="Config.cs" />
+    <Compile Include="ConvertisseurValeur\ConvertisseurAttitudeVersCouleurs.cs" />
     <Compile Include="ConvertisseurValeur\ConvertisseurAttitudeVersImage.cs" />
     <Compile Include="ConvertisseurValeur\ConvertisseurValeurBase.cs" />
     <Compile Include="Etape.cs" />
@@ -129,6 +130,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Styles\Couleurs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PlateauManager.cs" />

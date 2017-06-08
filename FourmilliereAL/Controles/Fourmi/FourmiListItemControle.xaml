@@ -15,7 +15,7 @@
                     <ControlTemplate TargetType="{x:Type ContentControl}">
                        
                         <!-- Content -->
-                        <Grid x:Name="container" Background="White">
+                        <Grid x:Name="container" Background="{StaticResource BackgroundVeryLightBrush}">
                             <Grid.ColumnDefinitions>
                                 <!-- Selecteur de la fourmi -->
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -26,11 +26,11 @@
                             </Grid.ColumnDefinitions>
 
                             <!-- Selecteur de la fourmi -->
-                            <Border Background="#FF4C4CA0" Width="5"></Border>
+                            <Border Name="selecteur" Background="{StaticResource DisableLightBrush}" Width="5"></Border>
 
                             <!-- Image de la fourmi -->
                             <Border Grid.Column="1" Padding="8">
-                                <Border Background="Red" 
+                                <Border Background="{Binding Comportement, Converter={local:ConvertisseurAttitudeVersCouleurs}}" 
                                         Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" 
                                         CornerRadius="{Binding ActualHeight, RelativeSource={RelativeSource Self}}">
                                     <Image Source="{Binding Comportement, Converter={local:ConvertisseurAttitudeVersImage}}" 
@@ -47,7 +47,7 @@
                                 <TextBlock Text="{Binding Nom, FallbackValue=TEST}"
                                            TextAlignment="Left"
                                            VerticalAlignment="Center"
-                                           Foreground="OrangeRed"
+                                           Foreground="{Binding Comportement, Converter={local:ConvertisseurAttitudeVersCouleurs}}"
                                            TextTrimming="CharacterEllipsis"
                                            Padding="0,0,0,3">
                                 </TextBlock>
@@ -67,14 +67,14 @@
                             <EventTrigger RoutedEvent="MouseEnter">
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <ColorAnimation To="#ffcc80" Duration="0:0:0.3" Storyboard.TargetName="container" Storyboard.TargetProperty="Background.Color" />
+                                        <ColorAnimation To="{StaticResource SelectorVeryLight}" Duration="0:0:0.3" Storyboard.TargetName="container" Storyboard.TargetProperty="Background.Color" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
                             <EventTrigger RoutedEvent="MouseLeave">
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <ColorAnimation To="White" Duration="0:0:0.3" Storyboard.TargetName="container" Storyboard.TargetProperty="Background.Color" />
+                                        <ColorAnimation To="{StaticResource BackgroundVeryLight}" Duration="0:0:0.3" Storyboard.TargetName="container" Storyboard.TargetProperty="Background.Color" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
@@ -88,5 +88,5 @@
         </Style>
     </UserControl.Resources>
 
-    <ContentControl Style="{StaticResource ContentStyle}" />
+    <ContentControl Style="{StaticResource ContentStyle}"/>
 </UserControl>

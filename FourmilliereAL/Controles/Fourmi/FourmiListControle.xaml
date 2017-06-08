@@ -8,7 +8,8 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid d:DataContext="{x:Static local:App.fourmilliereVM}" Background="#FFD8D8D8">
         <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <ListBox ItemsSource="{Binding FourmisList}" SelectedItem="{Binding FourmisSelect}">
+            <ListBox ItemsSource="{Binding FourmisList}" SelectedItem="{Binding FourmisSelect}" Padding="-1" Margin="0">
+                
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="{x:Type ListBoxItem}">
                         <Setter Property="Template">
@@ -20,11 +21,12 @@
                         </Setter>
                     </Style>
                 </ListBox.ItemContainerStyle>
-                <ItemsControl.ItemTemplate>
+
+                <ListBox.ItemTemplate>
                     <DataTemplate>
                         <local:FourmiListItemControle></local:FourmiListItemControle>
                     </DataTemplate>
-                </ItemsControl.ItemTemplate>
+                </ListBox.ItemTemplate>
             </ListBox>
         </ScrollViewer>
     </Grid>

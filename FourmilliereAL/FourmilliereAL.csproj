@@ -94,32 +94,39 @@
     <Compile Include="Controles\Fourmi\FourmiListItemControle.xaml.cs">
       <DependentUpon>FourmiListItemControle.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Config.cs" />
     <Compile Include="Etape.cs" />
-    <Compile Include="Fabriques\Cases\Eau.cs" />
-    <Compile Include="Fabriques\Cases\Herbe.cs" />
-    <Compile Include="Fabriques\Creatures\BebeFourmi.cs" />
-    <Compile Include="Fabriques\Creatures\FourmiCombattante.cs" />
-    <Compile Include="Fabriques\Creatures\FourmiCueilleuse.cs" />
-    <Compile Include="Fabriques\Creatures\FourmiGarou.cs" />
-    <Compile Include="Fabriques\Creatures\FourmiRouge.cs" />
-    <Compile Include="Fabriques\Creatures\ReineFourmi.cs" />
-    <Compile Include="Fabriques\Creatures\Creature.cs" />
-    <Compile Include="Fabriques\Environnements\Environnement.cs" />
-    <Compile Include="Fabriques\Cases\Case.cs" />
-    <Compile Include="Fabriques\Environnements\Jour.cs" />
-    <Compile Include="Fabriques\Environnements\Nuit.cs" />
+    <Compile Include="Attitudes\Attitude.cs" />
+    <Compile Include="Attitudes\AttitudeAucune.cs" />
+    <Compile Include="Attitudes\AttitudeCombattante.cs" />
+    <Compile Include="Attitudes\AttitudeCueilleuse.cs" />
+    <Compile Include="Attitudes\AttitudeEnnemi.cs" />
+    <Compile Include="Attitudes\AttitudeGarou.cs" />
+    <Compile Include="Cases\Eau.cs" />
+    <Compile Include="Cases\Herbe.cs" />
+    <Compile Include="Creatures\ReineFourmi.cs" />
+    <Compile Include="Environnements\Environnement.cs" />
+    <Compile Include="Cases\Case.cs" />
+    <Compile Include="Environnements\Jour.cs" />
+    <Compile Include="Environnements\Nuit.cs" />
     <Compile Include="Fabriques\FabriqueCase.cs" />
-    <Compile Include="Fabriques\Cases\Terrain.cs" />
-    <Compile Include="Fabriques\FabriqueCreature.cs" />
+    <Compile Include="Cases\Terrain.cs" />
     <Compile Include="Fabriques\FabriqueEnvironnement.cs" />
+    <Compile Include="Fabriques\FabriqueFourmi.cs" />
     <Compile Include="Fabriques\FabriqueFourmilliere.cs" />
     <Compile Include="Fabriques\FabriqueObjet.cs" />
+    <Compile Include="Objets\Baton.cs" />
+    <Compile Include="Objets\Objet.cs" />
+    <Compile Include="Objets\Panier.cs" />
+    <Compile Include="Objets\Pomme.cs" />
+    <Compile Include="Fabriques\FourmiliereItem\FourmiliereItem.cs" />
     <Compile Include="Fabriques\Objets\Baton.cs" />
     <Compile Include="Fabriques\Objets\Objet.cs" />
     <Compile Include="Fabriques\Objets\Panier.cs" />
     <Compile Include="Fabriques\Objets\Pomme.cs" />
     <Compile Include="FourmilliereModel.cs" />
-    <Compile Include="Fabriques\Creatures\Fourmi.cs" />
+    <Compile Include="Creatures\Fourmi.cs" />
+    <Compile Include="Location.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FourmilliereAL.Fabriques
+namespace FourmilliereAL
 {
-    class Jour : Environnement
+    public class Attitude
     {
+        public virtual void Execute(Fourmi fourmi) { }
     }
 }

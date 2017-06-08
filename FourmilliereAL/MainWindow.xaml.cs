@@ -1,5 +1,6 @@
-﻿using FourmilliereAL.Fabriques;
+using FourmilliereAL.Fabriques;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 using System.Windows;
@@ -44,8 +45,8 @@ namespace FourmilliereAL
                 img.Source = new BitmapImage(uri);
 
                 Plateau.Children.Add(img);
-                Grid.SetColumn(img, fourmi.X);
-                Grid.SetRow(img, fourmi.Y);
+                Grid.SetColumn(img, fourmi.Position.X);
+                Grid.SetRow(img, fourmi.Position.Y);
             }            
         }
 

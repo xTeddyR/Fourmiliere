@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Threading;
 
 namespace FourmilliereAL
 {
@@ -54,14 +50,6 @@ namespace FourmilliereAL
             destCase.AjouterCreature(fourmi);
         }
 
-        public void SupprimerFourmi(Fourmi fourmiASupprimer)
-        {
-            Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, (Action) delegate()
-            {
-                GetCaseFromFourmi(fourmiASupprimer).RetirerCreature(fourmiASupprimer);
-                App.fourmilliereVM.FourmisList.Remove(fourmiASupprimer); // Pour gérer le multi-thread
-            });
-        }
 
         public Case GetCaseFromFourmi(Fourmi fourmi)
         {

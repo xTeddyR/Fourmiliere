@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
+using System.Collections.ObjectModel;
+using System.Windows.Data;
 
 namespace FourmilliereAL
 {
@@ -15,9 +11,14 @@ namespace FourmilliereAL
     public partial class App : Application
     {
         public static FourmilliereModel fourmilliereVM { get; set; }
+        private static object _lock = new object(); 
         public App()
         {
-            fourmilliereVM = new FourmilliereModel();
+            ObservableCollection<Fourmi> FourmisList = new ObservableCollection<Fourmi>();
+            
+            // Synchronisation de la liste entre Thread
+            BindingOperations.EnableCollectionSynchronization(FourmisList, _lock);
+            fourmilliereVM = new FourmilliereModel(FourmisList);
         }
       
     }

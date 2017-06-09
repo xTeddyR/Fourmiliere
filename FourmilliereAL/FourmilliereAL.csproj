@@ -88,45 +88,16 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Attitudes\AttitudeReine.cs" />
     <Compile Include="Controles\Fourmi\FourmiListControle.xaml.cs">
       <DependentUpon>FourmiListControle.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controles\Fourmi\FourmiListItemControle.xaml.cs">
       <DependentUpon>FourmiListItemControle.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Config.cs" />
     <Compile Include="ConvertisseurValeur\ConvertisseurAttitudeVersCouleurs.cs" />
     <Compile Include="ConvertisseurValeur\ConvertisseurAttitudeVersImage.cs" />
     <Compile Include="ConvertisseurValeur\ConvertisseurBooleanVersCouleurs.cs" />
     <Compile Include="ConvertisseurValeur\ConvertisseurValeurBase.cs" />
-    <Compile Include="Etape.cs" />
-    <Compile Include="Attitudes\Attitude.cs" />
-    <Compile Include="Attitudes\AttitudeAucune.cs" />
-    <Compile Include="Attitudes\AttitudeCombattante.cs" />
-    <Compile Include="Attitudes\AttitudeCueilleuse.cs" />
-    <Compile Include="Attitudes\AttitudeEnnemi.cs" />
-    <Compile Include="Attitudes\AttitudeGarou.cs" />
-    <Compile Include="Cases\Eau.cs" />
-    <Compile Include="Cases\Herbe.cs" />
-    <Compile Include="Environnements\Environnement.cs" />
-    <Compile Include="Cases\Case.cs" />
-    <Compile Include="Environnements\Jour.cs" />
-    <Compile Include="Environnements\Nuit.cs" />
-    <Compile Include="Fabriques\FabriqueCase.cs" />
-    <Compile Include="Cases\Terrain.cs" />
-    <Compile Include="Fabriques\FabriqueEnvironnement.cs" />
-    <Compile Include="Fabriques\FabriqueFourmi.cs" />
-    <Compile Include="Fabriques\FabriqueFourmilliere.cs" />
-    <Compile Include="Fabriques\FabriqueObjet.cs" />
-    <Compile Include="Objets\Baton.cs" />
-    <Compile Include="Objets\Objet.cs" />
-    <Compile Include="Objets\Panier.cs" />
-    <Compile Include="Objets\Pomme.cs" />
-    <Compile Include="FourmiliereItem\FourmiliereItem.cs" />
-    <Compile Include="FourmilliereModel.cs" />
-    <Compile Include="Creatures\Fourmi.cs" />
-    <Compile Include="Location.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -137,7 +108,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PlateauManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -192,6 +162,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Media\heart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FourmilliereAL.Core\FourmilliereAL.Core.csproj">
+      <Project>{c8485e2c-149e-4b6c-89ad-85bbcd053a31}</Project>
+      <Name>FourmilliereAL.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

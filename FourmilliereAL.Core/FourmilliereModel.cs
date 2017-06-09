@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
+
 
 namespace FourmilliereAL
 {
@@ -20,7 +17,7 @@ namespace FourmilliereAL
         public int DimensionY { get; set; }
         public bool EnCours { get; set; }
         public int VitesseExecution {get;set;}
-        public FourmilliereModel()
+        public FourmilliereModel(ObservableCollection<Fourmi> FourmisList)
         {
             TitreApplication = Config.ApplicationTitle;
             DimensionX = 20;
@@ -29,7 +26,7 @@ namespace FourmilliereAL
             plateauManager = PlateauManager.Instance;
             plateauManager.CreationDesCases();
 
-            FourmisList = new ObservableCollection<Fourmi>();
+            this.FourmisList = FourmisList;
 
             fourmiFactory = new FabriqueFourmi();
             AddFourmiWithName("Teddy", 0, 10);
@@ -60,10 +57,17 @@ namespace FourmilliereAL
             }
         }
 
-        public void SupprimerFourmis()
+        public void SupprimerFourmisSelect()
         {
             plateauManager.GetCaseFromFourmi(FourmisSelect).RetirerCreature(FourmisSelect);
             FourmisList.Remove(FourmisSelect);
+        }
+
+        public void SupprimerFourmi(Fourmi fourmiAsupprimer)
+        {
+            plateauManager.GetCaseFromFourmi(fourmiAsupprimer).RetirerCreature(fourmiAsupprimer);
+            FourmisList.Remove(fourmiAsupprimer);
+
         }
 
         public void TourSuivant()
@@ -71,6 +75,8 @@ namespace FourmilliereAL
             for(int i = 0; i < FourmisList.Count; i++)
             {
                 FourmisList[i].AvanceUnTour(DimensionX, DimensionY);
+
+                SupprimerFourmiMorte(FourmisList[i]);
             }
         }
 
@@ -86,6 +92,13 @@ namespace FourmilliereAL
             {
                 Thread.Sleep(VitesseExecution);
                 TourSuivant();
+            }
+        }
+
+        private void SupprimerFourmiMorte(Fourmi fourmiAVerifier)
+        {
+            if(fourmiAVerifier.Vie < 0) {
+                SupprimerFourmi(fourmiAVerifier);
             }
         }
     }

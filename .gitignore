@@ -55,3 +55,6 @@ Mkfile.old
 dkms.conf
 FourmilliereAL/bin/
 FourmilliereAL/obj/
+
+FourmilliereAL.Core/bin/
+FourmilliereAL.Core/obj/

@@ -40,6 +40,7 @@ namespace FourmilliereAL
         {
             InitPlateau();
             AddingGround();
+            AjouterFourmilliere();
             foreach (Case caseNotEmpty in plateauManager.CasesList)
             {
                 var creatureSurCase = caseNotEmpty.GetCreaturesSurCase().Where(f => f != null);
@@ -96,6 +97,20 @@ namespace FourmilliereAL
                     Grid.SetRow(img, j);
                 }
             }
+        }
+
+        private void AjouterFourmilliere()
+        {
+            Image img = new Image();
+            Uri uri = new Uri("Media/fourmilliere.png", UriKind.Relative);
+            img.Source = new BitmapImage(uri);
+            img.HorizontalAlignment = HorizontalAlignment.Stretch;
+            img.VerticalAlignment = VerticalAlignment.Stretch;
+            img.Stretch = Stretch.Fill;
+
+            Plateau.Children.Add(img);
+            Grid.SetColumn(img, Config.FourmilierePositionX);
+            Grid.SetRow(img, Config.FourmilierePositionY);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

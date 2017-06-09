@@ -6,13 +6,7 @@ using System.Threading.Tasks;
 
 namespace FourmilliereAL
 {
-    class ReineFourmi
+    class AttitudeReine : Attitude
     {
-        public Location Position { get; set; }
-
-        public ReineFourmi()
-        {
-
-        }
     }
 }

@@ -88,6 +88,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Attitudes\AttitudeReine.cs" />
     <Compile Include="Controles\Fourmi\FourmiListControle.xaml.cs">
       <DependentUpon>FourmiListControle.xaml</DependentUpon>
     </Compile>
@@ -109,7 +110,6 @@
     <Compile Include="Attitudes\AttitudeGarou.cs" />
     <Compile Include="Cases\Eau.cs" />
     <Compile Include="Cases\Herbe.cs" />
-    <Compile Include="Creatures\ReineFourmi.cs" />
     <Compile Include="Environnements\Environnement.cs" />
     <Compile Include="Cases\Case.cs" />
     <Compile Include="Environnements\Jour.cs" />
@@ -125,6 +125,7 @@
     <Compile Include="Objets\Objet.cs" />
     <Compile Include="Objets\Panier.cs" />
     <Compile Include="Objets\Pomme.cs" />
+    <Compile Include="FourmiliereItem\FourmiliereItem.cs" />
     <Compile Include="FourmilliereModel.cs" />
     <Compile Include="Creatures\Fourmi.cs" />
     <Compile Include="Location.cs" />

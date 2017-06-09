@@ -22,7 +22,7 @@ namespace FourmilliereAL
         public int VitesseExecution {get;set;}
         public FourmilliereModel()
         {
-            TitreApplication = "Application FourmilliereAL";
+            TitreApplication = Config.ApplicationTitle;
             DimensionX = 20;
             DimensionY = 30;
             VitesseExecution = 500;
@@ -30,6 +30,7 @@ namespace FourmilliereAL
             plateauManager.CreationDesCases();
 
             FourmisList = new ObservableCollection<Fourmi>();
+<<<<<<< Updated upstream
 
             fourmiFactory = new FabriqueFourmi();
             AddFourmiWithName("Teddy", 0, 10);
@@ -44,28 +45,40 @@ namespace FourmilliereAL
             FourmisList.Add(fourmi);
         }
 
-        public void AddFourmiWithName(string name, int x, int y)
+        public void AddFourmiWithName(string name, int x, int y, Attitude comportement = null)
         {
             var fourmi = fourmiFactory.CreerFourmi(name, x, y);
-            plateauManager.CasesList.Where(c => c.Position.X == fourmi.Position.X && c.Position.Y == fourmi.Position.Y).First().AjouterCreature(fourmi);
+            if (comportement != null) fourmi.Comportement = comportement;
+            plateauManager.GetCaseFromPosition(fourmi.Position.X, fourmi.Position.Y).AjouterCreature(fourmi);
             FourmisList.Add(fourmi);
         }
         public void AjouterFourmis()
         {
             AddFourmiWithName("Fourmis N°" + FourmisList.Count, 10, 10);
+=======
+            
+            FourmisList.Add(new Fourmi("Alain", Config.FourmilierePositionX, Config.FourmilierePositionY));
+            FourmisList.Add(new Fourmi("Cecile", Config.FourmilierePositionX, Config.FourmilierePositionY));
+            FourmisList.Add(new Fourmi("Pierre", Config.FourmilierePositionX, Config.FourmilierePositionY));
+            FourmisList.Add(new Fourmi("Denis", Config.FourmilierePositionX, Config.FourmilierePositionY));
         }
+        public void AjouterFourmis()
+        {
+            FourmisList.Add(new Fourmi("Fourmis N°"+ FourmisList.Count, Config.FourmilierePositionX, Config.FourmilierePositionY));
+>>>>>>> Stashed changes
+        }
+
         public void SupprimerFourmis()
         {
-            var caseARetirerFourmi = plateauManager.CasesList.Where(c => c.GetCreaturesSurCase().Contains(FourmisSelect)).First();
-            caseARetirerFourmi.RetirerCreature(FourmisSelect);
+            plateauManager.GetCaseFromFourmi(FourmisSelect).RetirerCreature(FourmisSelect);
             FourmisList.Remove(FourmisSelect);
         }
 
         public void TourSuivant()
         {
-            foreach(Fourmi fourmis in FourmisList)
+            for(int i = 0; i < FourmisList.Count; i++)
             {
-                fourmis.AvanceUnTour(DimensionX, DimensionY);
+                FourmisList[i].AvanceUnTour(DimensionX, DimensionY);
             }
         }
 

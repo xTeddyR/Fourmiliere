@@ -13,7 +13,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ContentControl}">
-                       
+
                         <!-- Content -->
                         <Grid x:Name="container" Background="{StaticResource BackgroundVeryLightBrush}">
                             <Grid.ColumnDefinitions>
@@ -26,7 +26,9 @@
                             </Grid.ColumnDefinitions>
 
                             <!-- Selecteur de la fourmi -->
-                            <Border Name="selecteur" Background="{StaticResource DisableLightBrush}" Width="5"></Border>
+                            <Border Name="selecteur"
+                                    Width="5"
+                                    Background="{Binding IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}, Converter={local:ConvertisseurBooleanVersCouleurs}}" />
 
                             <!-- Image de la fourmi -->
                             <Border Grid.Column="1" Padding="8">
@@ -44,24 +46,37 @@
                             <!-- Informations sur la fourmi -->
                             <StackPanel Grid.Column="2" VerticalAlignment="Center">
                                 <!-- Nom de la fourmi -->
-                                <TextBlock Text="{Binding Nom, FallbackValue=TEST}"
+                                <TextBlock x:Name="nomfourmi"
+                                           Text="{Binding Nom, FallbackValue=TEST}"
                                            TextAlignment="Left"
                                            VerticalAlignment="Center"
-                                           Foreground="{Binding Comportement, Converter={local:ConvertisseurAttitudeVersCouleurs}}"
                                            TextTrimming="CharacterEllipsis"
-                                           Padding="0,0,0,3">
+                                           Padding="0,0,0,3" FontWeight="Bold">
                                 </TextBlock>
 
-                                <!-- Tour de la fourmi -->
-                                <TextBlock Text="{Binding ListEtape.Count, FallbackValue=5}"
-                                           TextAlignment="Left"
+                                <StackPanel Orientation="Horizontal">
+
+                                    <Image Source="../../Media/loop.png" Height="12" Margin="0,0,5,0"></Image>
+
+                                    <!-- Tour de la fourmi -->
+                                    <TextBlock  Text="{Binding ListEtape.Count, FallbackValue=5}"
+                                           TextAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           TextTrimming="CharacterEllipsis" FontSize="10" Margin="0,0,15,0">
+                                    </TextBlock>
+
+                                    <Image Source="../../Media/heart.png" Height="12" Margin="0,0,5,0"></Image>
+
+                                    <!-- Vie de la fourmi -->
+                                    <TextBlock  Text="{Binding Vie, FallbackValue=5}"
+                                           TextAlignment="Center"
                                            VerticalAlignment="Center"
                                            TextTrimming="CharacterEllipsis" FontSize="10">
-                                </TextBlock>
+                                    </TextBlock>
+                                </StackPanel>
                             </StackPanel>
-
                         </Grid>
-                        
+
                         <!-- Hover -->
                         <ControlTemplate.Triggers>
                             <EventTrigger RoutedEvent="MouseEnter">
@@ -82,6 +97,7 @@
                                 <Setter Property="Background" TargetName="container" Value="Brown"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
+
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>

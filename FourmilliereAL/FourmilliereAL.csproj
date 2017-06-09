@@ -97,6 +97,8 @@
     <Compile Include="Config.cs" />
     <Compile Include="ConvertisseurValeur\ConvertisseurAttitudeVersCouleurs.cs" />
     <Compile Include="ConvertisseurValeur\ConvertisseurAttitudeVersImage.cs" />
+    <Compile Include="ConvertisseurValeur\ConvertisseurBooleanVersCouleurs.cs" />
+    <Compile Include="ConvertisseurValeur\ConvertisseurItemVersCouleurs.cs" />
     <Compile Include="ConvertisseurValeur\ConvertisseurValeurBase.cs" />
     <Compile Include="Etape.cs" />
     <Compile Include="Attitudes\Attitude.cs" />
@@ -185,6 +187,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Media\default-ant.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Media\loop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Media\heart.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

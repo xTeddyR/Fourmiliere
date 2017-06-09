@@ -13,7 +13,7 @@ namespace FourmilliereAL.Fabriques
         private static readonly object padlock = new object();
         public Location Position { get; set; }
 
-        FourmiliereItem(int x, int y)
+        private FourmiliereItem(int x, int y)
         {
         }
 

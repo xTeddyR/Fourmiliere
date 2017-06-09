@@ -30,7 +30,6 @@ namespace FourmilliereAL
             plateauManager.CreationDesCases();
 
             FourmisList = new ObservableCollection<Fourmi>();
-<<<<<<< Updated upstream
 
             fourmiFactory = new FabriqueFourmi();
             AddFourmiWithName("Teddy", 0, 10);
@@ -52,20 +51,13 @@ namespace FourmilliereAL
             plateauManager.GetCaseFromPosition(fourmi.Position.X, fourmi.Position.Y).AjouterCreature(fourmi);
             FourmisList.Add(fourmi);
         }
+
         public void AjouterFourmis()
         {
-            AddFourmiWithName("Fourmis N°" + FourmisList.Count, 10, 10);
-=======
-            
-            FourmisList.Add(new Fourmi("Alain", Config.FourmilierePositionX, Config.FourmilierePositionY));
-            FourmisList.Add(new Fourmi("Cecile", Config.FourmilierePositionX, Config.FourmilierePositionY));
-            FourmisList.Add(new Fourmi("Pierre", Config.FourmilierePositionX, Config.FourmilierePositionY));
-            FourmisList.Add(new Fourmi("Denis", Config.FourmilierePositionX, Config.FourmilierePositionY));
-        }
-        public void AjouterFourmis()
-        {
-            FourmisList.Add(new Fourmi("Fourmis N°"+ FourmisList.Count, Config.FourmilierePositionX, Config.FourmilierePositionY));
->>>>>>> Stashed changes
+            if (plateauManager.GetCaseFromPosition(Config.FourmilierePositionX, Config.FourmilierePositionY).GetCreaturesSurCase().Where(f => f != null).Count() < 2)
+            {
+                AddFourmiWithName("Fourmis N°" + FourmisList.Count, Config.FourmilierePositionX, Config.FourmilierePositionY);
+            }
         }
 
         public void SupprimerFourmis()

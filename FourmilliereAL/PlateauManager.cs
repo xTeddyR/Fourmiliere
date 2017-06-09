@@ -56,9 +56,9 @@ namespace FourmilliereAL
 
         public void SupprimerFourmi(Fourmi fourmiASupprimer)
         {
-            GetCaseFromFourmi(fourmiASupprimer).RetirerCreature(fourmiASupprimer);
             Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, (Action) delegate()
             {
+                GetCaseFromFourmi(fourmiASupprimer).RetirerCreature(fourmiASupprimer);
                 App.fourmilliereVM.FourmisList.Remove(fourmiASupprimer); // Pour gérer le multi-thread
             });
         }

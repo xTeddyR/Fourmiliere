@@ -8,12 +8,27 @@
     <Color x:Key="BackgroundVeryLight">#ffffff</Color>
     <SolidColorBrush x:Key="BackgroundVeryLightBrush" Color="{StaticResource BackgroundVeryLight}" />
 
-    <Color x:Key="PrimaryLight">#dce775</Color>
+    <!-- Primary color section -->
+    <Color x:Key="Primary">#dce775</Color>
+    <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
+
+    <Color x:Key="PrimaryLight">#ffffa6</Color>
     <SolidColorBrush x:Key="PrimaryLightBrush" Color="{StaticResource PrimaryLight}"/>
 
-    <Color x:Key="SecondaryLight">#e57373</Color>
+    <Color x:Key="PrimaryDark">#a8b545</Color>
+    <SolidColorBrush x:Key="PrimaryDarkBrush" Color="{StaticResource PrimaryDark}"/>
+
+    <!-- Secondary color section -->
+    <Color x:Key="Secondary">#e57373</Color>
+    <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}"/>
+
+    <Color x:Key="SecondaryLight">#ffa4a2</Color>
     <SolidColorBrush x:Key="SecondaryLightBrush" Color="{StaticResource SecondaryLight}"/>
 
+    <Color x:Key="SecondaryDark">#af4448</Color>
+    <SolidColorBrush x:Key="SecondaryDarkBrush" Color="{StaticResource SecondaryDark}"/>
+
+    <!-- Other Colors -->
     <Color x:Key="SelectorVeryLight">#e0e0e0</Color>
     <SolidColorBrush x:Key="SelectorVeryLightBrush" Color="{StaticResource SelectorVeryLight}"/>
 

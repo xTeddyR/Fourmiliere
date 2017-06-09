@@ -99,7 +99,6 @@
     <Compile Include="ConvertisseurValeur\ConvertisseurAttitudeVersCouleurs.cs" />
     <Compile Include="ConvertisseurValeur\ConvertisseurAttitudeVersImage.cs" />
     <Compile Include="ConvertisseurValeur\ConvertisseurBooleanVersCouleurs.cs" />
-    <Compile Include="ConvertisseurValeur\ConvertisseurItemVersCouleurs.cs" />
     <Compile Include="ConvertisseurValeur\ConvertisseurValeurBase.cs" />
     <Compile Include="Etape.cs" />
     <Compile Include="Attitudes\Attitude.cs" />

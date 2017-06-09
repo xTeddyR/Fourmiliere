@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
+using System.Globalization;
 
 namespace FourmilliereAL
 {
@@ -47,20 +48,12 @@ namespace FourmilliereAL
                     foreach(Fourmi fourmi in creatureSurCase)
                     {
                         Image img = new Image();
+                        ConvertisseurAttitudeVersImage Convertisseur = new ConvertisseurAttitudeVersImage();
 
-                        switch (fourmi.Comportement.ToString())
-                        {
-                            case "AttitudeAucune":
-                                Uri uriAucune = new Uri("Media/default-ant.png", UriKind.Relative); // A Remplacer par fourmi normal
-                                img.Source = new BitmapImage(uriAucune);
-                                break;
-                            case "AttitudeCombattante":
-                                Uri uriCombat = new Uri("Media/warrior-ant.png", UriKind.Relative);
-                                img.Source = new BitmapImage(uriCombat);
-                                break;
-                            default:
-                                break;
-                        }                                         
+                        string path = (string)Convertisseur.Convert(fourmi.Comportement, null, null, CultureInfo.CurrentCulture);
+
+                        Uri uri = new Uri(path, UriKind.Absolute);
+                        img.Source = new BitmapImage(uri);
 
                         Plateau.Children.Add(img);
                         Grid.SetColumn(img, fourmi.Position.X);

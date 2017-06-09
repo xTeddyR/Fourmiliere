@@ -7,11 +7,11 @@ namespace FourmilliereAL
     {
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if(value.ToString() == "AttitudeCombattante") {
-                return "../../Media/warrior-ant.png";
+            if (value.ToString() == "AttitudeCombattante") {
+                return "pack://application:,,,/Media/warrior-ant.png";
             }
 
-            return "../../Media/default-ant.png";
+            return "pack://application:,,,/Media/default-ant.png";
         }
 
         public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

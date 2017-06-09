@@ -115,7 +115,6 @@
     <Compile Include="Fabriques\FabriqueFourmi.cs" />
     <Compile Include="Fabriques\FabriqueFourmilliere.cs" />
     <Compile Include="Fabriques\FabriqueObjet.cs" />
-    <Compile Include="FourmiliereItem\FourmiliereItem.cs" />
     <Compile Include="Objets\Baton.cs" />
     <Compile Include="Objets\Objet.cs" />
     <Compile Include="Objets\Panier.cs" />

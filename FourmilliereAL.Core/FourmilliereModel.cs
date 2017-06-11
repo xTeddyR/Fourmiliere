@@ -37,8 +37,14 @@ namespace FourmilliereAL
             var fourmi = fourmiFactory.CreerFourmi("Warrior", 19, 29);
             fourmi.Comportement = new AttitudeCombattante();
             plateauManager.CasesList.Where(c => c.Position.X == fourmi.Position.X && c.Position.Y == fourmi.Position.Y).First().AjouterCreature(fourmi);
-            
             FourmisList.Add(fourmi);
+
+            var ennemie = fourmiFactory.CreerFourmi("Bad Ant", 15, 16);
+            ennemie.Comportement = new AttitudeEnnemi();
+            plateauManager.CasesList.Where(c => c.Position.X == ennemie.Position.X && c.Position.Y == ennemie.Position.Y).First().AjouterCreature(ennemie);
+
+
+            FourmisList.Add(ennemie);
         }
 
         public void AddFourmiWithName(string name, int x, int y, Attitude comportement = null)

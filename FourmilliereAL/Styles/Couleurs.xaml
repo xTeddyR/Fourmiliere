@@ -32,8 +32,12 @@
     <Color x:Key="SelectorVeryLight">#e0e0e0</Color>
     <SolidColorBrush x:Key="SelectorVeryLightBrush" Color="{StaticResource SelectorVeryLight}"/>
 
+    <Color x:Key="SelectorDark">#212121</Color>
+    <SolidColorBrush x:Key="SelectorDarkBrush" Color="{StaticResource SelectorDark}"/>
+
     <Color x:Key="DisableLight">#e0e0e0</Color>
     <SolidColorBrush x:Key="DisableLightBrush" Color="{StaticResource DisableLight}"/>
+
 
 
 

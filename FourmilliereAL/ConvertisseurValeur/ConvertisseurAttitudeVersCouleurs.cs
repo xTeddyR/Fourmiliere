@@ -9,16 +9,12 @@ namespace FourmilliereAL
 
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if(parameter != null) {
-                if (value.ToString() == "AttitudeCombattante") {
-                    return App.Current.FindResource("SecondaryDarkBrush");
-                }
-
-                return App.Current.FindResource("PrimaryDarkBrush");
-            }
-
             if(value.ToString() == "AttitudeCombattante") {
                 return App.Current.FindResource("SecondaryBrush");
+            }
+
+            if(value.ToString() == "AttitudeEnnemi") {
+                return App.Current.FindResource("SelectorDarkBrush");
             }
 
             return App.Current.FindResource("PrimaryBrush");

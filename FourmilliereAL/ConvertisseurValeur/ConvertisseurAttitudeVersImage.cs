@@ -10,6 +10,10 @@ namespace FourmilliereAL
             if (value.ToString() == "AttitudeCombattante") {
                 return "pack://application:,,,/Media/warrior-ant.png";
             }
+            
+            if (value.ToString() == "AttitudeEnnemi") {
+                return "pack://application:,,,/Media/red-ant.png";
+            }
 
             return "pack://application:,,,/Media/default-ant.png";
         }

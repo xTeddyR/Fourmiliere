@@ -1,6 +1,6 @@
 ﻿namespace FourmilliereAL
 {
-    class Config
+    public static class Config
     {
         public const int FourmilierePositionX = 10;
 

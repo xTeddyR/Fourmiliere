@@ -171,6 +171,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Media\red-ant.png" />
+    <Resource Include="Media\fourmilliere.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

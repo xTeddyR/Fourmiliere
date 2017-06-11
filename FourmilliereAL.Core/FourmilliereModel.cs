@@ -51,9 +51,9 @@ namespace FourmilliereAL
 
         public void AjouterFourmis()
         {
-            if (plateauManager.GetCaseFromPosition(Config.FourmilierePositionX, Config.FourmilierePositionY).GetCreaturesSurCase().Where(f => f != null).Count() < 2)
+            if (plateauManager.GetCaseFromPosition(ConfigFourmi.FourmilierePositionX, ConfigFourmi.FourmilierePositionY).GetCreaturesSurCase().Where(f => f != null).Count() < 2)
             {
-                AddFourmiWithName("Fourmis N°" + FourmisList.Count, Config.FourmilierePositionX, Config.FourmilierePositionY);
+                AddFourmiWithName("Fourmis N°" + FourmisList.Count, ConfigFourmi.FourmilierePositionX, ConfigFourmi.FourmilierePositionY);
             }
         }
 

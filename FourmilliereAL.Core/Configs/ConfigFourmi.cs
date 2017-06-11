@@ -7,5 +7,9 @@
 
         public static readonly int VieFourmiGarou = 100;
 
+        public static readonly int FourmilierePositionX = 10;
+
+        public static readonly int FourmilierePositionY = 10;
+
     }
 }

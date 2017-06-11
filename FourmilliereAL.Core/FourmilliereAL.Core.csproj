@@ -53,6 +53,7 @@
     <Compile Include="Cases\Herbe.cs" />
     <Compile Include="Cases\Terrain.cs" />
     <Compile Include="Configs\Config.cs" />
+    <Compile Include="Configs\ConfigFourmi.cs" />
     <Compile Include="Creatures\Fourmi.cs" />
     <Compile Include="Environnements\Environnement.cs" />
     <Compile Include="Environnements\Jour.cs" />

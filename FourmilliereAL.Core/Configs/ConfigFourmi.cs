@@ -1,6 +1,6 @@
 ﻿namespace FourmilliereAL
 {
-    class ConfigFourmi
+    public class ConfigFourmi
     {
 
         public static readonly int VieFourmi = 20;

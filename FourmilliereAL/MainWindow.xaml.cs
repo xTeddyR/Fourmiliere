@@ -109,8 +109,8 @@ namespace FourmilliereAL
             img.Stretch = Stretch.Fill;
 
             Plateau.Children.Add(img);
-            Grid.SetColumn(img, Config.FourmilierePositionX);
-            Grid.SetRow(img, Config.FourmilierePositionY);
+            Grid.SetColumn(img, ConfigFourmi.FourmilierePositionX);
+            Grid.SetRow(img, ConfigFourmi.FourmilierePositionY);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

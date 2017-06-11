@@ -1,6 +1,6 @@
 ﻿namespace FourmilliereAL
 {
-    class Config
+    public class Config
     {
         public static readonly string ApplicationTitle = "EZ Ant Simulator 2k17";
 

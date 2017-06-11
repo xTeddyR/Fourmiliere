@@ -41,4 +41,5 @@ git clone https://github.com/xTeddyR/Fourmiliere.git
 ### Crédits ###
 - [xTeddyR](https://github.com/xTeddyR)
 - [jeremyboehm](https://github.com/jeremyboehm)
+- [juliiien](https://github.com/juliiien)
 - [Sorion](https://github.com/Sorion)

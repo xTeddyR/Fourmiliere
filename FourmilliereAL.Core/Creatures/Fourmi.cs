@@ -29,7 +29,7 @@ namespace FourmilliereAL
         public Fourmi(string v, int x, int y)
         {
             this.Nom = v;
-            this.vie = 20;
+            this.vie = Config.VieFourmi;
             ListEtape = new ObservableCollection<Etape>();
             Position = new Location(x, y);
             plateauManager = PlateauManager.Instance;

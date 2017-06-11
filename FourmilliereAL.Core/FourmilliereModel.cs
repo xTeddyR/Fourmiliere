@@ -20,9 +20,9 @@ namespace FourmilliereAL
         public FourmilliereModel(ObservableCollection<Fourmi> FourmisList)
         {
             TitreApplication = Config.ApplicationTitle;
-            DimensionX = 20;
-            DimensionY = 30;
-            VitesseExecution = 500;
+            DimensionX = Config.GrilleLargeur;
+            DimensionY = Config.GrilleHauteur;
+            VitesseExecution = Config.VitesseExecution;
             plateauManager = PlateauManager.Instance;
             plateauManager.CreationDesCases();
 

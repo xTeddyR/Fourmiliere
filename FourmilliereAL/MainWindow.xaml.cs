@@ -146,5 +146,10 @@ namespace FourmilliereAL
                 stopWatch.Stop();
             }
         }
+
+        private void Save_Data_Button_Click(object sender, RoutedEventArgs e)
+        {
+            plateauManager.SaveDataToXML();
+        }
     }
 }

@@ -9,28 +9,33 @@ namespace FourmilliereAL
         protected Objet objetSurCase;
 
         protected Fourmi[] creaturesSurCase;
-
+    
         public Location Position;
+
+        public Objet Objet
+        {
+            get
+            {
+                return objetSurCase;
+            }
+            set
+            {
+                objetSurCase = value;
+            }
+        }
+
+        public Fourmi[] Creatures
+        {
+            get
+            {
+                return creaturesSurCase;
+            }
+        }
 
         public Case(int x, int y)
         {
             creaturesSurCase = new Fourmi[2];
             Position = new Location(x, y);
-        }
-
-        public Objet GetObjetSurCase()
-        {
-            return objetSurCase;
-        }
-
-        public void AjouterObjet(Objet objet)
-        {
-            objetSurCase = objet;
-        }
-
-        public void RetirerObjet()
-        {
-            objetSurCase = null;
         }
 
         public Fourmi[] GetCreaturesSurCase()

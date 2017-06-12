@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace FourmilliereAL
 {
@@ -59,6 +62,50 @@ namespace FourmilliereAL
         public Case GetCaseFromPosition(int x, int y)
         {
             return CasesList.Where(c => c.Position.X == x && c.Position.Y == y).First();
+        }
+
+        public void SaveDataToXML()
+        {
+            XmlWriterSettings setting = new XmlWriterSettings();
+            setting.ConformanceLevel = ConformanceLevel.Auto;
+
+            using (XmlWriter writer = XmlWriter.Create("data.xml", setting))
+            {
+                writer.WriteStartElement("PlateauManager");
+                writer.WriteStartElement("CasesList");
+                foreach (var uneCase in CasesList)
+                {
+                    writer.WriteStartElement("Case");
+                    writer.WriteElementString("X", uneCase.Position.X.ToString());
+                    writer.WriteElementString("Y", uneCase.Position.Y.ToString());
+                    if (uneCase.Objet != null)
+                    {
+                        writer.WriteStartElement("Objet");
+                        writer.WriteElementString("X", uneCase.Objet.Position.X.ToString());
+                        writer.WriteElementString("Y", uneCase.Objet.Position.Y.ToString());
+                        writer.WriteEndElement();
+                    }
+                    if (uneCase.Creatures.Where(f => f != null).Count() > 0)
+                    {
+                        writer.WriteStartElement("Creatures");
+                        foreach (var fourmi in uneCase.Creatures.Where(f => f != null))
+                        {
+                            writer.WriteStartElement("Fourmi");
+                            writer.WriteElementString("Nom", fourmi.Nom);
+                            writer.WriteElementString("Vie", fourmi.Vie.ToString());
+                            writer.WriteElementString("X", fourmi.Position.X.ToString());
+                            writer.WriteElementString("Y", fourmi.Position.Y.ToString());
+                            writer.WriteElementString("Attitude", fourmi.Comportement.ToString());
+                            writer.WriteEndElement();
+                        }
+                        writer.WriteEndElement();
+                    }
+                    writer.WriteEndElement();
+                }
+                writer.WriteEndElement();
+                writer.WriteEndElement();
+                writer.Flush();
+            }
         }
     }
 }

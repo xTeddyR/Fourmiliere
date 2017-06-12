@@ -34,7 +34,7 @@ namespace FourmilliereAL
             Position = new Location(x, y);
             plateauManager = PlateauManager.Instance;
             Comportement = new AttitudeAucune();
-            int nbEtapes = Hasard.Next(10);
+            int nbEtapes = 0;
             for(int i = 0; i < nbEtapes; i++)
             {
                 ListEtape.Add(new Etape());

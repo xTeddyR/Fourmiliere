@@ -109,19 +109,20 @@ namespace FourmilliereAL
             img.Stretch = Stretch.Fill;
 
             Plateau.Children.Add(img);
-            Grid.SetColumn(img, Config.FourmilierePositionX);
-            Grid.SetRow(img, Config.FourmilierePositionY);
+            Grid.SetColumn(img, ConfigFourmi.FourmilierePositionX);
+            Grid.SetRow(img, ConfigFourmi.FourmilierePositionY);
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Ajout_Fourmi_Button_Click(object sender, RoutedEventArgs e)
         {
             App.fourmilliereVM.AjouterFourmis();
-
+            Dessine();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Supp_Fourmi_Button_Click(object sender, RoutedEventArgs e)
         {
             App.fourmilliereVM.SupprimerFourmisSelect();
+            Dessine();
         }
 
         private void btnSuivant_Click(object sender, RoutedEventArgs e)

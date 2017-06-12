@@ -74,9 +74,9 @@
             </Canvas>
         </Viewbox>
 
-        <Button Grid.Row="2" Grid.Column="0" Content="Ajouter Fourmis" Click="Button_Click_1" RenderTransformOrigin="1,1"></Button>
+        <Button Grid.Row="2" Grid.Column="0" Content="Ajouter Fourmis" Click="Ajout_Fourmi_Button_Click" RenderTransformOrigin="1,1"></Button>
 
-        <Button Grid.Row="3" Grid.Column="0"  Click="Button_Click" >
+        <Button Grid.Row="3" Grid.Column="0"  Click="Supp_Fourmi_Button_Click" >
             <Button.Content>
                 <TextBlock Text="{Binding FourmisSelect, StringFormat='Supprimer{0}'}"/>
             </Button.Content>

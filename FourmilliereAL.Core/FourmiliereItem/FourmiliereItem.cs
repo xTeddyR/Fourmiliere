@@ -25,7 +25,7 @@ namespace FourmilliereAL.Fabriques
                 {
                     if (instance == null)
                     {
-                        instance = new FourmiliereItem(Config.FourmilierePositionX, Config.FourmilierePositionY);
+                        instance = new FourmiliereItem(ConfigFourmi.FourmilierePositionX, ConfigFourmi.FourmilierePositionY);
                     }
                     return instance;
                 }

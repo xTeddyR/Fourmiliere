@@ -20,9 +20,9 @@ namespace FourmilliereAL
         public FourmilliereModel(ObservableCollection<Fourmi> FourmisList)
         {
             TitreApplication = Config.ApplicationTitle;
-            DimensionX = 20;
-            DimensionY = 30;
-            VitesseExecution = 500;
+            DimensionX = Config.GrilleLargeur;
+            DimensionY = Config.GrilleHauteur;
+            VitesseExecution = Config.VitesseExecution;
             plateauManager = PlateauManager.Instance;
             plateauManager.CreationDesCases();
 
@@ -42,8 +42,6 @@ namespace FourmilliereAL
             var ennemie = fourmiFactory.CreerFourmi("Bad Ant", 15, 16);
             ennemie.Comportement = new AttitudeEnnemi();
             plateauManager.CasesList.Where(c => c.Position.X == ennemie.Position.X && c.Position.Y == ennemie.Position.Y).First().AjouterCreature(ennemie);
-
-
             FourmisList.Add(ennemie);
         }
 
@@ -57,9 +55,9 @@ namespace FourmilliereAL
 
         public void AjouterFourmis()
         {
-            if (plateauManager.GetCaseFromPosition(Config.FourmilierePositionX, Config.FourmilierePositionY).GetCreaturesSurCase().Where(f => f != null).Count() < 2)
+            if (plateauManager.GetCaseFromPosition(ConfigFourmi.FourmilierePositionX, ConfigFourmi.FourmilierePositionY).GetCreaturesSurCase().Where(f => f != null).Count() < 2)
             {
-                AddFourmiWithName("Fourmis N°" + FourmisList.Count, Config.FourmilierePositionX, Config.FourmilierePositionY);
+                AddFourmiWithName("Fourmis N° " + FourmisList.Count, ConfigFourmi.FourmilierePositionX, ConfigFourmi.FourmilierePositionY);
             }
         }
 

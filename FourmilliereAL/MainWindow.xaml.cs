@@ -116,12 +116,13 @@ namespace FourmilliereAL
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             App.fourmilliereVM.AjouterFourmis();
-
+            Dessine();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             App.fourmilliereVM.SupprimerFourmisSelect();
+            Dessine();
         }
 
         private void btnSuivant_Click(object sender, RoutedEventArgs e)

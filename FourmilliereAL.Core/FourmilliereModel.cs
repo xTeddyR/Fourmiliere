@@ -59,7 +59,7 @@ namespace FourmilliereAL
         {
             if (plateauManager.GetCaseFromPosition(ConfigFourmi.FourmilierePositionX, ConfigFourmi.FourmilierePositionY).GetCreaturesSurCase().Where(f => f != null).Count() < 2)
             {
-                AddFourmiWithName("Fourmis N°" + FourmisList.Count, ConfigFourmi.FourmilierePositionX, ConfigFourmi.FourmilierePositionY);
+                AddFourmiWithName("Fourmis N° " + FourmisList.Count, ConfigFourmi.FourmilierePositionX, ConfigFourmi.FourmilierePositionY);
             }
         }
 

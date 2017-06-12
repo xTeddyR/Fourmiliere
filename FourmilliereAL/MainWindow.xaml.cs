@@ -113,13 +113,13 @@ namespace FourmilliereAL
             Grid.SetRow(img, ConfigFourmi.FourmilierePositionY);
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Ajout_Fourmi_Button_Click(object sender, RoutedEventArgs e)
         {
             App.fourmilliereVM.AjouterFourmis();
             Dessine();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Supp_Fourmi_Button_Click(object sender, RoutedEventArgs e)
         {
             App.fourmilliereVM.SupprimerFourmisSelect();
             Dessine();

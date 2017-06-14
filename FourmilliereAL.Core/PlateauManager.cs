@@ -107,5 +107,51 @@ namespace FourmilliereAL
                 writer.Flush();
             }
         }
+
+        public void LoadDataFromXML(string fileName)
+        {
+            using (XmlReader xmlReader = XmlReader.Create(fileName))
+            {
+                CasesList = new List<Case>();
+                while (xmlReader.NodeType == XmlNodeType.Element && xmlReader.ReadToFollowing("Case"))
+                {
+                    xmlReader.ReadToFollowing("X");
+                    int x = xmlReader.ReadElementContentAsInt();
+                    xmlReader.ReadToFollowing("Y");
+                    int y = xmlReader.ReadElementContentAsInt();
+                    Case myCase = new Case(x, y);
+                    xmlReader.MoveToContent();
+                    if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name == "Objet")
+                    {
+                        xmlReader.ReadToFollowing("X");
+                        int xObjet = xmlReader.ReadElementContentAsInt();
+                        xmlReader.ReadToFollowing("Y");
+                        int yObjet = xmlReader.ReadElementContentAsInt();
+                        myCase.Objet = new Objet(xObjet, yObjet);
+                        xmlReader.MoveToContent();
+                    }
+                    while (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name == "Fourmi")
+                    {
+                        xmlReader.ReadToFollowing("Nom");
+                        string nomFourmi = xmlReader.ReadElementContentAsString();
+                        xmlReader.ReadToFollowing("Vie");
+                        int vieFourmi = xmlReader.ReadElementContentAsInt();
+                        xmlReader.ReadToFollowing("X");
+                        int xFourmi = xmlReader.ReadElementContentAsInt();
+                        xmlReader.ReadToFollowing("Y");
+                        int yFourmi = xmlReader.ReadElementContentAsInt();
+                        xmlReader.ReadToFollowing("Attitude");
+                        string attitudeFourmi = xmlReader.ReadElementContentAsString();
+                        Fourmi myFourmi = new Fourmi(nomFourmi, xFourmi, yFourmi);
+                        myFourmi.Vie = vieFourmi;
+                        FabriqueAttitude factoryAttitude = new FabriqueAttitude();
+                        myFourmi.Comportement = factoryAttitude.CreerAttitude(attitudeFourmi);
+                        myCase.AjouterCreature(myFourmi);
+                        xmlReader.MoveToContent();
+                    }
+                    CasesList.Add(myCase);
+                }
+            }
+        }
     }
 }

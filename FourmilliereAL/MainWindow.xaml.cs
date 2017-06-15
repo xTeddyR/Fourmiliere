@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using System.Globalization;
+using Microsoft.Win32;
 
 namespace FourmilliereAL
 {
@@ -144,6 +145,26 @@ namespace FourmilliereAL
             if (stopWatch.IsRunning)
             {
                 stopWatch.Stop();
+            }
+        }
+
+        private void Save_Data_Button_Click(object sender, RoutedEventArgs e)
+        {
+            plateauManager.SaveDataToXML();
+        }
+
+        private void Load_Data_Button_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog fileToLoadXml = new OpenFileDialog();
+            fileToLoadXml.Filter = "XML Files (*.xml)|*.xml";
+            fileToLoadXml.FilterIndex = 1;
+            fileToLoadXml.Multiselect = false;
+
+            if (fileToLoadXml.ShowDialog() == true)
+            {
+                plateauManager.LoadDataFromXML(fileToLoadXml.FileName);
+                LoadDataButton.IsEnabled = false;
+                Dessine();
             }
         }
     }

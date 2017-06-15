@@ -26,6 +26,21 @@ namespace FourmilliereAL
         public Location Position { get; set; }
         public Attitude Comportement { get; set; }
 
+        public Fourmi()
+        {
+            this.Nom = "";
+            this.vie = ConfigFourmi.VieFourmi;
+            ListEtape = new ObservableCollection<Etape>();
+            Position = new Location(ConfigFourmi.FourmilierePositionX, ConfigFourmi.FourmilierePositionY);
+            plateauManager = PlateauManager.Instance;
+            Comportement = new AttitudeAucune();
+            int nbEtapes = 0;
+            for (int i = 0; i < nbEtapes; i++)
+            {
+                ListEtape.Add(new Etape());
+            }
+        }
+
         public Fourmi(string v, int x, int y)
         {
             this.Nom = v;

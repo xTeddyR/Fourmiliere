@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.ComponentModel;
 
+
 namespace FourmilliereAL
 {
     public class Fourmi : INotifyPropertyChanged
@@ -25,6 +26,7 @@ namespace FourmilliereAL
         public ObservableCollection<Etape> ListEtape { get; set; }
         public Location Position { get; set; }
         public Attitude Comportement { get; set; }
+        public Deplacement Deplace { get; set; }
 
         public Fourmi(string v, int x, int y)
         {
@@ -34,6 +36,7 @@ namespace FourmilliereAL
             Position = new Location(x, y);
             plateauManager = PlateauManager.Instance;
             Comportement = new AttitudeAucune();
+            Deplace = new AvanceHazard();
             int nbEtapes = Hasard.Next(10);
             for(int i = 0; i < nbEtapes; i++)
             {
@@ -42,21 +45,12 @@ namespace FourmilliereAL
         }
         public virtual void AvanceUnTour(int dimX, int dimY)
         {
-            AvanceHasard(dimX, dimY);
+            
+            Deplace.Avance(this,dimX, dimY);
             ListEtape.Add(new Etape());
 
             Vie--;
 
-        }
-
-        private void AvanceHasard(int dimX, int dimY)
-        {
-            int newX = Position.X + Hasard.Next(3) - 1;
-            int newY = Position.Y + Hasard.Next(3) - 1;
-            bool flag = false;
-            if (newX >= 0 && newX < dimX) Position.X = newX;flag = true;
-            if (newY >= 0 && newY < dimY) Position.Y = newY;flag = true;
-            if (flag) plateauManager.DeplacementCreature(this, plateauManager.CasesList.Where(c => c.Position.X == Position.X && c.Position.Y == Position.Y).First());
         }
 
         public override string ToString()

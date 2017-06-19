@@ -33,18 +33,8 @@ namespace FourmilliereAL
             AddFourmiWithName("Jeremy", 10, 0);
             AddFourmiWithName("Maxime", 19, 10);
             AddFourmiWithName("Julien", 10, 29);
-
-            var fourmi = fourmiFactory.CreerFourmi("Warrior", 19, 29);
-            fourmi.Comportement = new AttitudeCombattante();
-            plateauManager.CasesList.Where(c => c.Position.X == fourmi.Position.X && c.Position.Y == fourmi.Position.Y).First().AjouterCreature(fourmi);
-            FourmisList.Add(fourmi);
-
-            var ennemie = fourmiFactory.CreerFourmi("Bad Ant", 15, 16);
-            ennemie.Comportement = new AttitudeEnnemi();
-            plateauManager.CasesList.Where(c => c.Position.X == ennemie.Position.X && c.Position.Y == ennemie.Position.Y).First().AjouterCreature(ennemie);
-
-
-            FourmisList.Add(ennemie);
+            AddFourmiWithName("Warrior", 19, 29);
+            AddFourmiWithName("Bad Ant", 15, 16);
         }
 
         public void AddFourmiWithName(string name, int x, int y, Attitude comportement = null)
@@ -57,7 +47,7 @@ namespace FourmilliereAL
 
         public void AjouterFourmis()
         {
-            if (plateauManager.GetCaseFromPosition(ConfigFourmi.FourmilierePositionX, ConfigFourmi.FourmilierePositionY).GetCreaturesSurCase().Where(f => f != null).Count() < 2)
+            if (plateauManager.GetCaseFromPosition(ConfigFourmi.FourmilierePositionX, ConfigFourmi.FourmilierePositionY).GetCreaturesSurCase().Count() < 2)
             {
                 AddFourmiWithName("Fourmis N° " + FourmisList.Count, ConfigFourmi.FourmilierePositionX, ConfigFourmi.FourmilierePositionY);
             }
@@ -106,6 +96,18 @@ namespace FourmilliereAL
             if(fourmiAVerifier.Vie < 0) {
                 SupprimerFourmi(fourmiAVerifier);
             }
+        }
+
+        public void SaveDataToXML()
+        {
+            plateauManager.SaveDataToXML();
+        }
+
+        public void LoadDataFromXml(string fileName)
+        {
+            plateauManager.LoadDataFromXML(fileName);
+            FourmisList.Clear();
+            plateauManager.GetAllFourmis().ForEach(f => FourmisList.Add(f));
         }
     }
 }

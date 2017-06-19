@@ -40,7 +40,7 @@ namespace FourmilliereAL
 
         public Fourmi[] GetCreaturesSurCase()
         {
-            return creaturesSurCase;
+            return creaturesSurCase.Where(f => f != null).ToArray();
         }
 
         public void AjouterCreature(Fourmi creature)

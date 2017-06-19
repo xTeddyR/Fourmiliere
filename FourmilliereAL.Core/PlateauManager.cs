@@ -64,6 +64,19 @@ namespace FourmilliereAL
             return CasesList.Where(c => c.Position.X == x && c.Position.Y == y).First();
         }
 
+        /// <summary>
+        /// Get all fourmi in CasesList
+        /// </summary>
+        /// <returns>All fourmi in CasesList</returns>
+        public List<Fourmi> GetAllFourmis()
+        {
+            var allFourmi = new List<Fourmi>();
+
+            allFourmi.AddRange(CasesList.Where(c => c.GetCreaturesSurCase().Length > 0).SelectMany(c => c.GetCreaturesSurCase()));
+
+            return allFourmi;
+        }
+
         public void SaveDataToXML()
         {
             XmlWriterSettings setting = new XmlWriterSettings();

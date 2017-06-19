@@ -44,7 +44,7 @@ namespace FourmilliereAL
             AjouterFourmilliere();
             foreach (Case caseNotEmpty in plateauManager.CasesList)
             {
-                var creatureSurCase = caseNotEmpty.GetCreaturesSurCase().Where(f => f != null);
+                var creatureSurCase = caseNotEmpty.GetCreaturesSurCase();
                 if (creatureSurCase.Count() > 0)
                 {
                     foreach(Fourmi fourmi in creatureSurCase)
@@ -150,7 +150,7 @@ namespace FourmilliereAL
 
         private void Save_Data_Button_Click(object sender, RoutedEventArgs e)
         {
-            plateauManager.SaveDataToXML();
+            App.fourmilliereVM.SaveDataToXML();
         }
 
         private void Load_Data_Button_Click(object sender, RoutedEventArgs e)
@@ -162,7 +162,7 @@ namespace FourmilliereAL
 
             if (fileToLoadXml.ShowDialog() == true)
             {
-                plateauManager.LoadDataFromXML(fileToLoadXml.FileName);
+                App.fourmilliereVM.LoadDataFromXml(fileToLoadXml.FileName);
                 LoadDataButton.IsEnabled = false;
                 Dessine();
             }

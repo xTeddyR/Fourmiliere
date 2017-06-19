@@ -27,20 +27,19 @@ namespace FourmilliereAL
             plateauManager.CreationDesCases();
 
             this.FourmisList = FourmisList;
-
-            fourmiFactory = new FabriqueFourmi();
+            
             AddFourmiWithName("Teddy", 0, 10);
             AddFourmiWithName("Jeremy", 10, 0);
             AddFourmiWithName("Maxime", 19, 10);
             AddFourmiWithName("Julien", 10, 29);
-            AddFourmiWithName("Warrior", 19, 29);
-            AddFourmiWithName("Bad Ant", 15, 16);
+            AddFourmiWithName("Warrior", 19, 29, "AttitudeCombattante");
+            AddFourmiWithName("Bad Ant", 15, 16, "AttitudeEnnemi");
         }
 
-        public void AddFourmiWithName(string name, int x, int y, Attitude comportement = null)
+        public void AddFourmiWithName(string name, int x, int y, string comportement = null)
         {
             var fourmi = fourmiFactory.CreerFourmi(name, x, y);
-            if (comportement != null) fourmi.Comportement = comportement;
+            if (comportement != null) fourmi.Comportement = new FabriqueAttitude().CreerAttitude(comportement);
             plateauManager.GetCaseFromPosition(fourmi.Position.X, fourmi.Position.Y).AjouterCreature(fourmi);
             FourmisList.Add(fourmi);
         }

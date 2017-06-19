@@ -54,7 +54,9 @@
     <Compile Include="Cases\Terrain.cs" />
     <Compile Include="Configs\Config.cs" />
     <Compile Include="Configs\ConfigFourmi.cs" />
+    <Compile Include="Creatures\Design\FourmiListItemDesignModel.cs" />
     <Compile Include="Creatures\Fourmi.cs" />
+    <Compile Include="Creatures\FourmiListItemViewModel.cs" />
     <Compile Include="Environnements\Environnement.cs" />
     <Compile Include="Environnements\Jour.cs" />
     <Compile Include="Environnements\Nuit.cs" />
@@ -66,6 +68,8 @@
     <Compile Include="Fabriques\FabriqueFourmilliere.cs" />
     <Compile Include="Fabriques\FabriqueObjet.cs" />
     <Compile Include="FourmiliereItem\FourmiliereItem.cs" />
+    <Compile Include="Creatures\Design\FourmiListDesignModel.cs" />
+    <Compile Include="FourmiListViewModel.cs" />
     <Compile Include="FourmilliereModel.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Objets\Baton.cs" />

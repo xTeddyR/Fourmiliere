@@ -73,8 +73,11 @@
                 <!--Unknown tag: metadata-->
             </Canvas>
         </Viewbox>
-
         <Button Grid.Row="2" Grid.Column="0" Content="Ajouter Fourmis" Click="Button_Click_1" RenderTransformOrigin="1,1"></Button>
+
+        <Button Grid.Row="2" Grid.Column="1" Width="150" HorizontalAlignment="Left" Content="Save Data" Click="Save_Data_Button_Click" />
+
+        <Button Grid.Row="2" Grid.Column="1" Width="150" Name="LoadDataButton" HorizontalAlignment="Right" Content="Load Data" Click="Load_Data_Button_Click" />
 
         <Button Grid.Row="3" Grid.Column="0"  Click="Button_Click" >
             <Button.Content>

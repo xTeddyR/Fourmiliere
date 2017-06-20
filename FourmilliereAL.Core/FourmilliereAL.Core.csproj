@@ -61,6 +61,7 @@
     <Compile Include="Environnements\Jour.cs" />
     <Compile Include="Environnements\Nuit.cs" />
     <Compile Include="Etape.cs" />
+    <Compile Include="Fabriques\FabriqueAttitude.cs" />
     <Compile Include="Fabriques\FabriqueCase.cs" />
     <Compile Include="Fabriques\FabriqueEnvironnement.cs" />
     <Compile Include="Fabriques\FabriqueFourmi.cs" />

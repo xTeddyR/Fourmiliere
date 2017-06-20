@@ -7,7 +7,7 @@ namespace FourmilliereAL
 {
     public class FourmilliereModel
     {
-        private FabriqueFourmi fourmiFactory;
+        private FabriqueFourmi fourmiFactory = new FabriqueFourmi();
         private PlateauManager plateauManager;
 
         public string TitreApplication { get; set; }

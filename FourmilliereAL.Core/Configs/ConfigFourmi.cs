@@ -13,5 +13,9 @@
 
         public static readonly int FrequenceApparition = 5;
 
+        public static readonly int FourmiliereRougePositionX = 20;
+
+        public static readonly int FourmiliereRougePositionY = 20;
+
     }
 }

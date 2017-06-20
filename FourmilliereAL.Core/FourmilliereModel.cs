@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 
@@ -82,8 +81,6 @@ namespace FourmilliereAL
         public void TourSuivant()
         {
             nbTours++;
-
-            Console.WriteLine(nbTours);
 
             for (int i = 0; i < FourmisList.Count; i++)
             {

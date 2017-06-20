@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace FourmilliereAL { 
+namespace FourmilliereAL
+{
     class AvanceHazard : Deplacement
     {
         
@@ -19,6 +17,8 @@ namespace FourmilliereAL {
             if (newX >= 0 && newX < dimX) fourmi.Position.X = newX; flag = true;
             if (newY >= 0 && newY < dimY) fourmi.Position.Y = newY; flag = true;
             if (flag) plateauManager.DeplacementCreature(fourmi, plateauManager.CasesList.Where(c => c.Position.X == fourmi.Position.X && c.Position.Y == fourmi.Position.Y).First());
+
+            fourmi.Vie--;
         }
     }
 }

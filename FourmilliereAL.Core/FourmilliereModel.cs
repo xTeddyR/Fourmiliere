@@ -9,6 +9,7 @@ namespace FourmilliereAL
     {
         private FabriqueFourmi fourmiFactory = new FabriqueFourmi();
         private PlateauManager plateauManager;
+        private Deplacement deplacementService;
 
         public string TitreApplication { get; set; }
         public ObservableCollection<Fourmi> FourmisList { get; set; }
@@ -25,6 +26,7 @@ namespace FourmilliereAL
             VitesseExecution = Config.VitesseExecution;
             plateauManager = PlateauManager.Instance;
             plateauManager.CreationDesCases();
+            deplacementService = new AvanceHazard();
 
             this.FourmisList = FourmisList;
             
@@ -69,9 +71,8 @@ namespace FourmilliereAL
         {
             for(int i = 0; i < FourmisList.Count; i++)
             {
-                FourmisList[i].AvanceUnTour(DimensionX, DimensionY);
-
-                SupprimerFourmiMorte(FourmisList[i]);
+                deplacementService.Avance(FourmisList[i], DimensionX, DimensionY);
+                VerifierVieFourmi(FourmisList[i]);
             }
         }
 
@@ -90,7 +91,7 @@ namespace FourmilliereAL
             }
         }
 
-        private void SupprimerFourmiMorte(Fourmi fourmiAVerifier)
+        private void VerifierVieFourmi(Fourmi fourmiAVerifier)
         {
             if(fourmiAVerifier.Vie < 0) {
                 SupprimerFourmi(fourmiAVerifier);

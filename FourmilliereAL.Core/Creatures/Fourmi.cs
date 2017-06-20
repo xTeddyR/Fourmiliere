@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.ComponentModel;
-
 
 namespace FourmilliereAL
 {
@@ -57,15 +55,6 @@ namespace FourmilliereAL
             {
                 ListEtape.Add(new Etape());
             }
-        }
-        public virtual void AvanceUnTour(int dimX, int dimY)
-        {
-            
-            Deplace.Avance(this,dimX, dimY);
-            ListEtape.Add(new Etape());
-
-            Vie--;
-
         }
 
         public override string ToString()

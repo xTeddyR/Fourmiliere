@@ -5,7 +5,7 @@ namespace FourmilliereAL.Core {
     /// <summary>
     /// un View Model pour chaque item de la liste de fourmis
     /// </summary>
-    public class FourmiListItemViewModel
+    public class FourmiListItemViewModel : BaseViewModel
     {
         /// <summary>
         /// Le nom à afficher d'un item

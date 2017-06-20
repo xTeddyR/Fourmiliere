@@ -28,18 +28,18 @@ namespace FourmilliereAL
 
             this.FourmisList = FourmisList;
             
-            AddFourmiWithName("Teddy", 0, 10);
-            AddFourmiWithName("Jeremy", 10, 0);
-            AddFourmiWithName("Maxime", 19, 10);
-            AddFourmiWithName("Julien", 10, 29);
-            AddFourmiWithName("Warrior", 19, 29, "AttitudeCombattante");
-            AddFourmiWithName("Bad Ant", 15, 16, "AttitudeEnnemi");
+            AjouterFourmi("Teddy", 0, 10);
+            AjouterFourmi("Jeremy", 10, 0);
+            AjouterFourmi("Maxime", 19, 10);
+            AjouterFourmi("Julien", 10, 29);
+            AjouterFourmi("Warrior", 19, 29, "AttitudeCombattante");
+            AjouterFourmi("Bad Ant", 15, 16, "AttitudeEnnemi");
         }
 
-        public void AddFourmiWithName(string name, int x, int y, string comportement = null)
+        public void AjouterFourmi(string nom, int x, int y, string comportement = "AttitudeAucune")
         {
-            var fourmi = fourmiFactory.CreerFourmi(name, x, y);
-            if (comportement != null) fourmi.Comportement = new FabriqueAttitude().CreerAttitude(comportement);
+            var fourmi = fourmiFactory.CreerFourmi(nom, x, y);
+            fourmi.Comportement = new FabriqueAttitude().CreerAttitude(comportement);
             plateauManager.GetCaseFromPosition(fourmi.Position.X, fourmi.Position.Y).AjouterCreature(fourmi);
             FourmisList.Add(fourmi);
         }
@@ -48,7 +48,7 @@ namespace FourmilliereAL
         {
             if (plateauManager.GetCaseFromPosition(ConfigFourmi.FourmilierePositionX, ConfigFourmi.FourmilierePositionY).GetCreaturesSurCase().Count() < 2)
             {
-                AddFourmiWithName("Fourmis N° " + FourmisList.Count, ConfigFourmi.FourmilierePositionX, ConfigFourmi.FourmilierePositionY);
+                AjouterFourmi("Fourmis N° " + FourmisList.Count, ConfigFourmi.FourmilierePositionX, ConfigFourmi.FourmilierePositionY);
             }
         }
 

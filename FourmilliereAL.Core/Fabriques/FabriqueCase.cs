@@ -9,11 +9,6 @@ namespace FourmilliereAL
             return new Case(x, y);
         }
 
-        public override Environnement CreerEnvironnement()
-        {
-            throw new NotImplementedException();
-        }
-
         public override Fourmi CreerFourmi(string nom, int x, int y)
         {
             throw new NotImplementedException();

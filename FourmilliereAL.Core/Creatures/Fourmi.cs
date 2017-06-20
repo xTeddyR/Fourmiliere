@@ -84,5 +84,10 @@ namespace FourmilliereAL
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        public void MisAjour()
+        {
+
+        }
     }
 }

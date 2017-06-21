@@ -3,12 +3,14 @@ using System.Linq;
 using System.Threading;
 
 
-namespace FourmilliereAL
+namespace FourmilliereAL.Core
 {
     public class FourmilliereModel
     {
         private FabriqueFourmi fourmiFactory;
         private PlateauManager plateauManager;
+        private Deplacement deplacementService;
+        private Meteo meteo;
 
         public string TitreApplication { get; set; }
         public ObservableCollection<Fourmi> FourmisList { get; set; }
@@ -26,38 +28,35 @@ namespace FourmilliereAL
             plateauManager = PlateauManager.Instance;
             plateauManager.CreationDesCases();
 
+            deplacementService = new AvanceHazard();
+
             this.FourmisList = FourmisList;
-
+            meteo = new Meteo(ref FourmisList);
             fourmiFactory = new FabriqueFourmi();
-            AddFourmiWithName("Teddy", 0, 10);
-            AddFourmiWithName("Jeremy", 10, 0);
-            AddFourmiWithName("Maxime", 19, 10);
-            AddFourmiWithName("Julien", 10, 29);
 
-            var fourmi = fourmiFactory.CreerFourmi("Warrior", 19, 29);
-            fourmi.Comportement = new AttitudeCombattante();
-            plateauManager.CasesList.Where(c => c.Position.X == fourmi.Position.X && c.Position.Y == fourmi.Position.Y).First().AjouterCreature(fourmi);
-            FourmisList.Add(fourmi);
+            AjouterFourmi("Teddy", 0, 10);
+            AjouterFourmi("Jeremy", 10, 0);
+            AjouterFourmi("Maxime", 19, 10);
+            AjouterFourmi("Julien", 10, 29);
+            AjouterFourmi("Warrior", 19, 29, "AttitudeCombattante");
+            AjouterFourmi("Bad Ant", 15, 16, "AttitudeEnnemi");
 
-            var ennemie = fourmiFactory.CreerFourmi("Bad Ant", 15, 16);
-            ennemie.Comportement = new AttitudeEnnemi();
-            plateauManager.CasesList.Where(c => c.Position.X == ennemie.Position.X && c.Position.Y == ennemie.Position.Y).First().AjouterCreature(ennemie);
-            FourmisList.Add(ennemie);
         }
 
-        public void AddFourmiWithName(string name, int x, int y, Attitude comportement = null)
+        public void AjouterFourmi(string nom, int x, int y, string comportement = "AttitudeAucune")
         {
-            var fourmi = fourmiFactory.CreerFourmi(name, x, y);
-            if (comportement != null) fourmi.Comportement = comportement;
+            var fourmi = fourmiFactory.CreerFourmi(nom, x, y);
+            fourmi.Comportement = new FabriqueAttitude().CreerAttitude(comportement);
             plateauManager.GetCaseFromPosition(fourmi.Position.X, fourmi.Position.Y).AjouterCreature(fourmi);
             FourmisList.Add(fourmi);
         }
 
         public void AjouterFourmis()
         {
-            if (plateauManager.GetCaseFromPosition(ConfigFourmi.FourmilierePositionX, ConfigFourmi.FourmilierePositionY).GetCreaturesSurCase().Where(f => f != null).Count() < 2)
+            if (plateauManager.GetCaseFromPosition(ConfigFourmi.FourmilierePositionX, ConfigFourmi.FourmilierePositionY).GetCreaturesSurCase().Count() < 2)
             {
-                AddFourmiWithName("Fourmis N° " + FourmisList.Count, ConfigFourmi.FourmilierePositionX, ConfigFourmi.FourmilierePositionY);
+                AjouterFourmi("Fourmis N° " + FourmisList.Count, ConfigFourmi.FourmilierePositionX, ConfigFourmi.FourmilierePositionY);
+                meteo.DisplayObservator();
             }
         }
 
@@ -78,9 +77,8 @@ namespace FourmilliereAL
         {
             for(int i = 0; i < FourmisList.Count; i++)
             {
-                FourmisList[i].AvanceUnTour(DimensionX, DimensionY);
-
-                SupprimerFourmiMorte(FourmisList[i]);
+                deplacementService.Avance(FourmisList[i], DimensionX, DimensionY);
+                VerifierVieFourmi(FourmisList[i]);
             }
         }
 
@@ -99,11 +97,23 @@ namespace FourmilliereAL
             }
         }
 
-        private void SupprimerFourmiMorte(Fourmi fourmiAVerifier)
+        private void VerifierVieFourmi(Fourmi fourmiAVerifier)
         {
             if(fourmiAVerifier.Vie < 0) {
                 SupprimerFourmi(fourmiAVerifier);
             }
+        }
+
+        public void SaveDataToXML()
+        {
+            plateauManager.SaveDataToXML();
+        }
+
+        public void LoadDataFromXml(string fileName)
+        {
+            plateauManager.LoadDataFromXML(fileName);
+            FourmisList.Clear();
+            plateauManager.GetAllFourmis().ForEach(f => FourmisList.Add(f));
         }
     }
 }

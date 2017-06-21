@@ -1,15 +1,10 @@
 ﻿using System;
 
-namespace FourmilliereAL
+namespace FourmilliereAL.Core
 {
     public class FabriqueObjet : FabriqueFourmilliere
     {
         public override Case CreerCase(int x, int y)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override Environnement CreerEnvironnement()
         {
             throw new NotImplementedException();
         }

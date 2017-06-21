@@ -55,10 +55,10 @@
     <Compile Include="Configs\Config.cs" />
     <Compile Include="Configs\ConfigFourmi.cs" />
     <Compile Include="Creatures\Fourmi.cs" />
-    <Compile Include="Environnements\Environnement.cs" />
-    <Compile Include="Environnements\Jour.cs" />
-    <Compile Include="Environnements\Nuit.cs" />
+    <Compile Include="Deplacement\AvanceHazard.cs" />
+    <Compile Include="Deplacement\Deplacement.cs" />
     <Compile Include="Etape.cs" />
+    <Compile Include="Fabriques\FabriqueAttitude.cs" />
     <Compile Include="Fabriques\FabriqueCase.cs" />
     <Compile Include="Fabriques\FabriqueEnvironnement.cs" />
     <Compile Include="Fabriques\FabriqueFourmi.cs" />
@@ -67,10 +67,13 @@
     <Compile Include="FourmiliereItem\FourmiliereItem.cs" />
     <Compile Include="FourmilliereModel.cs" />
     <Compile Include="Location.cs" />
+    <Compile Include="Meteo\Meteo.cs" />
+    <Compile Include="Meteo\MeteoType.cs" />
     <Compile Include="Objets\Baton.cs" />
     <Compile Include="Objets\Objet.cs" />
     <Compile Include="Objets\Panier.cs" />
     <Compile Include="Objets\Pomme.cs" />
+    <Compile Include="Observateur\IObservable.cs" />
     <Compile Include="PlateauManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

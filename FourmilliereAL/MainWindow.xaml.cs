@@ -8,6 +8,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using System.Globalization;
+using Microsoft.Win32;
+using FourmilliereAL.Core;
 
 namespace FourmilliereAL
 {
@@ -43,7 +45,7 @@ namespace FourmilliereAL
             AjouterFourmilliere();
             foreach (Case caseNotEmpty in plateauManager.CasesList)
             {
-                var creatureSurCase = caseNotEmpty.GetCreaturesSurCase().Where(f => f != null);
+                var creatureSurCase = caseNotEmpty.GetCreaturesSurCase();
                 if (creatureSurCase.Count() > 0)
                 {
                     foreach(Fourmi fourmi in creatureSurCase)
@@ -145,6 +147,26 @@ namespace FourmilliereAL
             if (stopWatch.IsRunning)
             {
                 stopWatch.Stop();
+            }
+        }
+
+        private void Save_Data_Button_Click(object sender, RoutedEventArgs e)
+        {
+            App.fourmilliereVM.SaveDataToXML();
+        }
+
+        private void Load_Data_Button_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog fileToLoadXml = new OpenFileDialog();
+            fileToLoadXml.Filter = "XML Files (*.xml)|*.xml";
+            fileToLoadXml.FilterIndex = 1;
+            fileToLoadXml.Multiselect = false;
+
+            if (fileToLoadXml.ShowDialog() == true)
+            {
+                App.fourmilliereVM.LoadDataFromXml(fileToLoadXml.FileName);
+                LoadDataButton.IsEnabled = false;
+                Dessine();
             }
         }
     }

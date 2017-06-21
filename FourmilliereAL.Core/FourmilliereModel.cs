@@ -11,6 +11,7 @@ namespace FourmilliereAL.Core
         private PlateauManager plateauManager;
         private Deplacement deplacementService;
         private Meteo meteo;
+        private Timer timer;
 
         public string TitreApplication { get; set; }
         public ObservableCollection<Fourmi> FourmisList { get; set; }
@@ -32,6 +33,7 @@ namespace FourmilliereAL.Core
 
             this.FourmisList = FourmisList;
             meteo = new Meteo(ref FourmisList);
+            timer = new Timer(meteo);
             fourmiFactory = new FabriqueFourmi();
 
             AjouterFourmi("Teddy", 0, 10);
@@ -75,6 +77,8 @@ namespace FourmilliereAL.Core
 
         public void TourSuivant()
         {
+            timer.OnNouveauTour();
+
             for(int i = 0; i < FourmisList.Count; i++)
             {
                 deplacementService.Avance(FourmisList[i], DimensionX, DimensionY);

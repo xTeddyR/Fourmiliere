@@ -7,7 +7,7 @@ namespace FourmilliereAL.Core
     {
         private readonly ObservableCollection <Fourmi> observateurList;
 
-        public MeteoType Etat;
+        public MeteoType Etat { get; set; }
 
         public Meteo(ref ObservableCollection<Fourmi> List)
         {

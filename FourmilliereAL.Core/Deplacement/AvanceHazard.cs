@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace FourmilliereAL
+namespace FourmilliereAL.Core
 {
     class AvanceHazard : Deplacement
     {

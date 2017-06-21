@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using System.Globalization;
 using Microsoft.Win32;
+using FourmilliereAL.Core;
 
 namespace FourmilliereAL
 {

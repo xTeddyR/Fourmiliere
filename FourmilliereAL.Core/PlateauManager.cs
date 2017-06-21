@@ -5,7 +5,7 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace FourmilliereAL
+namespace FourmilliereAL.Core
 {
     public sealed class PlateauManager
     {

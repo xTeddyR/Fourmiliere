@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Runtime.CompilerServices;
 using System.ComponentModel;
 
-namespace FourmilliereAL
+namespace FourmilliereAL.Core
 {
     public class Fourmi : INotifyPropertyChanged
     {

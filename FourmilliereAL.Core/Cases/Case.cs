@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FourmilliereAL
+namespace FourmilliereAL.Core
 {
     public class Case
     {

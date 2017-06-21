@@ -1,4 +1,4 @@
-﻿namespace FourmilliereAL
+﻿namespace FourmilliereAL.Core
 {
     public abstract class FabriqueFourmilliere
     {

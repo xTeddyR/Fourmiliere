@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FourmilliereAL
+namespace FourmilliereAL.Core
 {
     public class FabriqueEnvironnement : FabriqueFourmilliere
     {

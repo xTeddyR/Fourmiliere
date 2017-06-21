@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Collections.ObjectModel;
 using System.Windows.Data;
+using FourmilliereAL.Core;
 
 namespace FourmilliereAL
 {

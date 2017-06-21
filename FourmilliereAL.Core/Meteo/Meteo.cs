@@ -1,12 +1,19 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 
 namespace FourmilliereAL
 {
     class Meteo : IObservable
     {
-        private readonly ObservableCollection <Fourmi> observateurList = new ObservableCollection<Fourmi>();
+        private readonly ObservableCollection <Fourmi> observateurList;
 
-        public MeteoType Etat = MeteoType.Jour;
+        public MeteoType Etat;
+
+        public Meteo(ref ObservableCollection<Fourmi> List)
+        {
+            this.Etat = MeteoType.Jour;
+            observateurList = List;
+        }
 
         public void Attach(Fourmi observer)
         {
@@ -16,6 +23,16 @@ namespace FourmilliereAL
         public void Detach(Fourmi observer)
         {
             observateurList.Remove(observer);
+        }
+
+        public void DisplayObservator()
+        {
+            Console.WriteLine("*************************");
+
+            foreach (Fourmi o in observateurList)
+            {
+                Console.WriteLine(o.Nom);
+            }
         }
 
         public void Notify()

@@ -9,11 +9,6 @@ namespace FourmilliereAL.Core
             throw new NotImplementedException();
         }
 
-        public override Environnement CreerEnvironnement()
-        {
-            return new Environnement();
-        }
-
         public override Fourmi CreerFourmi(string nom, int x, int y)
         {
             throw new NotImplementedException();

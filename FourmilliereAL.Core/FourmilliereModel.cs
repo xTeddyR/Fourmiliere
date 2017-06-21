@@ -7,9 +7,10 @@ namespace FourmilliereAL.Core
 {
     public class FourmilliereModel
     {
-        private FabriqueFourmi fourmiFactory = new FabriqueFourmi();
+        private FabriqueFourmi fourmiFactory;
         private PlateauManager plateauManager;
         private Deplacement deplacementService;
+        private Meteo meteo;
 
         public string TitreApplication { get; set; }
         public ObservableCollection<Fourmi> FourmisList { get; set; }
@@ -26,16 +27,20 @@ namespace FourmilliereAL.Core
             VitesseExecution = Config.VitesseExecution;
             plateauManager = PlateauManager.Instance;
             plateauManager.CreationDesCases();
+
             deplacementService = new AvanceHazard();
 
             this.FourmisList = FourmisList;
-            
+            meteo = new Meteo(ref FourmisList);
+            fourmiFactory = new FabriqueFourmi();
+
             AjouterFourmi("Teddy", 0, 10);
             AjouterFourmi("Jeremy", 10, 0);
             AjouterFourmi("Maxime", 19, 10);
             AjouterFourmi("Julien", 10, 29);
             AjouterFourmi("Warrior", 19, 29, "AttitudeCombattante");
             AjouterFourmi("Bad Ant", 15, 16, "AttitudeEnnemi");
+
         }
 
         public void AjouterFourmi(string nom, int x, int y, string comportement = "AttitudeAucune")
@@ -51,6 +56,7 @@ namespace FourmilliereAL.Core
             if (plateauManager.GetCaseFromPosition(ConfigFourmi.FourmilierePositionX, ConfigFourmi.FourmilierePositionY).GetCreaturesSurCase().Count() < 2)
             {
                 AjouterFourmi("Fourmis N° " + FourmisList.Count, ConfigFourmi.FourmilierePositionX, ConfigFourmi.FourmilierePositionY);
+                meteo.DisplayObservator();
             }
         }
 

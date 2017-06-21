@@ -38,6 +38,7 @@ namespace FourmilliereAL.Core
             FormaterHeureMinute();
             VerifierChangementEtat();
             Console.WriteLine(GetFormattedTime());
+            Console.WriteLine(Meteo.Etat.ToString());
         }
 
         public void AjouterTour()
@@ -92,7 +93,7 @@ namespace FourmilliereAL.Core
                 return;
             }
 
-            if (TimerConstants.HeureNuit <= Heure && Meteo.Etat != MeteoType.Nuit) {
+            if (TimerConstants.HeureNuit <= Heure || TimerConstants.HeureJour > Heure && Meteo.Etat != MeteoType.Nuit) {
                 ChangementMeteo(MeteoType.Nuit);
                 return;
             }

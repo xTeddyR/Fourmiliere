@@ -39,6 +39,12 @@ namespace FourmilliereAL.Core
             timer = new Timer(meteo);
             fourmiFactory = new FabriqueFourmi();
 
+            AjouterFourmi("Zero", 0, 0);
+
+            AjouteBaton(0, 1);
+            AjouteBaton(1, 0);
+            AjouteBaton(1, 1);
+
             AjouterFourmi("Teddy", 0, 10);
             AjouterFourmi("Jeremy", 10, 0);
             AjouterFourmi("Maxime", 19, 10);
@@ -55,6 +61,12 @@ namespace FourmilliereAL.Core
             fourmi.Comportement = new FabriqueAttitude().CreerAttitude(comportement);
             plateauManager.GetCaseFromPosition(fourmi.Position.X, fourmi.Position.Y).AjouterCreature(fourmi);
             FourmisList.Add(fourmi);
+        }
+
+        public void AjouteBaton(int x, int y)
+        {
+            var baton = new Baton(x, y);
+            plateauManager.GetCaseFromPosition(x, y).Objet = baton;
         }
 
         public void AjouterFourmis()
@@ -97,9 +109,11 @@ namespace FourmilliereAL.Core
                     courtChemin.Avance(actuel, dest);
                 } else {
                     hazard.Avance(FourmisList[i]);
-                    VerifierVieFourmi(FourmisList[i]);
                 }
                 
+                    VerifierVieFourmi(FourmisList[i]);
+                if (objet != null) FourmisList[i].Comportement.ExecuteObjet(objet);
+                var objet = plateauManager.GetCaseFromFourmi(FourmisList[i]).Objet;
             }
         }
 

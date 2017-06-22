@@ -54,8 +54,10 @@
     <Compile Include="Cases\Terrain.cs" />
     <Compile Include="Configs\Config.cs" />
     <Compile Include="Configs\ConfigFourmi.cs" />
+    <Compile Include="Configs\Timer\TimerConstants.cs" />
     <Compile Include="Creatures\Fourmi.cs" />
     <Compile Include="Deplacement\AvanceHazard.cs" />
+    <Compile Include="Deplacement\CourtChemin.cs" />
     <Compile Include="Deplacement\Deplacement.cs" />
     <Compile Include="Etape.cs" />
     <Compile Include="Fabriques\FabriqueAttitude.cs" />
@@ -76,6 +78,8 @@
     <Compile Include="Observateur\IObservable.cs" />
     <Compile Include="PlateauManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Timer\Timer.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

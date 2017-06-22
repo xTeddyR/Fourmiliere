@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 
@@ -9,8 +10,10 @@ namespace FourmilliereAL.Core
     {
         private FabriqueFourmi fourmiFactory;
         private PlateauManager plateauManager;
-        private Deplacement deplacementService;
+        private Deplacement hazard;
+        private Deplacement courtChemin;
         private Meteo meteo;
+        private Timer timer;
 
         public string TitreApplication { get; set; }
         public ObservableCollection<Fourmi> FourmisList { get; set; }
@@ -28,10 +31,12 @@ namespace FourmilliereAL.Core
             plateauManager = PlateauManager.Instance;
             plateauManager.CreationDesCases();
 
-            deplacementService = new AvanceHazard();
-
+            hazard = new AvanceHazard();
+            courtChemin = new CourtChemin();
+           
             this.FourmisList = FourmisList;
             meteo = new Meteo(ref FourmisList);
+            timer = new Timer(meteo);
             fourmiFactory = new FabriqueFourmi();
 
             AjouterFourmi("Teddy", 0, 10);
@@ -40,6 +45,7 @@ namespace FourmilliereAL.Core
             AjouterFourmi("Julien", 10, 29);
             AjouterFourmi("Warrior", 19, 29, "AttitudeCombattante");
             AjouterFourmi("Bad Ant", 15, 16, "AttitudeEnnemi");
+            AjouterFourmi("TestCourtChemin", 1, 3);
 
         }
 
@@ -75,10 +81,25 @@ namespace FourmilliereAL.Core
 
         public void TourSuivant()
         {
+            timer.OnNouveauTour();
+
             for(int i = 0; i < FourmisList.Count; i++)
             {
-                deplacementService.Avance(FourmisList[i], DimensionX, DimensionY);
-                VerifierVieFourmi(FourmisList[i]);
+                Fourmi actuel = FourmisList[i];
+
+                if (FourmisList[i].Nom == "TestCourtChemin") {
+
+                    Location dest = new Location {
+                        X = 3,
+                        Y = 1
+                    };
+
+                    courtChemin.Avance(actuel, dest);
+                } else {
+                    hazard.Avance(FourmisList[i]);
+                    VerifierVieFourmi(FourmisList[i]);
+                }
+                
             }
         }
 

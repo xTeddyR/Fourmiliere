@@ -23,6 +23,8 @@ namespace FourmilliereAL.Core
         }
         public ObservableCollection<Etape> ListEtape { get; set; }
         public Location Position { get; set; }
+
+        // TODO Ajouter OnPropertyChanged() au Comportement
         public Attitude Comportement { get; set; }
         public Deplacement Deplace { get; set; }
 

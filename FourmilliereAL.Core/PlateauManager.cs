@@ -41,7 +41,7 @@ namespace FourmilliereAL.Core
             {
                 for (int j = 0; j < Config.GrilleHauteur; j++)
                 {
-                    CasesList.Add(casesFactory.CreerCase(i, j));
+                    CasesList.Add(casesFactory.CreerCase("", i, j));
                 }
             }
         }

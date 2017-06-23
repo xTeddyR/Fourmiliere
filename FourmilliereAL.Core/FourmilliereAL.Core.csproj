@@ -57,9 +57,11 @@
     <Compile Include="Creatures\Design\FourmiListItemDesignModel.cs" />
     <Compile Include="Creatures\Fourmi.cs" />
     <Compile Include="Creatures\FourmiListItemViewModel.cs" />
-    <Compile Include="Environnements\Environnement.cs" />
-    <Compile Include="Environnements\Jour.cs" />
-    <Compile Include="Environnements\Nuit.cs" />
+    <Compile Include="Configs\Timer\TimerConstants.cs" />
+    <Compile Include="Creatures\Fourmi.cs" />
+    <Compile Include="Deplacement\AvanceHazard.cs" />
+    <Compile Include="Deplacement\CourtChemin.cs" />
+    <Compile Include="Deplacement\Deplacement.cs" />
     <Compile Include="Etape.cs" />
     <Compile Include="Fabriques\FabriqueAttitude.cs" />
     <Compile Include="Fabriques\FabriqueCase.cs" />
@@ -72,13 +74,18 @@
     <Compile Include="FourmiListViewModel.cs" />
     <Compile Include="FourmilliereModel.cs" />
     <Compile Include="Location.cs" />
+    <Compile Include="Meteo\Meteo.cs" />
+    <Compile Include="Meteo\MeteoType.cs" />
     <Compile Include="Objets\Baton.cs" />
     <Compile Include="Objets\Objet.cs" />
     <Compile Include="Objets\Panier.cs" />
     <Compile Include="Objets\Pomme.cs" />
+    <Compile Include="Observateur\IObservable.cs" />
     <Compile Include="PlateauManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="Timer\Timer.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

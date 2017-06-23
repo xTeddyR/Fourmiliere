@@ -1,4 +1,4 @@
-﻿namespace FourmilliereAL
+﻿namespace FourmilliereAL.Core
 {
     public class Config
     {
@@ -9,5 +9,6 @@
         public static readonly int GrilleHauteur = 30;
 
         public static readonly int VitesseExecution = 500;
+
     }
 }

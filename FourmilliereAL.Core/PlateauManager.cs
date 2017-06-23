@@ -5,7 +5,7 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace FourmilliereAL
+namespace FourmilliereAL.Core
 {
     public sealed class PlateauManager
     {
@@ -64,10 +64,27 @@ namespace FourmilliereAL
             return CasesList.Where(c => c.Position.X == x && c.Position.Y == y).First();
         }
 
+        /// <summary>
+        /// Get all fourmi in CasesList
+        /// </summary>
+        /// <returns>All fourmi in CasesList</returns>
+        public List<Fourmi> GetAllFourmis()
+        {
+            var allFourmi = new List<Fourmi>();
+
+            allFourmi.AddRange(CasesList.Where(c => c.GetCreaturesSurCase().Length > 0).SelectMany(c => c.GetCreaturesSurCase()));
+
+            return allFourmi;
+        }
+
         public void SaveDataToXML()
         {
             XmlWriterSettings setting = new XmlWriterSettings();
             setting.ConformanceLevel = ConformanceLevel.Auto;
+            setting.Indent = true;
+            setting.IndentChars = " ";
+            setting.NewLineChars = "\r\n";
+            setting.NewLineHandling = NewLineHandling.Replace;
 
             using (XmlWriter writer = XmlWriter.Create("data.xml", setting))
             {
@@ -87,7 +104,6 @@ namespace FourmilliereAL
                     }
                     if (uneCase.Creatures.Where(f => f != null).Count() > 0)
                     {
-                        writer.WriteStartElement("Creatures");
                         foreach (var fourmi in uneCase.Creatures.Where(f => f != null))
                         {
                             writer.WriteStartElement("Fourmi");
@@ -98,7 +114,6 @@ namespace FourmilliereAL
                             writer.WriteElementString("Attitude", fourmi.Comportement.ToString());
                             writer.WriteEndElement();
                         }
-                        writer.WriteEndElement();
                     }
                     writer.WriteEndElement();
                 }
@@ -113,7 +128,7 @@ namespace FourmilliereAL
             using (XmlReader xmlReader = XmlReader.Create(fileName))
             {
                 CasesList = new List<Case>();
-                while (xmlReader.NodeType == XmlNodeType.Element && xmlReader.ReadToFollowing("Case"))
+                while (xmlReader.ReadToFollowing("Case"))
                 {
                     xmlReader.ReadToFollowing("X");
                     int x = xmlReader.ReadElementContentAsInt();

@@ -1,4 +1,4 @@
-﻿namespace FourmilliereAL
+﻿namespace FourmilliereAL.Core
 {
     class Baton : Objet
     {

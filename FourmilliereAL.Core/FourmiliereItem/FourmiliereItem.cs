@@ -19,7 +19,7 @@
                 {
                     if (instance == null)
                     {
-                        instance = new FourmiliereItem(ConfigFourmi.FourmilierePositionX, ConfigFourmi.FourmilierePositionY);
+                        instance = new FourmiliereItem(ConfigFourmi.FOURMILIERE_POSITION_X, ConfigFourmi.FOURMILIERE_POSITION_Y);
                     }
                     return instance;
                 }

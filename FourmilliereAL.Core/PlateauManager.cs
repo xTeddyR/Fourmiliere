@@ -35,9 +35,9 @@ namespace FourmilliereAL.Core
         {
             CasesList = new List<Case>();
             var casesFactory = new FabriqueCase();
-            for (int i = 0; i < Config.GrilleLargeur; i++)
+            for (int i = 0; i < Config.GRILLE_LARGEUR; i++)
             {
-                for (int j = 0; j < Config.GrilleHauteur; j++)
+                for (int j = 0; j < Config.GRILLE_HAUTEUR; j++)
                 {
                     CasesList.Add(casesFactory.CreerCase(i, j));
                 }

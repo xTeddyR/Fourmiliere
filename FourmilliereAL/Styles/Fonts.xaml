@@ -2,8 +2,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:FourmilliereAL">
 
-
+    <FontFamily x:Key="RobotoRegular">pack://application:,,,/Media/Fonts/#Roboto</FontFamily>
+    <FontFamily x:Key="RobotoThin">pack://application:,,,/Media/Fonts/#Roboto Thin</FontFamily>
+    
     <Style TargetType="{x:Type Control}" x:Key="BaseStyle">
+        <Setter Property="FontFamily" Value="{StaticResource RobotoRegular}"></Setter>
         <Setter Property="FontSize" Value="14" />
     </Style>
 

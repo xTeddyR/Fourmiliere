@@ -58,7 +58,6 @@
     <Compile Include="Creatures\Fourmi.cs" />
     <Compile Include="Creatures\FourmiListItemViewModel.cs" />
     <Compile Include="Configs\Timer\TimerConstants.cs" />
-    <Compile Include="Creatures\Fourmi.cs" />
     <Compile Include="Deplacement\AvanceHazard.cs" />
     <Compile Include="Deplacement\CourtChemin.cs" />
     <Compile Include="Deplacement\Deplacement.cs" />

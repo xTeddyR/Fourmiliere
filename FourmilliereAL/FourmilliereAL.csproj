@@ -142,6 +142,18 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Media\Fonts\Roboto-Black.ttf" />
+    <Resource Include="Media\Fonts\Roboto-BlackItalic.ttf" />
+    <Resource Include="Media\Fonts\Roboto-Bold.ttf" />
+    <Resource Include="Media\Fonts\Roboto-BoldItalic.ttf" />
+    <Resource Include="Media\Fonts\Roboto-Italic.ttf" />
+    <Resource Include="Media\Fonts\Roboto-Light.ttf" />
+    <Resource Include="Media\Fonts\Roboto-LightItalic.ttf" />
+    <Resource Include="Media\Fonts\Roboto-Medium.ttf" />
+    <Resource Include="Media\Fonts\Roboto-MediumItalic.ttf" />
+    <Resource Include="Media\Fonts\Roboto-Regular.ttf" />
+    <Resource Include="Media\Fonts\Roboto-Thin.ttf" />
+    <Resource Include="Media\Fonts\Roboto-ThinItalic.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -67,6 +67,11 @@ namespace FourmilliereAL
         /// </summary>
         public int TitleHeight { get; set; } = 42;
 
+        /// <summary>
+        /// La taille de la barre de titre / caption de la fenêtre
+        /// </summary>
+        public GridLength TitleHeightGridLength { get { return new GridLength(TitleHeight + ResizeBorder); } }
+
         #endregion
 
         #region Membres privés

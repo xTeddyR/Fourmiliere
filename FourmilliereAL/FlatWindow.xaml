@@ -35,6 +35,43 @@
                                 </Border>
                                 
                                 <!-- Main Content -->
+
+                                <Grid>
+                                    
+                                    <Grid.RowDefinitions>
+                                        
+                                        <!-- Title Bar -->
+                                        <RowDefinition Height="{Binding TitleHeightGridLength, FallbackValue=42}" />
+                                        <!-- Shadow-->
+                                        <RowDefinition Height="Auto" />
+                                        <!-- Window Content -->
+                                        <RowDefinition Height="*" />
+                                        
+                                    </Grid.RowDefinitions>
+                                    
+                                    <!-- Title Bar -->
+
+                                    <Grid Grid.Column="0" Panel.ZIndex="1">
+
+                                        <Grid.ColumnDefinitions>
+                                            
+                                            <!-- App Icon -->
+                                            <ColumnDefinition Width="Auto" />
+                                            <!-- App Title -->
+                                            <ColumnDefinition Width="*" />
+                                            <!-- Window Button -->
+                                            <ColumnDefinition Width="Auto" />
+
+                                        </Grid.ColumnDefinitions>
+
+                                        <!-- App Icon -->
+                                        <Button Grid.Column="0" Command="{Binding MenuCommand}">
+                                            <Image Source="Resources/Logo/logo-small.png"></Image>
+                                        </Button>
+                                        
+                                    </Grid>
+                                    
+                                </Grid>
                                 
                             </Grid>
                             

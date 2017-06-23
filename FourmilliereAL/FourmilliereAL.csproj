@@ -51,7 +51,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Media\Logo\icon.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Logo\icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -142,18 +142,18 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Resource Include="Media\Fonts\Roboto-Black.ttf" />
-    <Resource Include="Media\Fonts\Roboto-BlackItalic.ttf" />
-    <Resource Include="Media\Fonts\Roboto-Bold.ttf" />
-    <Resource Include="Media\Fonts\Roboto-BoldItalic.ttf" />
-    <Resource Include="Media\Fonts\Roboto-Italic.ttf" />
-    <Resource Include="Media\Fonts\Roboto-Light.ttf" />
-    <Resource Include="Media\Fonts\Roboto-LightItalic.ttf" />
-    <Resource Include="Media\Fonts\Roboto-Medium.ttf" />
-    <Resource Include="Media\Fonts\Roboto-MediumItalic.ttf" />
-    <Resource Include="Media\Fonts\Roboto-Regular.ttf" />
-    <Resource Include="Media\Fonts\Roboto-Thin.ttf" />
-    <Resource Include="Media\Fonts\Roboto-ThinItalic.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-Black.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-BlackItalic.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-Bold.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-BoldItalic.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-Italic.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-Light.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-LightItalic.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-Medium.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-MediumItalic.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-Regular.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-Thin.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-ThinItalic.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -163,7 +163,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Media\ground-png.png" />
+    <Resource Include="Resources\ground-png.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
@@ -178,19 +178,19 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Media\warrior-ant.png" />
+    <Resource Include="Resources\warrior-ant.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Media\Logo\icon.ico" />
+    <Resource Include="Resources\Logo\icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Media\default-ant.png" />
+    <Resource Include="Resources\default-ant.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Media\loop.png" />
+    <Resource Include="Resources\loop.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Media\heart.png" />
+    <Resource Include="Resources\heart.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FourmilliereAL.Core\FourmilliereAL.Core.csproj">
@@ -199,8 +199,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Media\red-ant.png" />
-    <Resource Include="Media\fourmilliere.png" />
+    <Resource Include="Resources\red-ant.png" />
+    <Resource Include="Resources\fourmilliere.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="FodyWeavers.xml" />

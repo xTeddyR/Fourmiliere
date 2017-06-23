@@ -5,6 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FourmilliereAL"
         mc:Ignorable="d"
-        Title="FlatWindow" Height="300" Width="600" WindowStyle="None" WindowStartupLocation="CenterScreen">
+        x:Name="AppWindow"
+        Title="FlatWindow" Height="640" Width="1024" 
+        WindowStyle="None" 
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True">
 
+    <WindowChrome.WindowChrome>
+        <WindowChrome ResizeBorderThickness="{Binding ResizeBorderThickness}"
+                      CaptionHeight="{Binding TitleHeight}"
+                      GlassFrameThickness="0">
+            
+        </WindowChrome>
+        
+    </WindowChrome.WindowChrome>
+    
 </Window>

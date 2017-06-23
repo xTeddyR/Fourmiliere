@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:FourmilliereAL"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         mc:Ignorable="d"
-        Title="{Binding TitreApplication}" Height="350" Width="525" WindowStartupLocation="CenterScreen" >
+        Title="{Binding TitreApplication}" Height="350" Width="525" WindowStartupLocation="CenterScreen" WindowState="Maximized" >
     <Grid ShowGridLines="False">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>

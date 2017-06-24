@@ -1,8 +1,6 @@
 ﻿using FourmilliereAL.Core;
 using System.Windows;
 using System.Windows.Input;
-using System.Runtime.InteropServices;
-using System;
 
 namespace FourmilliereAL
 {

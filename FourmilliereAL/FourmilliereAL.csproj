@@ -217,5 +217,8 @@
   <ItemGroup>
     <Resource Include="Resources\Logo\logo-small.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controles\Plateau\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -140,8 +140,7 @@
         
     </WindowChrome.WindowChrome>
 
-    <Grid>
-        <Button Content="Test" />
+    <Grid Background="{StaticResource BackgroundLightBrush}">
     </Grid>
     
 </Window>

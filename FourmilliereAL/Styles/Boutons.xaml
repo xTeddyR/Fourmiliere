@@ -38,10 +38,11 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Padding" Value="8" />
         <Setter Property="Foreground" Value="{StaticResource SelectorDarkBrush}" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
 
         <Setter Property="LayoutTransform">
             <Setter.Value>
-                <ScaleTransform ScaleX="1.6" />
+                <ScaleTransform ScaleX="1.5" />
             </Setter.Value>
         </Setter>
 

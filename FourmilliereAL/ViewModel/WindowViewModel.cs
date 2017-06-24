@@ -1,5 +1,8 @@
 ﻿using FourmilliereAL.Core;
 using System.Windows;
+using System.Windows.Input;
+using System.Runtime.InteropServices;
+using System;
 
 namespace FourmilliereAL
 {
@@ -92,6 +95,16 @@ namespace FourmilliereAL
 
         #endregion
 
+        #region Commandes
+
+        public ICommand MinimizedCommand { get; set; }
+        public ICommand MaximizedCommand { get; set; }
+        public ICommand CloseCommand { get; set; }
+        public ICommand MenuCommand { get; set; }
+
+
+        #endregion
+
         #region Constructeur
         /// <summary>
         /// Le constructor par défaut
@@ -109,6 +122,32 @@ namespace FourmilliereAL
                 OnPropertyChanged(nameof(WindowCornerRadius));
 
             };
+
+            // Command init
+
+            MinimizedCommand = new RelayCommand(() => window.WindowState = WindowState.Minimized);
+            MaximizedCommand = new RelayCommand(() => window.WindowState ^= WindowState.Maximized);
+            CloseCommand = new RelayCommand(() => window.Close());
+            MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(window, GetMousePosition()));
+        }
+        #endregion
+
+        #region Helper privé
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        internal static extern bool GetCursorPos(ref Win32Point pt);
+
+        [StructLayout(LayoutKind.Sequential)]
+        internal struct Win32Point
+        {
+            public Int32 X;
+            public Int32 Y;
+        };
+        public static Point GetMousePosition()
+        {
+            Win32Point w32Mouse = new Win32Point();
+            GetCursorPos(ref w32Mouse);
+            return new Point(w32Mouse.X, w32Mouse.Y);
         }
         #endregion
     }

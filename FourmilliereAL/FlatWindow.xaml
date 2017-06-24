@@ -68,7 +68,12 @@
                                         <Button Style="{StaticResource SystemIconButton}" Grid.Column="0" Padding="8" Command="{Binding MenuCommand}">
                                             <Image Source="Resources/Logo/logo-small.png"></Image>
                                         </Button>
-                                        
+
+                                        <!-- App Title -->
+                                        <Viewbox Grid.Column="1" Margin="0">
+                                            <TextBlock Style="{StaticResource HeaderText}" Text="{Binding AppTitle, FallbackValue=EZAntSimulator}"></TextBlock>
+                                        </Viewbox>
+
                                     </Grid>
                                     
                                 </Grid>

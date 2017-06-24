@@ -11,7 +11,7 @@
     </Style>
 
     <Style TargetType="{x:Type TextBlock}" x:Key="BaseTextBlockStyle">
-        <Setter Property="FontFamily" Value="{StaticResource RobotoRegular}"></Setter>
+        <Setter Property="FontFamily" Value="{StaticResource RobotoThin}"></Setter>
         <Setter Property="FontSize" Value="14" />
     </Style>
 

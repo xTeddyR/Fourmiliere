@@ -75,6 +75,8 @@ namespace FourmilliereAL
         /// </summary>
         public GridLength TitleHeightGridLength { get { return new GridLength(TitleHeight + ResizeBorder); } }
 
+        public string AppTitle { get; set; } = Config.ApplicationTitle;
+
         #endregion
 
         #region Membres privés

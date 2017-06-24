@@ -13,6 +13,10 @@ namespace FourmilliereAL
     {
         #region Membres publiques
 
+        public int MinimumHeight { get; set; } = 200;
+
+        public int MinimumWidth { get; set; } = 200;
+
         /// <summary>
         /// La taille du redimensionnment
         /// </summary>

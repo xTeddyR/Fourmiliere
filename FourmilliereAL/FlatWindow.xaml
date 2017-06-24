@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:FourmilliereAL"
         mc:Ignorable="d"
         x:Name="AppWindow"
-        Title="FlatWindow" Height="640" Width="1024" 
+        Title="FlatWindow" Height="640" Width="1024" MinHeight="{Binding MinimumHeight}" MinWidth="{Binding MinimumWidth}"
         WindowStyle="None" 
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True">
@@ -23,6 +23,12 @@
                             <!-- Main Window Outline -->
                             
                             <Grid>
+                                
+                                <!-- Op city Mask -->
+                                <Border x:Name="ClipContainer"
+                                        Background="{StaticResource BackgroundVeryLightBrush}"
+                                        CornerRadius="{Binding WindowCornerRadius, FallbackValue=10}" />
+
 
                                 <!-- Window Border and drop shadow -->
                                 
@@ -37,6 +43,11 @@
                                 <!-- Main Content -->
 
                                 <Grid>
+    
+                                    <!-- Clip Grid Opacity -->
+                                    <Grid.OpacityMask>
+                                        <VisualBrush Visual="{Binding ElementName=ClipContainer}"/>
+                                    </Grid.OpacityMask>
                                     
                                     <Grid.RowDefinitions>
                                         
@@ -73,6 +84,14 @@
                                         <Viewbox Grid.Column="1" Margin="0">
                                             <TextBlock Style="{StaticResource HeaderText}" Text="{Binding AppTitle, FallbackValue=EZAntSimulator}"></TextBlock>
                                         </Viewbox>
+
+                                        <!-- Window Button -->
+                                        <StackPanel Grid.Column="2" Orientation="Horizontal" >
+                                            <Button Style="{StaticResource WindowControlButton}" Command="{Binding MinimizedCommand}" Content="_" />
+                                            <Button Style="{StaticResource WindowControlButton}" Command="{Binding MaximizedCommand}" Content="[ ]" />
+                                            <Button Style="{StaticResource CloseWindowButton}" Command="{Binding CloseCommand}" Content="x" />
+                                        </StackPanel>
+                                        
 
                                     </Grid>
                                     

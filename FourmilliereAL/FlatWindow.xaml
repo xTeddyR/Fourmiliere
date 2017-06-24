@@ -65,7 +65,7 @@
                                         </Grid.ColumnDefinitions>
 
                                         <!-- App Icon -->
-                                        <Button Grid.Column="0" Command="{Binding MenuCommand}">
+                                        <Button Style="{StaticResource SystemIconButton}" Grid.Column="0" Padding="8" Command="{Binding MenuCommand}">
                                             <Image Source="Resources/Logo/logo-small.png"></Image>
                                         </Button>
                                         

@@ -28,6 +28,11 @@ namespace FourmilliereAL
         public Thickness ResizeBorderThickness { get { return new Thickness(ResizeBorder + OuterMarginSize); } }
 
         /// <summary>
+        /// Le padding du contenu de la fenêtre
+        /// </summary>
+        public Thickness InnerContentPadding { get { return new Thickness(ResizeBorder); } }
+
+        /// <summary>
         /// Marge exterieur pour l'ombre
         /// </summary>
         public int OuterMarginSize

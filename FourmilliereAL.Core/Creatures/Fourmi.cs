@@ -35,7 +35,7 @@ namespace FourmilliereAL.Core
             ListEtape = new ObservableCollection<Etape>();
             Position = new Location(ConfigFourmi.FourmilierePositionX, ConfigFourmi.FourmilierePositionY);
             plateauManager = PlateauManager.Instance;
-            Comportement = new AttitudeAucune();
+            Comportement = FabriqueSimulation.CreerFabrique("FabriqueAttitude").CreerAttitude("AttitudeAucune");
             int nbEtapes = 0;
             for (int i = 0; i < nbEtapes; i++)
             {
@@ -50,7 +50,7 @@ namespace FourmilliereAL.Core
             ListEtape = new ObservableCollection<Etape>();
             Position = new Location(x, y);
             plateauManager = PlateauManager.Instance;
-            Comportement = new AttitudeAucune();
+            Comportement = FabriqueSimulation.CreerFabrique("FabriqueAttitude").CreerAttitude("AttitudeAucune");
             int nbEtapes = 0;
             
             for(int i = 0; i < nbEtapes; i++)

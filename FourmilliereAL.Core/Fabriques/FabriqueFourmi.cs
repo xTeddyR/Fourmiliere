@@ -2,7 +2,7 @@
 
 namespace FourmilliereAL.Core
 {
-    class FabriqueFourmi : Fabrique
+    public class FabriqueFourmi : Fabrique
     {
         public override Attitude CreerAttitude(string nomAttitude)
         {

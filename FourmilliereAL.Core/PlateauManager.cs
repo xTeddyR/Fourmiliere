@@ -36,12 +36,11 @@ namespace FourmilliereAL.Core
         public void CreationDesCases()
         {
             CasesList = new List<Case>();
-            var casesFactory = new FabriqueCase();
             for (int i = 0; i < Config.GrilleLargeur; i++)
             {
                 for (int j = 0; j < Config.GrilleHauteur; j++)
                 {
-                    CasesList.Add(casesFactory.CreerCase("", i, j));
+                    CasesList.Add(FabriqueSimulation.CreerFabrique("FabriqueCase").CreerCase("", i, j));
                 }
             }
         }
@@ -93,11 +92,13 @@ namespace FourmilliereAL.Core
                 foreach (var uneCase in CasesList)
                 {
                     writer.WriteStartElement("Case");
+                    writer.WriteElementString("Type", uneCase.ToString());
                     writer.WriteElementString("X", uneCase.Position.X.ToString());
                     writer.WriteElementString("Y", uneCase.Position.Y.ToString());
                     if (uneCase.Objet != null)
                     {
                         writer.WriteStartElement("Objet");
+                        writer.WriteElementString("Type", uneCase.Objet.ToString());
                         writer.WriteElementString("X", uneCase.Objet.Position.X.ToString());
                         writer.WriteElementString("Y", uneCase.Objet.Position.Y.ToString());
                         writer.WriteEndElement();
@@ -130,19 +131,23 @@ namespace FourmilliereAL.Core
                 CasesList = new List<Case>();
                 while (xmlReader.ReadToFollowing("Case"))
                 {
+                    xmlReader.ReadToFollowing("Type");
+                    string typeCase = xmlReader.ReadElementContentAsString();
                     xmlReader.ReadToFollowing("X");
                     int x = xmlReader.ReadElementContentAsInt();
                     xmlReader.ReadToFollowing("Y");
                     int y = xmlReader.ReadElementContentAsInt();
-                    Case myCase = new Case(x, y);
+                    var myCase = FabriqueSimulation.CreerFabrique("FabriqueCase").CreerCase(typeCase, x, y);
                     xmlReader.MoveToContent();
                     if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name == "Objet")
                     {
+                        xmlReader.ReadToFollowing("Type");
+                        string typeObjet = xmlReader.ReadElementContentAsString();
                         xmlReader.ReadToFollowing("X");
                         int xObjet = xmlReader.ReadElementContentAsInt();
                         xmlReader.ReadToFollowing("Y");
                         int yObjet = xmlReader.ReadElementContentAsInt();
-                        myCase.Objet = new Objet(xObjet, yObjet);
+                        myCase.Objet = FabriqueSimulation.CreerFabrique("FabriqueObjet").CreerObjet(typeObjet, xObjet, yObjet);
                         xmlReader.MoveToContent();
                     }
                     while (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name == "Fourmi")
@@ -157,10 +162,9 @@ namespace FourmilliereAL.Core
                         int yFourmi = xmlReader.ReadElementContentAsInt();
                         xmlReader.ReadToFollowing("Attitude");
                         string attitudeFourmi = xmlReader.ReadElementContentAsString();
-                        Fourmi myFourmi = new Fourmi(nomFourmi, xFourmi, yFourmi);
+                        var myFourmi = FabriqueSimulation.CreerFabrique("FabriqueFourmi").CreerFourmi(nomFourmi, xFourmi, yFourmi);
                         myFourmi.Vie = vieFourmi;
-                        FabriqueAttitude factoryAttitude = new FabriqueAttitude();
-                        myFourmi.Comportement = factoryAttitude.CreerAttitude(attitudeFourmi);
+                        myFourmi.Comportement = FabriqueSimulation.CreerFabrique("FabriqueAttitude").CreerAttitude(attitudeFourmi);
                         myCase.AjouterCreature(myFourmi);
                         xmlReader.MoveToContent();
                     }

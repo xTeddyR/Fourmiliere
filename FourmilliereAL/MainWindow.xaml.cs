@@ -152,6 +152,7 @@ namespace FourmilliereAL
         private void Save_Data_Button_Click(object sender, RoutedEventArgs e)
         {
             App.fourmilliereVM.SaveDataToXML();
+            MessageBox.Show("Données sauvegardés dans data.xml !");
         }
 
         private void Load_Data_Button_Click(object sender, RoutedEventArgs e)

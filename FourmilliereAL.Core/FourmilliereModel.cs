@@ -7,8 +7,6 @@ namespace FourmilliereAL.Core
 {
     public class FourmilliereModel
     {
-        private FabriqueFourmi fourmiFactory;
-        private FabriqueObjet objetFactory;
         private PlateauManager plateauManager;
         private Deplacement deplacementService;
         private Meteo meteo;
@@ -33,8 +31,6 @@ namespace FourmilliereAL.Core
 
             this.FourmisList = FourmisList;
             meteo = new Meteo(ref FourmisList);
-            fourmiFactory = new FabriqueFourmi();
-            objetFactory = new FabriqueObjet();
 
             AjouterFourmi("Zero", 0, 0);
 
@@ -53,15 +49,15 @@ namespace FourmilliereAL.Core
 
         public void AjouterFourmi(string nom, int x, int y, string comportement = "AttitudeAucune")
         {
-            var fourmi = fourmiFactory.CreerFourmi(nom, x, y);
-            fourmi.Comportement = new FabriqueAttitude().CreerAttitude(comportement);
+            var fourmi = FabriqueSimulation.CreerFabrique("FabriqueFourmi").CreerFourmi(nom, x, y);
+            fourmi.Comportement = FabriqueSimulation.CreerFabrique("FabriqueAttitude").CreerAttitude(comportement);
             plateauManager.GetCaseFromPosition(fourmi.Position.X, fourmi.Position.Y).AjouterCreature(fourmi);
             FourmisList.Add(fourmi);
         }
 
         public void AjouteObjet(int x, int y, string objet = "")
         {
-            var myObjet = objetFactory.CreerObjet(objet, x, y);
+            var myObjet = FabriqueSimulation.CreerFabrique("FabriqueObjet").CreerObjet(objet, x, y);
             plateauManager.GetCaseFromPosition(x, y).Objet = myObjet;
         }
 

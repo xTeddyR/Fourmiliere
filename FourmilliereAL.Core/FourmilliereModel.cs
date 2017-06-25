@@ -107,11 +107,10 @@ namespace FourmilliereAL.Core
                     courtChemin.Avance(actuel, dest);
                 } else {
                     hazard.Avance(FourmisList[i]);
-                }
-                
                     VerifierVieFourmi(FourmisList[i]);
-                if (objet != null) FourmisList[i].Comportement.ExecuteObjet(objet);
+                }
                 var objet = plateauManager.GetCaseFromFourmi(FourmisList[i]).Objet;
+                if (objet != null) FourmisList[i].Comportement.ExecuteObjet(objet);
             }
         }
 

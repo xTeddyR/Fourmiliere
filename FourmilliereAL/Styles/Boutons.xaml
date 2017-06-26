@@ -74,23 +74,23 @@
         </Style.Triggers>
     </Style>
 
-    <!-- Bouton systeme -->
-    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}">
+    <!-- Bouton action -->
+    <Style TargetType="{x:Type Button}" x:Key="ActionButton" BasedOn="{StaticResource BaseStyle}">
 
-        <Setter Property="Background" Value="{StaticResource SecondaryDarkBrush}" />
+        <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
         <Setter Property="BorderThickness" Value="0" />
 
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ButtonBase}">
                     <Border x:Name="border"
-                            CornerRadius="10"
+                            CornerRadius="0"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             Background="{TemplateBinding Background}" 
                             SnapsToDevicePixels="True">
                         <Grid>
-                            <TextBlock Text="{TemplateBinding Content}" 
+                            <ContentControl Content="{TemplateBinding Content}" 
                                    Focusable="False" 
                                    FontSize="14"
                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
@@ -103,14 +103,14 @@
                         <EventTrigger RoutedEvent="MouseEnter">
                             <BeginStoryboard>
                                 <Storyboard>
-                                    <ColorAnimation To="{StaticResource SecondaryLight}" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color" />
+                                    <ColorAnimation To="{StaticResource PrimaryDark}" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color" />
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
                         <EventTrigger RoutedEvent="MouseLeave">
                             <BeginStoryboard>
                                 <Storyboard>
-                                    <ColorAnimation From="{StaticResource SecondaryLight}" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color" />
+                                    <ColorAnimation From="{StaticResource PrimaryDark}" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color" />
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
@@ -121,6 +121,59 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+    
+    <!-- Bouton action rouge -->
+    <Style TargetType="{x:Type Button}" x:Key="ActionButtonRed" BasedOn="{StaticResource BaseStyle}">
+        <Setter Property="Background" Value="{StaticResource SecondaryBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ButtonBase}">
+                    <Border x:Name="border"
+                            CornerRadius="0"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}" 
+                            SnapsToDevicePixels="True">
+                        <Grid>
+                            <ContentControl Content="{TemplateBinding Content}" 
+                                   Focusable="False" 
+                                   FontSize="14"
+                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                   Margin="{TemplateBinding Padding}" 
+                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation To="{StaticResource SecondaryDark}" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation From="{StaticResource SecondaryDark}" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource PrimaryDarkBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{StaticResource  BackgroundVeryLightBrush}" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
 

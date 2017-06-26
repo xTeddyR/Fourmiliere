@@ -111,6 +111,9 @@ namespace FourmilliereAL
         public ICommand CloseCommand { get; set; }
         public ICommand MenuCommand { get; set; }
 
+        public ICommand AddAntCommand { get; set; }
+        public ICommand DeleteAntCommand { get; set; }
+
 
         #endregion
 
@@ -138,6 +141,8 @@ namespace FourmilliereAL
             MaximizedCommand = new RelayCommand(() => window.WindowState ^= WindowState.Maximized);
             CloseCommand = new RelayCommand(() => window.Close());
             MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(window, GetMousePosition()));
+            AddAntCommand = new RelayCommand(() => App.fourmilliereVM.AjouterFourmis());
+            DeleteAntCommand = new RelayCommand(() => App.fourmilliereVM.SupprimerFourmisSelect());
         }
         #endregion
 

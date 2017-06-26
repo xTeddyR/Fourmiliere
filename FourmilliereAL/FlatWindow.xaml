@@ -116,7 +116,7 @@
                                     </Border>
                                     
                                     <!-- Page Content -->
-                                    <Border Grid.Row="2" Padding="{Binding InnerContentPadding}">
+                                    <Border Grid.Row="2" Padding="0">
                                         <ContentPresenter Content="{TemplateBinding Content}"></ContentPresenter>
                                     </Border>
                                     
@@ -141,6 +141,38 @@
     </WindowChrome.WindowChrome>
 
     <Grid Background="{StaticResource BackgroundLightBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.4*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        
+        <!-- Left Side Menu -->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="0.1*" />
+                <RowDefinition Height="0.1*" />
+            </Grid.RowDefinitions>
+            <local:FourmiListControle Grid.Row="0" ></local:FourmiListControle>
+            <!-- Ajouter fourmi bouton -->
+            <Button Style="{StaticResource ActionButton}" 
+                    Grid.Row="1" 
+                    Content="Ajouter Fourmi"
+                    Command="{Binding AddAntCommand}">
+                
+            </Button>
+            
+            <!-- Supprimer fourmi selectioner -->
+            <Button Style="{StaticResource ActionButtonRed}" 
+                    Grid.Row="2" 
+                    Content="Supprimer"
+                    Command="{Binding DeleteAntCommand}">
+                
+            </Button>
+        </Grid>
+        
+        
     </Grid>
     
 </Window>

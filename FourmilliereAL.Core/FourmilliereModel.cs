@@ -7,7 +7,6 @@ namespace FourmilliereAL.Core
 {
     public class FourmilliereModel
     {
-        private FabriqueFourmi fourmiFactory;
         private PlateauManager plateauManager;
         private Deplacement hazard;
         private Deplacement courtChemin;
@@ -36,7 +35,12 @@ namespace FourmilliereAL.Core
             this.FourmisList = FourmisList;
             meteo = new Meteo(ref FourmisList);
             timer = new Timer(meteo);
-            fourmiFactory = new FabriqueFourmi();
+
+            AjouterFourmi("Zero", 0, 0);
+
+            AjouteObjet(0, 1, "Baton");
+            AjouteObjet(1, 0, "Baton");
+            AjouteObjet(1, 1, "Baton");
 
             AjouterFourmi("Teddy", 0, 10);
             AjouterFourmi("Jeremy", 10, 0);
@@ -50,10 +54,16 @@ namespace FourmilliereAL.Core
 
         public void AjouterFourmi(string nom, int x, int y, string comportement = "AttitudeAucune")
         {
-            var fourmi = fourmiFactory.CreerFourmi(nom, x, y);
-            fourmi.Comportement = new FabriqueAttitude().CreerAttitude(comportement);
+            var fourmi = FabriqueSimulation.CreerFabrique("FabriqueFourmi").CreerFourmi(nom, x, y);
+            fourmi.Comportement = FabriqueSimulation.CreerFabrique("FabriqueAttitude").CreerAttitude(comportement);
             plateauManager.GetCaseFromPosition(fourmi.Position.X, fourmi.Position.Y).AjouterCreature(fourmi);
             FourmisList.Add(fourmi);
+        }
+
+        public void AjouteObjet(int x, int y, string objet = "")
+        {
+            var myObjet = FabriqueSimulation.CreerFabrique("FabriqueObjet").CreerObjet(objet, x, y);
+            plateauManager.GetCaseFromPosition(x, y).Objet = myObjet;
         }
 
         public void AjouterFourmis()
@@ -98,7 +108,8 @@ namespace FourmilliereAL.Core
                     hazard.Avance(FourmisList[i]);
                     VerifierVieFourmi(FourmisList[i]);
                 }
-                
+                var objet = plateauManager.GetCaseFromFourmi(FourmisList[i]).Objet;
+                if (objet != null) FourmisList[i].Comportement.ExecuteObjet(objet);
             }
         }
 

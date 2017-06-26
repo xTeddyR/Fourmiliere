@@ -23,6 +23,8 @@ namespace FourmilliereAL.Core
         }
         public ObservableCollection<Etape> ListEtape { get; set; }
         public Location Position { get; set; }
+
+        // TODO Ajouter OnPropertyChanged() au Comportement
         public Attitude Comportement { get; set; }
         public Deplacement Deplace { get; set; }
 
@@ -33,7 +35,7 @@ namespace FourmilliereAL.Core
             ListEtape = new ObservableCollection<Etape>();
             Position = new Location(ConfigFourmi.FOURMILIERE_POSITION_X, ConfigFourmi.FOURMILIERE_POSITION_Y);
             plateauManager = PlateauManager.Instance;
-            Comportement = new AttitudeAucune();
+            Comportement = FabriqueSimulation.CreerFabrique("FabriqueAttitude").CreerAttitude("AttitudeAucune");
             int nbEtapes = 0;
             for (int i = 0; i < nbEtapes; i++)
             {
@@ -48,7 +50,7 @@ namespace FourmilliereAL.Core
             ListEtape = new ObservableCollection<Etape>();
             Position = new Location(x, y);
             plateauManager = PlateauManager.Instance;
-            Comportement = new AttitudeAucune();
+            Comportement = FabriqueSimulation.CreerFabrique("FabriqueAttitude").CreerAttitude("AttitudeAucune");
             int nbEtapes = 0;
             
             for(int i = 0; i < nbEtapes; i++)

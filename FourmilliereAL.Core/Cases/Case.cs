@@ -68,5 +68,10 @@ namespace FourmilliereAL.Core
                 creaturesSurCase[1] = null;
             }
         }
+
+        public override string ToString()
+        {
+            return this.GetType().Name;
+        }
     }
 }

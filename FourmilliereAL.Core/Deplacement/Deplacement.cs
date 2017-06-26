@@ -4,8 +4,8 @@
     {
         protected PlateauManager plateauManager;
 
-        protected int dimesionX = Config.GrilleLargeur;
-        protected int dimensionY = Config.GrilleHauteur;
+        protected int dimesionX = Config.GRILLE_LARGEUR;
+        protected int dimensionY = Config.GRILLE_HAUTEUR;
 
         public Deplacement()
         {

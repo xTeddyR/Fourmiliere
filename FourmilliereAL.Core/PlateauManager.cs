@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Xml;
-using System.Xml.Serialization;
 
 namespace FourmilliereAL.Core
 {
@@ -36,9 +34,9 @@ namespace FourmilliereAL.Core
         public void CreationDesCases()
         {
             CasesList = new List<Case>();
-            for (int i = 0; i < Config.GrilleLargeur; i++)
+            for (int i = 0; i < Config.GRILLE_LARGEUR; i++)
             {
-                for (int j = 0; j < Config.GrilleHauteur; j++)
+                for (int j = 0; j < Config.GRILLE_HAUTEUR; j++)
                 {
                     CasesList.Add(FabriqueSimulation.CreerFabrique("FabriqueCase").CreerCase("", i, j));
                 }

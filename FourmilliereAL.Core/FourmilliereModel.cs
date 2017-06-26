@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 
@@ -23,10 +22,10 @@ namespace FourmilliereAL.Core
         public int VitesseExecution {get;set;}
         public FourmilliereModel(ObservableCollection<Fourmi> FourmisList)
         {
-            TitreApplication = Config.ApplicationTitle;
-            DimensionX = Config.GrilleLargeur;
-            DimensionY = Config.GrilleHauteur;
-            VitesseExecution = Config.VitesseExecution;
+            TitreApplication = Config.APPLICATION_TITRE;
+            DimensionX = Config.GRILLE_LARGEUR;
+            DimensionY = Config.GRILLE_HAUTEUR;
+            VitesseExecution = Config.VITESSE_EXECUTION;
             plateauManager = PlateauManager.Instance;
             plateauManager.CreationDesCases();
 
@@ -69,9 +68,9 @@ namespace FourmilliereAL.Core
 
         public void AjouterFourmis()
         {
-            if (plateauManager.GetCaseFromPosition(ConfigFourmi.FourmilierePositionX, ConfigFourmi.FourmilierePositionY).GetCreaturesSurCase().Count() < 2)
+            if (plateauManager.GetCaseFromPosition(ConfigFourmi.FOURMILIERE_POSITION_X, ConfigFourmi.FOURMILIERE_POSITION_Y).GetCreaturesSurCase().Count() < 2)
             {
-                AjouterFourmi("Fourmis N° " + FourmisList.Count, ConfigFourmi.FourmilierePositionX, ConfigFourmi.FourmilierePositionY);
+                AjouterFourmi("Fourmis N° " + FourmisList.Count, ConfigFourmi.FOURMILIERE_POSITION_X, ConfigFourmi.FOURMILIERE_POSITION_Y);
                 meteo.DisplayObservator();
             }
         }

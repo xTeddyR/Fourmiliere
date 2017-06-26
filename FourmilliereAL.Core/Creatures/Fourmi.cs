@@ -31,9 +31,9 @@ namespace FourmilliereAL.Core
         public Fourmi()
         {
             this.Nom = "";
-            this.vie = ConfigFourmi.VieFourmi;
+            this.vie = ConfigFourmi.VIE_FOURMI;
             ListEtape = new ObservableCollection<Etape>();
-            Position = new Location(ConfigFourmi.FourmilierePositionX, ConfigFourmi.FourmilierePositionY);
+            Position = new Location(ConfigFourmi.FOURMILIERE_POSITION_X, ConfigFourmi.FOURMILIERE_POSITION_Y);
             plateauManager = PlateauManager.Instance;
             Comportement = FabriqueSimulation.CreerFabrique("FabriqueAttitude").CreerAttitude("AttitudeAucune");
             int nbEtapes = 0;
@@ -46,7 +46,7 @@ namespace FourmilliereAL.Core
         public Fourmi(string v, int x, int y)
         {
             this.Nom = v;
-            this.vie = ConfigFourmi.VieFourmi;
+            this.vie = ConfigFourmi.VIE_FOURMI;
             ListEtape = new ObservableCollection<Etape>();
             Position = new Location(x, y);
             plateauManager = PlateauManager.Instance;

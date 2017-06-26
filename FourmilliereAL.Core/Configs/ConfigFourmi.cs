@@ -15,5 +15,7 @@
 
         public static readonly int FOURMILIERE_ROUGE_RANGE_Y = 4;
 
+        public static readonly int FOURMI_ENNEMIE_NB_TOURS = 3;
+
     }
 }

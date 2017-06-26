@@ -101,7 +101,7 @@ namespace FourmilliereAL.Core
 
             Random random = new Random();
 
-            if (nbTours % 3 == 0)
+            if (nbTours % ConfigFourmi.FOURMI_ENNEMIE_NB_TOURS == 0)
             {
                 AjouterFourmi("Bad Ant", 
                     random.Next(1, ConfigFourmi.FOURMILIERE_ROUGE_RANGE_X),

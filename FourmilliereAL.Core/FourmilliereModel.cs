@@ -89,7 +89,6 @@ namespace FourmilliereAL.Core
         {
             plateauManager.GetCaseFromFourmi(fourmiAsupprimer).RetirerCreature(fourmiAsupprimer);
             FourmisList.Remove(fourmiAsupprimer);
-
         }
 
         public void TourSuivant()

@@ -93,6 +93,8 @@ namespace FourmilliereAL.Core
         {
             timer.OnNouveauTour();
 
+            AjouterFourmi("Bad Ant", 1, 30, "AttitudeEnnemi");
+
             for(int i = 0; i < FourmisList.Count; i++)
             {
                 Fourmi actuel = FourmisList[i];

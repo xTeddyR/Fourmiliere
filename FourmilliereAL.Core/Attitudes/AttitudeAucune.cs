@@ -1,4 +1,6 @@
-﻿namespace FourmilliereAL.Core
+﻿using System.Linq;
+
+namespace FourmilliereAL.Core
 {
     public class AttitudeAucune : Attitude
     {

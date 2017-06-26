@@ -3,9 +3,9 @@
     public class ConfigFourmi
     {
 
-        public static readonly int VIE_FOURMI = 20;
+        public static readonly int VIE_FOURMI = 50;
 
-        public static readonly int VIE_FOURMI_GAROU = 100;
+        public static readonly int VIE_FOURMI_GAROU = 200;
 
         public static readonly int FOURMILIERE_POSITION_X = 10;
 

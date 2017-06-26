@@ -41,6 +41,7 @@ namespace FourmilliereAL.Core
             AjouteObjet(0, 1, "Baton");
             AjouteObjet(1, 0, "Baton");
             AjouteObjet(1, 1, "Baton");
+            AjouteObjet(ConfigFourmi.FOURMILIERE_POSITION_X, ConfigFourmi.FOURMILIERE_POSITION_Y, "Pomme");
 
             AjouterFourmi("Teddy", 0, 10);
             AjouterFourmi("Jeremy", 10, 0);

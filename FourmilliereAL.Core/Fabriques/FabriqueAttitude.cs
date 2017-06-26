@@ -1,4 +1,6 @@
-﻿namespace FourmilliereAL.Core
+﻿using System;
+
+namespace FourmilliereAL.Core
 {
     public class FabriqueAttitude : Fabrique
     {

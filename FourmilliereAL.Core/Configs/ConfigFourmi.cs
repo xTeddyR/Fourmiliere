@@ -11,5 +11,9 @@
 
         public static readonly int FOURMILIERE_POSITION_Y = 10;
 
+        public static readonly int FOURMILIERE_ROUGE_RANGE_X = 4;
+
+        public static readonly int FOURMILIERE_ROUGE_RANGE_Y = 4;
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 
@@ -20,6 +21,8 @@ namespace FourmilliereAL.Core
         public int DimensionY { get; set; }
         public bool EnCours { get; set; }
         public int VitesseExecution {get;set;}
+        public int nbTours = 0;
+
         public FourmilliereModel(ObservableCollection<Fourmi> FourmisList)
         {
             TitreApplication = Config.APPLICATION_TITRE;
@@ -91,9 +94,20 @@ namespace FourmilliereAL.Core
 
         public void TourSuivant()
         {
+            nbTours++;
+            Console.WriteLine("nbTours: " + nbTours);
+
             timer.OnNouveauTour();
 
-            AjouterFourmi("Bad Ant", 1, 30, "AttitudeEnnemi");
+            Random random = new Random();
+
+            if (nbTours % 3 == 0)
+            {
+                AjouterFourmi("Bad Ant", 
+                    random.Next(1, ConfigFourmi.FOURMILIERE_ROUGE_RANGE_X),
+                    random.Next(Config.GRILLE_HAUTEUR - ConfigFourmi.FOURMILIERE_ROUGE_RANGE_Y, Config.GRILLE_HAUTEUR),
+                    "AttitudeEnnemi");
+            }
 
             for(int i = 0; i < FourmisList.Count; i++)
             {

@@ -24,7 +24,7 @@ namespace FourmilliereAL.Core
         public int nbTours = 0;
         public ObservableCollection<Objet> ListeFruit { get; set; }
 
-        public FourmilliereModel(ObservableCollection<Fourmi> FourmisList, ObservableCollection<Objet> ListeFruit)
+        public FourmilliereModel(ObservableCollection<Fourmi> FourmisList)
         {
             TitreApplication = Config.APPLICATION_TITRE;
             DimensionX = Config.GRILLE_LARGEUR;
@@ -37,7 +37,7 @@ namespace FourmilliereAL.Core
             courtChemin = new CourtChemin();
            
             this.FourmisList = FourmisList;
-            this.ListeFruit = ListeFruit;
+            this.ListeFruit = new ObservableCollection<Objet>();
             
             meteo = new Meteo(ref FourmisList);
             timer = new Timer(meteo);

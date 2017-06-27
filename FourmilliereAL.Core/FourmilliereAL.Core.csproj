@@ -59,6 +59,7 @@
     <Compile Include="Deplacement\AvanceHazard.cs" />
     <Compile Include="Deplacement\CourtChemin.cs" />
     <Compile Include="Deplacement\Deplacement.cs" />
+    <Compile Include="Environnement.cs" />
     <Compile Include="Etape.cs" />
     <Compile Include="Fabriques\FabriqueAttitude.cs" />
     <Compile Include="Fabriques\FabriqueCase.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Observateur\IObservable.cs" />
     <Compile Include="PlateauManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SauvegarderPartie.cs" />
     <Compile Include="Timer\Timer.cs" />
   </ItemGroup>
   <ItemGroup />

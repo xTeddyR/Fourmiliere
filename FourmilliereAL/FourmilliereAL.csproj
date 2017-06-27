@@ -77,11 +77,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controles\Parametre\ParametreControle.xaml.cs">
+      <DependentUpon>ParametreControle.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controles\Plateau\Grille.xaml.cs">
       <DependentUpon>Grille.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ThreadManager\ThreadManager.cs" />
+    <Compile Include="Manager\GrilleManager.cs" />
+    <Compile Include="Manager\ThreadManager.cs" />
     <Compile Include="ViewModel\GrilleViewModel.cs" />
+    <Compile Include="ViewModel\ParametreViewModel.cs" />
     <Compile Include="ViewModel\WindowViewModel.cs" />
     <Compile Include="FlatWindow.xaml.cs">
       <DependentUpon>FlatWindow.xaml</DependentUpon>
@@ -91,6 +96,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controles\Fourmi\FourmiListItemControle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\Parametre\ParametreControle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -234,6 +243,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\next_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\load_button.png" />
+    <Resource Include="Resources\save_button.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

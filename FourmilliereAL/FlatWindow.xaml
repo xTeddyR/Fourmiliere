@@ -142,9 +142,12 @@
 
     <Grid Background="{StaticResource BackgroundLightBrush}">
         <Grid.ColumnDefinitions>
+            <!-- Left Side Menu -->
             <ColumnDefinition Width="0.4*" />
+            <!-- Ant Grid -->
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
+            <!-- Right Side Menu -->
+            <ColumnDefinition Width="0.25*" />
         </Grid.ColumnDefinitions>
         
         <!-- Left Side Menu -->
@@ -175,6 +178,9 @@
         
         <!-- Ant Grid -->
         <local:Grille Grid.Column="1"></local:Grille>
+        
+        <!-- Right Side Menu -->
+        <local:ParametreControle Grid.Column="2"></local:ParametreControle>
         
     </Grid>
     

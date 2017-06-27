@@ -33,6 +33,8 @@ namespace FourmilliereAL
         {
             Plateau = Grid;
 
+            App.GrilleManager.Plateau = Plateau;
+
             dt.Tick += Redessine_Tick;
             dt.Interval = new TimeSpan(0, 0, 0, 0, App.fourmilliereVM.VitesseExecution);
 
@@ -46,84 +48,14 @@ namespace FourmilliereAL
         public void Redessine_Tick(object sender, EventArgs e)
         {
             if (App.ThreadManager.StopWatch.IsRunning) {
-                Dessine();
+                App.GrilleManager.Dessine();
             }
-        }
-
-        public void Dessine()
-        {
-            InitPlateau();
-            AddingGround();
-            AjouterFourmilliere();
-            foreach (Case caseNotEmpty in App.PlateauManager.CasesList) {
-                var creatureSurCase = caseNotEmpty.GetCreaturesSurCase();
-                if (creatureSurCase.Count() > 0) {
-                    foreach (Fourmi fourmi in creatureSurCase) {
-                        System.Windows.Controls.Image img = new Image();
-                        ConvertisseurAttitudeVersImage Convertisseur = new ConvertisseurAttitudeVersImage();
-
-                        string path = (string)Convertisseur.Convert(fourmi.Comportement, null, null, CultureInfo.CurrentCulture);
-
-                        Uri uri = new Uri(path, UriKind.Absolute);
-                        img.Source = new System.Windows.Media.Imaging.BitmapImage(uri);
-
-                        Plateau.Children.Add(img);
-                        Grid.SetColumn(img, fourmi.Position.X);
-                        Grid.SetRow(img, fourmi.Position.Y);
-                    }
-                }
-            }
-        }
-
-        public void InitPlateau()
-        {
-            Plateau.ColumnDefinitions.Clear();
-            Plateau.RowDefinitions.Clear();
-            Plateau.Children.Clear();
-            for (int i = 0; i < App.fourmilliereVM.DimensionX; i++) {
-                Plateau.ColumnDefinitions.Add(new ColumnDefinition());
-            }
-            for (int i = 0; i < App.fourmilliereVM.DimensionY; i++) {
-                Plateau.RowDefinitions.Add(new RowDefinition());
-            }
-        }
-
-        private void AddingGround()
-        {
-            for (int i = 0; i < App.fourmilliereVM.DimensionX; i++) {
-                for (int j = 0; j < App.fourmilliereVM.DimensionY; j++) {
-                    Image img = new Image();
-                    Uri uri = new Uri("pack://application:,,,/Resources/ground-png.png", UriKind.Absolute);
-                    img.Source = new System.Windows.Media.Imaging.BitmapImage(uri);
-                    img.HorizontalAlignment = HorizontalAlignment.Stretch;
-                    img.VerticalAlignment = VerticalAlignment.Stretch;
-                    img.Stretch = Stretch.Fill;
-
-                    Plateau.Children.Add(img);
-                    Grid.SetColumn(img, i);
-                    Grid.SetRow(img, j);
-                }
-            }
-        }
-
-        private void AjouterFourmilliere()
-        {
-            Image img = new Image();
-            Uri uri = new Uri("pack://application:,,,/Resources/fourmilliere.png", UriKind.Absolute);
-            img.Source = new System.Windows.Media.Imaging.BitmapImage(uri);
-            img.HorizontalAlignment = HorizontalAlignment.Stretch;
-            img.VerticalAlignment = VerticalAlignment.Stretch;
-            img.Stretch = Stretch.Fill;
-
-            Plateau.Children.Add(img);
-            Grid.SetColumn(img, ConfigFourmi.FourmilierePositionX);
-            Grid.SetRow(img, ConfigFourmi.FourmilierePositionY);
         }
 
         public void ExecuterTourSuivant()
         {
             App.fourmilliereVM.TourSuivant();
-            Dessine();
+            App.GrilleManager.Dessine();
         }
 
         private void ExecuterAvance()

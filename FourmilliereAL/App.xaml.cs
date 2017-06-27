@@ -15,6 +15,9 @@ namespace FourmilliereAL
         public static FourmilliereModel fourmilliereVM { get; set; }
         public static PlateauManager PlateauManager { get; set; }
         public static ThreadManager ThreadManager { get; set; }
+
+        public static GrilleManager GrilleManager { get; set; }
+
         private static object _lock = new object(); 
         public App()
         {
@@ -25,6 +28,7 @@ namespace FourmilliereAL
             fourmilliereVM = new FourmilliereModel(FourmisList);
             PlateauManager = PlateauManager.Instance;
             ThreadManager = new ThreadManager();
+            GrilleManager = new GrilleManager();
 
         }
       

@@ -25,8 +25,8 @@ namespace FourmilliereAL.Core
         public void RandomizeCoodinates()
         {
             Random random = new Random();
-            coordX = random.Next(1, 20);
-            coordY = random.Next(1, 30);
+            coordX = random.Next(1, Config.GRILLE_LARGEUR);
+            coordY = random.Next(1, Config.GRILLE_HAUTEUR);
         }
 
         public override Objet CreerObjet(string objet, int x, int y)

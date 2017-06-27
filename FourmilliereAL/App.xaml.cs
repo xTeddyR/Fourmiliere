@@ -22,7 +22,7 @@ namespace FourmilliereAL
         public App()
         {
             ObservableCollection<Fourmi> FourmisList = new ObservableCollection<Fourmi>();
-            
+
             // Synchronisation de la liste entre Thread
             BindingOperations.EnableCollectionSynchronization(FourmisList, _lock);
             fourmilliereVM = new FourmilliereModel(FourmisList);

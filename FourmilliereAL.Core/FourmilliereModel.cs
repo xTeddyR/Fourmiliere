@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -10,13 +10,13 @@ namespace FourmilliereAL.Core
 {
     public class FourmilliereModel : INotifyPropertyChanged
     {
-        private FabriqueFourmi fourmiFactory;
         private PlateauManager plateauManager;
         private Deplacement hazard;
         private Deplacement courtChemin;
         private Meteo meteo;
         private Timer timer;
         private Fourmi fourmiSelect;
+        private Random random;
 
         public string TitreApplication { get; set; }
         public ObservableCollection<Fourmi> FourmisList { get; set; }
@@ -37,12 +37,15 @@ namespace FourmilliereAL.Core
         public int DimensionY { get; set; }
         public bool EnCours { get; set; }
         public int VitesseExecution {get;set;}
+        public int nbTours = 0;
+        public ObservableCollection<Objet> ListeFruit { get; set; }
+
         public FourmilliereModel(ObservableCollection<Fourmi> FourmisList)
         {
-            TitreApplication = Config.ApplicationTitle;
-            DimensionX = Config.GrilleLargeur;
-            DimensionY = Config.GrilleHauteur;
-            VitesseExecution = Config.VitesseExecution;
+            TitreApplication = Config.APPLICATION_TITRE;
+            DimensionX = Config.GRILLE_LARGEUR;
+            DimensionY = Config.GRILLE_HAUTEUR;
+            VitesseExecution = Config.VITESSE_EXECUTION;
             plateauManager = PlateauManager.Instance;
             plateauManager.CreationDesCases();
 
@@ -50,9 +53,17 @@ namespace FourmilliereAL.Core
             courtChemin = new CourtChemin();
            
             this.FourmisList = FourmisList;
+            this.ListeFruit = new ObservableCollection<Objet>();
+            
             meteo = new Meteo(ref FourmisList);
             timer = new Timer(meteo);
-            fourmiFactory = new FabriqueFourmi();
+            random = new Random();
+
+            AjouterFourmi("Zero", 0, 0);
+
+            AjouteObjet(0, 1, "Baton");
+            AjouteObjet(1, 0, "Baton");
+            AjouteObjet(1, 1, "Baton");
 
             AjouterFourmi("Teddy", 0, 10);
             AjouterFourmi("Jeremy", 10, 0);
@@ -66,17 +77,24 @@ namespace FourmilliereAL.Core
 
         public void AjouterFourmi(string nom, int x, int y, string comportement = "AttitudeAucune")
         {
-            var fourmi = fourmiFactory.CreerFourmi(nom, x, y);
-            fourmi.Comportement = new FabriqueAttitude().CreerAttitude(comportement);
+            var fourmi = FabriqueSimulation.CreerFabrique("FabriqueFourmi").CreerFourmi(nom, x, y);
+            fourmi.Comportement = FabriqueSimulation.CreerFabrique("FabriqueAttitude").CreerAttitude(comportement);
             plateauManager.GetCaseFromPosition(fourmi.Position.X, fourmi.Position.Y).AjouterCreature(fourmi);
             FourmisList.Add(fourmi);
         }
 
+        public Objet AjouteObjet(int x, int y, string objet = "")
+        {
+            var myObjet = FabriqueSimulation.CreerFabrique("FabriqueObjet").CreerObjet(objet, x, y);
+            plateauManager.GetCaseFromPosition(x, y).Objet = myObjet;
+            return myObjet;
+        }
+
         public void AjouterFourmis()
         {
-            if (plateauManager.GetCaseFromPosition(ConfigFourmi.FourmilierePositionX, ConfigFourmi.FourmilierePositionY).GetCreaturesSurCase().Count() < 2)
+            if (plateauManager.GetCaseFromPosition(ConfigFourmi.FOURMILIERE_POSITION_X, ConfigFourmi.FOURMILIERE_POSITION_Y).GetCreaturesSurCase().Count() < 2)
             {
-                AjouterFourmi("Fourmis N° " + FourmisList.Count, ConfigFourmi.FourmilierePositionX, ConfigFourmi.FourmilierePositionY);
+                AjouterFourmi("Fourmis N° " + FourmisList.Count, ConfigFourmi.FOURMILIERE_POSITION_X, ConfigFourmi.FOURMILIERE_POSITION_Y);
                 meteo.DisplayObservator();
             }
         }
@@ -91,12 +109,38 @@ namespace FourmilliereAL.Core
         {
             plateauManager.GetCaseFromFourmi(fourmiAsupprimer).RetirerCreature(fourmiAsupprimer);
             FourmisList.Remove(fourmiAsupprimer);
+        }
 
+        public void GenererFourmiRouge()
+        {
+            if (nbTours % ConfigFourmi.FOURMI_ENNEMIE_NB_TOURS == 0)
+            {
+                AjouterFourmi("Bad Ant",
+                    random.Next(1, ConfigFourmi.FOURMILIERE_ROUGE_RANGE_X),
+                    random.Next(Config.GRILLE_HAUTEUR - ConfigFourmi.FOURMILIERE_ROUGE_RANGE_Y, Config.GRILLE_HAUTEUR),
+                    "AttitudeEnnemi");
+            }
+        }
+
+        public void GenererObjets()
+        {
+            if (nbTours % ConfigFourmi.OBJET_NB_TOURS == 0)
+            {
+                ListeFruit.Add(AjouteObjet(random.Next(1, Config.GRILLE_LARGEUR), random.Next(Config.GRILLE_HAUTEUR), "Pomme"));
+                AjouteObjet(random.Next(1, Config.GRILLE_LARGEUR), random.Next(Config.GRILLE_HAUTEUR), "Panier");
+                AjouteObjet(random.Next(1, Config.GRILLE_LARGEUR), random.Next(Config.GRILLE_HAUTEUR), "Baton");
+            }
         }
 
         public void TourSuivant()
         {
+            nbTours++;
+            Console.WriteLine("nbTours: " + nbTours);
+
             timer.OnNouveauTour();
+
+            GenererFourmiRouge();
+            GenererObjets();
 
             for(int i = 0; i < FourmisList.Count; i++)
             {
@@ -114,7 +158,8 @@ namespace FourmilliereAL.Core
                     hazard.Avance(FourmisList[i]);
                     VerifierVieFourmi(FourmisList[i]);
                 }
-                
+                var objet = plateauManager.GetCaseFromFourmi(FourmisList[i]).Objet;
+                if (objet != null) FourmisList[i].Comportement.ExecuteObjet(objet);
             }
         }
 

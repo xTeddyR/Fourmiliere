@@ -111,8 +111,8 @@ namespace FourmilliereAL
             img.Stretch = Stretch.Fill;
 
             Plateau.Children.Add(img);
-            Grid.SetColumn(img, ConfigFourmi.FourmilierePositionX);
-            Grid.SetRow(img, ConfigFourmi.FourmilierePositionY);
+            Grid.SetColumn(img, ConfigFourmi.FOURMILIERE_POSITION_X);
+            Grid.SetRow(img, ConfigFourmi.FOURMILIERE_POSITION_Y);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -152,6 +152,7 @@ namespace FourmilliereAL
         private void Save_Data_Button_Click(object sender, RoutedEventArgs e)
         {
             App.fourmilliereVM.SaveDataToXML();
+            MessageBox.Show("Données sauvegardés dans data.xml !");
         }
 
         private void Load_Data_Button_Click(object sender, RoutedEventArgs e)

@@ -13,5 +13,10 @@
         {
             Position = new Location(x, y);
         }
+
+        public override string ToString()
+        {
+            return this.GetType().Name;
+        }
     }
 }

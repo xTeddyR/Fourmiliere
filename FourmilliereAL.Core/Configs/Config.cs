@@ -2,13 +2,13 @@
 {
     public class Config
     {
-        public static readonly string ApplicationTitle = "EZ Ant Simulator 2k17";
+        public static readonly string APPLICATION_TITRE = "EZ Ant Simulator 2k17";
 
-        public static readonly int GrilleLargeur = 20;
+        public static readonly int GRILLE_LARGEUR = 20;
 
-        public static readonly int GrilleHauteur = 30;
+        public static readonly int GRILLE_HAUTEUR = 30;
 
-        public static readonly int VitesseExecution = 500;
+        public static readonly int VITESSE_EXECUTION = 500;
 
     }
 }

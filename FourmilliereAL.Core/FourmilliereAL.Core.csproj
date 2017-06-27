@@ -71,10 +71,10 @@
     <Compile Include="Expressions\ExpressionHelper.cs" />
     <Compile Include="Fabriques\FabriqueAttitude.cs" />
     <Compile Include="Fabriques\FabriqueCase.cs" />
-    <Compile Include="Fabriques\FabriqueEnvironnement.cs" />
     <Compile Include="Fabriques\FabriqueFourmi.cs" />
-    <Compile Include="Fabriques\FabriqueFourmilliere.cs" />
+    <Compile Include="Fabriques\Fabrique.cs" />
     <Compile Include="Fabriques\FabriqueObjet.cs" />
+    <Compile Include="Fabriques\FabriqueSimulation.cs" />
     <Compile Include="FourmiliereItem\FourmiliereItem.cs" />
     <Compile Include="Creatures\Design\FourmiListDesignModel.cs" />
     <Compile Include="FourmiListViewModel.cs" />

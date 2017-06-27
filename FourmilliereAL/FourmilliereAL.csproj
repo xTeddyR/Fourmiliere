@@ -77,6 +77,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controles\Plateau\Grille.xaml.cs">
+      <DependentUpon>Grille.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ThreadManager\ThreadManager.cs" />
+    <Compile Include="ViewModel\GrilleViewModel.cs" />
     <Compile Include="ViewModel\WindowViewModel.cs" />
     <Compile Include="FlatWindow.xaml.cs">
       <DependentUpon>FlatWindow.xaml</DependentUpon>
@@ -86,6 +91,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controles\Fourmi\FourmiListItemControle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\Plateau\Grille.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -218,7 +227,13 @@
     <Resource Include="Resources\Logo\logo-small.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controles\Plateau\" />
+    <Resource Include="Resources\play_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\pause_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\next_button.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

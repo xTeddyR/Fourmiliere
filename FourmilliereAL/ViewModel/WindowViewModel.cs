@@ -84,6 +84,10 @@ namespace FourmilliereAL
 
         public string AppTitle { get; set; } = Config.ApplicationTitle;
 
+        public bool IsDeletable { get { return App.fourmilliereVM.FourmisSelect != null ? true : false; } }
+
+        public Fourmi SelectedAnt { get { return App.fourmilliereVM.FourmisSelect; } }
+
         #endregion
 
         #region Membres privés
@@ -110,7 +114,6 @@ namespace FourmilliereAL
         public ICommand MaximizedCommand { get; set; }
         public ICommand CloseCommand { get; set; }
         public ICommand MenuCommand { get; set; }
-
         public ICommand AddAntCommand { get; set; }
         public ICommand DeleteAntCommand { get; set; }
 
@@ -139,7 +142,7 @@ namespace FourmilliereAL
 
             MinimizedCommand = new RelayCommand(() => window.WindowState = WindowState.Minimized);
             MaximizedCommand = new RelayCommand(() => window.WindowState ^= WindowState.Maximized);
-            CloseCommand = new RelayCommand(() => window.Close());
+            CloseCommand = new RelayCommand(() => CloseApp());
             MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(window, GetMousePosition()));
             AddAntCommand = new RelayCommand(() => App.fourmilliereVM.AjouterFourmis());
             DeleteAntCommand = new RelayCommand(() => App.fourmilliereVM.SupprimerFourmisSelect());
@@ -152,6 +155,12 @@ namespace FourmilliereAL
         {
             var position = Mouse.GetPosition(window);
             return new Point(position.X + window.Left, position.Y + window.Top);
+        }
+
+        public void CloseApp()
+        {
+            App.ThreadManager.StopGrilleExecution();
+            window.Close();
         }
         #endregion
     }

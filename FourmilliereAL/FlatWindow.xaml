@@ -164,14 +164,18 @@
             </Button>
             
             <!-- Supprimer fourmi selectioner -->
-            <Button Style="{StaticResource ActionButtonRed}" 
+            <Button  
                     Grid.Row="2" 
-                    Content="Supprimer"
                     Command="{Binding DeleteAntCommand}">
+                <Button.Content>
+                    <TextBlock Text="{Binding SelectedAnt, StringFormat='supprimer {0}'}" />
+                </Button.Content>
                 
             </Button>
         </Grid>
         
+        <!-- Ant Grid -->
+        <local:Grille Grid.Column="1"></local:Grille>
         
     </Grid>
     

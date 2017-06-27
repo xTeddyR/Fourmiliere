@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace FourmilliereAL.Core
 {
-    public class FourmilliereModel
+    public class FourmilliereModel : BaseViewModel
     {
         private FabriqueFourmi fourmiFactory;
         private PlateauManager plateauManager;

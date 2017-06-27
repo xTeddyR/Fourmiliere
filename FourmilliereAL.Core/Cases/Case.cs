@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace FourmilliereAL.Core
 {
@@ -6,7 +7,7 @@ namespace FourmilliereAL.Core
     {
         protected Objet objetSurCase;
 
-        protected Fourmi[] creaturesSurCase;
+        protected List<Fourmi> creaturesSurCase;
     
         public Location Position;
 
@@ -22,51 +23,25 @@ namespace FourmilliereAL.Core
             }
         }
 
-        public Fourmi[] Creatures
-        {
-            get
-            {
-                return creaturesSurCase;
-            }
-        }
-
         public Case(int x, int y)
         {
-            creaturesSurCase = new Fourmi[2];
+            creaturesSurCase = new List<Fourmi>();
             Position = new Location(x, y);
         }
 
-        public Fourmi[] GetCreaturesSurCase()
+        public List<Fourmi> GetCreaturesSurCase()
         {
-            return creaturesSurCase.Where(f => f != null).ToArray();
+            return creaturesSurCase.Where(f => f != null).ToList();
         }
 
         public void AjouterCreature(Fourmi creature)
         {
-            if(creaturesSurCase[0] == null)
-            {
-                creaturesSurCase[0] = creature;
-            }
-            else
-            {
-                creaturesSurCase[1] = creature;
-            }
+                creaturesSurCase.Add(creature);
         }
 
         public void RetirerCreature(Fourmi creature)
         {
-            if (creaturesSurCase[0] == creature)
-            {
-                creaturesSurCase[0] = null;
-                if(creaturesSurCase[1] != null)
-                {
-                    creaturesSurCase[0] = creaturesSurCase[1];
-                }
-            }
-            else
-            {
-                creaturesSurCase[1] = null;
-            }
+            creaturesSurCase.Remove(creature);
         }
 
         public override string ToString()

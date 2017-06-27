@@ -69,7 +69,7 @@ namespace FourmilliereAL.Core
         {
             var allFourmi = new List<Fourmi>();
 
-            allFourmi.AddRange(CasesList.Where(c => c.GetCreaturesSurCase().Length > 0).SelectMany(c => c.GetCreaturesSurCase()));
+            allFourmi.AddRange(CasesList.Where(c => c.GetCreaturesSurCase().Count() > 0).SelectMany(c => c.GetCreaturesSurCase()));
 
             return allFourmi;
         }
@@ -101,9 +101,9 @@ namespace FourmilliereAL.Core
                         writer.WriteElementString("Y", uneCase.Objet.Position.Y.ToString());
                         writer.WriteEndElement();
                     }
-                    if (uneCase.Creatures.Where(f => f != null).Count() > 0)
+                    if (uneCase.GetCreaturesSurCase().Count() > 0)
                     {
-                        foreach (var fourmi in uneCase.Creatures.Where(f => f != null))
+                        foreach (var fourmi in uneCase.GetCreaturesSurCase())
                         {
                             writer.WriteStartElement("Fourmi");
                             writer.WriteElementString("Nom", fourmi.Nom);

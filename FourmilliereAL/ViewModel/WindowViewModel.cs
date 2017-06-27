@@ -86,8 +86,19 @@ namespace FourmilliereAL
 
         public bool IsDeletable { get { return App.fourmilliereVM.FourmisSelect != null ? true : false; } }
 
-        public Fourmi SelectedAnt { get { return App.fourmilliereVM.FourmisSelect; } }
-
+        public Fourmi SelectedAnt
+        {
+            get
+            {
+                return selectedAnt;
+            }
+            set
+            {
+                selectedAnt = value;
+                OnPropertyChanged(nameof(SelectedAnt));
+            }
+        }
+ 
         #endregion
 
         #region Membres privés
@@ -105,6 +116,8 @@ namespace FourmilliereAL
         /// Radius des angles de la fenêtre
         /// </summary>
         private int windowRadius = 10;
+
+        private Fourmi selectedAnt = App.fourmilliereVM.FourmisSelect;
 
         #endregion
 
@@ -137,6 +150,8 @@ namespace FourmilliereAL
                 OnPropertyChanged(nameof(WindowCornerRadius));
 
             };
+
+            OnPropertyChanged(nameof(SelectedAnt));
 
             // Command init
 

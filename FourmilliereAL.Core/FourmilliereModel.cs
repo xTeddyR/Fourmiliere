@@ -22,8 +22,9 @@ namespace FourmilliereAL.Core
         public bool EnCours { get; set; }
         public int VitesseExecution {get;set;}
         public int nbTours = 0;
+        public ObservableCollection<Objet> ListeFruit { get; set; }
 
-        public FourmilliereModel(ObservableCollection<Fourmi> FourmisList)
+        public FourmilliereModel(ObservableCollection<Fourmi> FourmisList, ObservableCollection<Objet> ListeFruit)
         {
             TitreApplication = Config.APPLICATION_TITRE;
             DimensionX = Config.GRILLE_LARGEUR;
@@ -36,6 +37,8 @@ namespace FourmilliereAL.Core
             courtChemin = new CourtChemin();
            
             this.FourmisList = FourmisList;
+            this.ListeFruit = ListeFruit;
+            
             meteo = new Meteo(ref FourmisList);
             timer = new Timer(meteo);
 
@@ -44,7 +47,6 @@ namespace FourmilliereAL.Core
             AjouteObjet(0, 1, "Baton");
             AjouteObjet(1, 0, "Baton");
             AjouteObjet(1, 1, "Baton");
-            AjouteObjet(ConfigFourmi.FOURMILIERE_POSITION_X, ConfigFourmi.FOURMILIERE_POSITION_Y, "Pomme");
 
             AjouterFourmi("Teddy", 0, 10);
             AjouterFourmi("Jeremy", 10, 0);
@@ -64,10 +66,11 @@ namespace FourmilliereAL.Core
             FourmisList.Add(fourmi);
         }
 
-        public void AjouteObjet(int x, int y, string objet = "")
+        public Objet AjouteObjet(int x, int y, string objet = "")
         {
             var myObjet = FabriqueSimulation.CreerFabrique("FabriqueObjet").CreerObjet(objet, x, y);
             plateauManager.GetCaseFromPosition(x, y).Objet = myObjet;
+            return myObjet;
         }
 
         public void AjouterFourmis()
@@ -110,7 +113,7 @@ namespace FourmilliereAL.Core
 
             if (nbTours % ConfigFourmi.OBJET_NB_TOURS == 0)
             {
-                AjouteObjet(random.Next(1, Config.GRILLE_LARGEUR), random.Next(Config.GRILLE_HAUTEUR), "Pomme");
+                ListeFruit.Add(AjouteObjet(random.Next(1, Config.GRILLE_LARGEUR), random.Next(Config.GRILLE_HAUTEUR), "Pomme"));
                 AjouteObjet(random.Next(1, Config.GRILLE_LARGEUR), random.Next(Config.GRILLE_HAUTEUR), "Panier");
                 AjouteObjet(random.Next(1, Config.GRILLE_LARGEUR), random.Next(Config.GRILLE_HAUTEUR), "Baton");
             }

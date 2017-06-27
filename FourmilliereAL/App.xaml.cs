@@ -16,10 +16,11 @@ namespace FourmilliereAL
         public App()
         {
             ObservableCollection<Fourmi> FourmisList = new ObservableCollection<Fourmi>();
-            
+            ObservableCollection<Objet> ListeFruit = new ObservableCollection<Objet>();
+
             // Synchronisation de la liste entre Thread
             BindingOperations.EnableCollectionSynchronization(FourmisList, _lock);
-            fourmilliereVM = new FourmilliereModel(FourmisList);
+            fourmilliereVM = new FourmilliereModel(FourmisList, ListeFruit);
         }
       
     }

@@ -27,8 +27,6 @@ namespace FourmilliereAL.Core
 
         public void DisplayObservator()
         {
-            Console.WriteLine("*************************");
-
             foreach (Fourmi o in observateurList)
             {
                 Console.WriteLine(o.Nom);

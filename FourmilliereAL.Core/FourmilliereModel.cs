@@ -108,6 +108,13 @@ namespace FourmilliereAL.Core
                     "AttitudeEnnemi");
             }
 
+            if (nbTours % ConfigFourmi.OBJET_NB_TOURS == 0)
+            {
+                AjouteObjet(random.Next(1, Config.GRILLE_LARGEUR), random.Next(Config.GRILLE_HAUTEUR), "Pomme");
+                AjouteObjet(random.Next(1, Config.GRILLE_LARGEUR), random.Next(Config.GRILLE_HAUTEUR), "Panier");
+                AjouteObjet(random.Next(1, Config.GRILLE_LARGEUR), random.Next(Config.GRILLE_HAUTEUR), "Baton");
+            }
+
             for(int i = 0; i < FourmisList.Count; i++)
             {
                 Fourmi actuel = FourmisList[i];

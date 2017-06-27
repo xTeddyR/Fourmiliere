@@ -38,7 +38,7 @@ namespace FourmilliereAL.Core
             {
                 for (int j = 0; j < Config.GRILLE_HAUTEUR; j++)
                 {
-                    CasesList.Add(FabriqueSimulation.CreerFabrique("FabriqueCase").CreerCase("", i, j));
+                    CasesList.Add(FabriqueSimulation.CreerFabrique("FabriqueCase").CreerCase(i, j));
                 }
             }
         }

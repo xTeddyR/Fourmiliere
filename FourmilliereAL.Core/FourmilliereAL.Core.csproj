@@ -49,9 +49,6 @@
     <Compile Include="Attitudes\AttitudeGarou.cs" />
     <Compile Include="Attitudes\AttitudeReine.cs" />
     <Compile Include="Cases\Case.cs" />
-    <Compile Include="Cases\Eau.cs" />
-    <Compile Include="Cases\Herbe.cs" />
-    <Compile Include="Cases\Terrain.cs" />
     <Compile Include="Configs\Config.cs" />
     <Compile Include="Configs\ConfigFourmi.cs" />
     <Compile Include="Configs\Timer\TimerConstants.cs" />
@@ -63,6 +60,7 @@
     <Compile Include="Etape.cs" />
     <Compile Include="Fabriques\FabriqueAttitude.cs" />
     <Compile Include="Fabriques\FabriqueCase.cs" />
+    <Compile Include="Fabriques\FabriqueDeplacement.cs" />
     <Compile Include="Fabriques\FabriqueFourmi.cs" />
     <Compile Include="Fabriques\Fabrique.cs" />
     <Compile Include="Fabriques\FabriqueObjet.cs" />

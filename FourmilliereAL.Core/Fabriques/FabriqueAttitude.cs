@@ -25,7 +25,12 @@ namespace FourmilliereAL.Core
             }
         }
 
-        public override Case CreerCase(string nomCase, int x, int y)
+        public override Case CreerCase(int x, int y)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override Deplacement CreerDeplacement(string nomDeplacement)
         {
             throw new NotImplementedException();
         }

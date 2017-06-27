@@ -43,7 +43,6 @@ namespace FourmilliereAL.Core
                 foreach (var uneCase in plateauManager.CasesList)
                 {
                     writer.WriteStartElement("Case");
-                    writer.WriteElementString("Type", uneCase.ToString());
                     writer.WriteElementString("X", uneCase.Position.X.ToString());
                     writer.WriteElementString("Y", uneCase.Position.Y.ToString());
                     if (uneCase.Objet != null)
@@ -91,13 +90,11 @@ namespace FourmilliereAL.Core
                 var casesList = new List<Case>();
                 while (xmlReader.ReadToFollowing("Case"))
                 {
-                    xmlReader.ReadToFollowing("Type");
-                    string typeCase = xmlReader.ReadElementContentAsString();
                     xmlReader.ReadToFollowing("X");
                     int x = xmlReader.ReadElementContentAsInt();
                     xmlReader.ReadToFollowing("Y");
                     int y = xmlReader.ReadElementContentAsInt();
-                    var myCase = FabriqueSimulation.CreerFabrique("FabriqueCase").CreerCase(typeCase, x, y);
+                    var myCase = FabriqueSimulation.CreerFabrique("FabriqueCase").CreerCase(x, y);
                     xmlReader.MoveToContent();
                     if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name == "Objet")
                     {

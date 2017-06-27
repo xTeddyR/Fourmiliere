@@ -15,5 +15,10 @@
         public virtual void Avance(Fourmi fourmi) { }
 
         public virtual void Avance(Fourmi fourmi, Location Destination) { }
+
+        public override string ToString()
+        {
+            return this.GetType().Name;
+        }
     }
 }

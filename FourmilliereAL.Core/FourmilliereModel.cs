@@ -13,6 +13,7 @@ namespace FourmilliereAL.Core
         private Deplacement courtChemin;
         private Meteo meteo;
         private Timer timer;
+        private Random random;
 
         public string TitreApplication { get; set; }
         public ObservableCollection<Fourmi> FourmisList { get; set; }
@@ -41,6 +42,7 @@ namespace FourmilliereAL.Core
             
             meteo = new Meteo(ref FourmisList);
             timer = new Timer(meteo);
+            random = new Random();
 
             AjouterFourmi("Zero", 0, 0);
 
@@ -94,6 +96,27 @@ namespace FourmilliereAL.Core
             FourmisList.Remove(fourmiAsupprimer);
         }
 
+        public void GenererFourmiRouge()
+        {
+            if (nbTours % ConfigFourmi.FOURMI_ENNEMIE_NB_TOURS == 0)
+            {
+                AjouterFourmi("Bad Ant",
+                    random.Next(1, ConfigFourmi.FOURMILIERE_ROUGE_RANGE_X),
+                    random.Next(Config.GRILLE_HAUTEUR - ConfigFourmi.FOURMILIERE_ROUGE_RANGE_Y, Config.GRILLE_HAUTEUR),
+                    "AttitudeEnnemi");
+            }
+        }
+
+        public void GenererObjets()
+        {
+            if (nbTours % ConfigFourmi.OBJET_NB_TOURS == 0)
+            {
+                ListeFruit.Add(AjouteObjet(random.Next(1, Config.GRILLE_LARGEUR), random.Next(Config.GRILLE_HAUTEUR), "Pomme"));
+                AjouteObjet(random.Next(1, Config.GRILLE_LARGEUR), random.Next(Config.GRILLE_HAUTEUR), "Panier");
+                AjouteObjet(random.Next(1, Config.GRILLE_LARGEUR), random.Next(Config.GRILLE_HAUTEUR), "Baton");
+            }
+        }
+
         public void TourSuivant()
         {
             nbTours++;
@@ -101,22 +124,8 @@ namespace FourmilliereAL.Core
 
             timer.OnNouveauTour();
 
-            Random random = new Random();
-
-            if (nbTours % ConfigFourmi.FOURMI_ENNEMIE_NB_TOURS == 0)
-            {
-                AjouterFourmi("Bad Ant", 
-                    random.Next(1, ConfigFourmi.FOURMILIERE_ROUGE_RANGE_X),
-                    random.Next(Config.GRILLE_HAUTEUR - ConfigFourmi.FOURMILIERE_ROUGE_RANGE_Y, Config.GRILLE_HAUTEUR),
-                    "AttitudeEnnemi");
-            }
-
-            if (nbTours % ConfigFourmi.OBJET_NB_TOURS == 0)
-            {
-                ListeFruit.Add(AjouteObjet(random.Next(1, Config.GRILLE_LARGEUR), random.Next(Config.GRILLE_HAUTEUR), "Pomme"));
-                AjouteObjet(random.Next(1, Config.GRILLE_LARGEUR), random.Next(Config.GRILLE_HAUTEUR), "Panier");
-                AjouteObjet(random.Next(1, Config.GRILLE_LARGEUR), random.Next(Config.GRILLE_HAUTEUR), "Baton");
-            }
+            GenererFourmiRouge();
+            GenererObjets();
 
             for(int i = 0; i < FourmisList.Count; i++)
             {

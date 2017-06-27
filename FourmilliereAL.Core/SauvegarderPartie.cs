@@ -37,6 +37,7 @@ namespace FourmilliereAL.Core
                 writer.WriteElementString("Minute", environnement.Heure.NbMinute.ToString());
                 writer.WriteEndElement(); // </Temps>
                 writer.WriteEndElement(); // </Environnement>
+                writer.WriteElementString("NbTours", FourmilliereModel.NbTours.ToString());
                 writer.WriteStartElement("PlateauManager");
                 writer.WriteStartElement("CasesList");
                 foreach (var uneCase in plateauManager.CasesList)
@@ -82,12 +83,11 @@ namespace FourmilliereAL.Core
                 xmlReader.ReadToFollowing("Meteo");
                 environnement.Meteo.Etat = (MeteoType) Enum.Parse(typeof(MeteoType), xmlReader.ReadElementContentAsString());
                 xmlReader.ReadToFollowing("Heure");
-                int nbHeure = xmlReader.ReadElementContentAsInt();
-                environnement.Heure.NbHeure = nbHeure;
+                environnement.Heure.NbHeure = xmlReader.ReadElementContentAsInt();
                 xmlReader.ReadToFollowing("Minute");
-                int nbMinutes = xmlReader.ReadElementContentAsInt();
-                environnement.Heure.NbMinute = nbMinutes;
-
+                environnement.Heure.NbMinute = xmlReader.ReadElementContentAsInt();
+                xmlReader.ReadToFollowing("NbTours");
+                FourmilliereModel.NbTours = xmlReader.ReadElementContentAsInt();
                 var casesList = new List<Case>();
                 while (xmlReader.ReadToFollowing("Case"))
                 {

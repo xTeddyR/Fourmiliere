@@ -20,7 +20,7 @@ namespace FourmilliereAL.Core
         public int DimensionY { get; set; }
         public bool EnCours { get; set; }
         public int VitesseExecution {get;set;}
-        public int NbTours { get; set; }
+        public static int NbTours { get; set; }
 
         public FourmilliereModel(ObservableCollection<Fourmi> FourmisList)
         {

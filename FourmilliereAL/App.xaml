@@ -2,11 +2,15 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:FourmilliereAL"
-             StartupUri="MainWindow.xaml">
+             StartupUri="FlatWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <!-- Attention l'ordre est important -->
                 <ResourceDictionary Source="Styles/Couleurs.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Styles/Boutons.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Styles/Fonts.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Styles/Texts.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

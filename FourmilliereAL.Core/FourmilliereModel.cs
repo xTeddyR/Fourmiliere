@@ -1,23 +1,38 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 
 
 namespace FourmilliereAL.Core
 {
-    public class FourmilliereModel
+    public class FourmilliereModel : INotifyPropertyChanged
     {
         private PlateauManager plateauManager;
         private Deplacement hazard;
         private Deplacement courtChemin;
         private Meteo meteo;
         private Timer timer;
+        private Fourmi fourmiSelect;
         private Random random;
 
         public string TitreApplication { get; set; }
         public ObservableCollection<Fourmi> FourmisList { get; set; }
-        public Fourmi FourmisSelect { get; set; }
+        public Fourmi FourmisSelect
+        {
+            get
+            {
+                return fourmiSelect;
+            }
+            set
+            {
+                fourmiSelect = value;
+                OnPropertyChanged();
+            }
+        }
+
         public int DimensionX { get; set; }
         public int DimensionY { get; set; }
         public bool EnCours { get; set; }
@@ -180,6 +195,12 @@ namespace FourmilliereAL.Core
             plateauManager.LoadDataFromXML(fileName);
             FourmisList.Clear();
             plateauManager.GetAllFourmis().ForEach(f => FourmisList.Add(f));
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

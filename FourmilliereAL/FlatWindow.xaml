@@ -164,7 +164,7 @@
             </Button>
             
             <!-- Supprimer fourmi selectioner -->
-            <Button  
+            <Button Style="{StaticResource ActionButtonRed}"  
                     Grid.Row="2" 
                     Command="{Binding DeleteAntCommand}">
                 <Button.Content>

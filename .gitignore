@@ -1,6 +1,7 @@
 # Prerequisites
 .vs/
 *.d
+*.csproj.user
 
 # Object files
 *.o

@@ -17,5 +17,7 @@
 
         public static readonly int FOURMI_ENNEMIE_NB_TOURS = 3;
 
+        public static readonly int OBJET_NB_TOURS = 5;
+
     }
 }

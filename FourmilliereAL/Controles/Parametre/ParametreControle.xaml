@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="FourmilliereAL.ParametreControle"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FourmilliereAL"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="200">
+    <Grid Background="{StaticResource BackgroundVeryLightBrush}">
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="Partie" HorizontalAlignment="Center" FontFamily="{StaticResource RobotoRegular}"></TextBlock>
+            <Button Style="{StaticResource LoadButton}" IsEnabled="{Binding IsEnabled}" Content="Charger" Command="{Binding LoadDataCommand}"></Button>
+            <Button Style="{StaticResource SaveButton}" Content="Sauvegarder" Command="{Binding SaveDataCommand}"></Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

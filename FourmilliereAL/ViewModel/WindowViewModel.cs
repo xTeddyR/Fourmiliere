@@ -15,6 +15,8 @@ namespace FourmilliereAL
 
         public int MinimumWidth { get; set; } = 200;
 
+        public bool Borderless => (window.WindowState == WindowState.Maximized || dockerPosition != WindowDockPosition.Undocked);
+
         /// <summary>
         /// La taille du redimensionnment
         /// </summary>
@@ -23,54 +25,40 @@ namespace FourmilliereAL
         /// <summary>
         /// La taille du redimensionnement de la bordure en prenant en compte la marge exterieur
         /// </summary>
-        public Thickness ResizeBorderThickness { get { return new Thickness(ResizeBorder + OuterMarginSize); } }
+        public Thickness ResizeBorderThickness => new Thickness(ResizeBorder + OuterMarginSize);
 
         /// <summary>
         /// Le padding du contenu de la fenêtre
         /// </summary>
-        public Thickness InnerContentPadding { get { return new Thickness(ResizeBorder); } }
+        public Thickness InnerContentPadding { get; set; } = new Thickness(0);
 
         /// <summary>
         /// Marge exterieur pour l'ombre
         /// </summary>
         public int OuterMarginSize
         {
-            get
-            {
-                return window.WindowState == WindowState.Maximized ? 0 : outerMargin;
-            }
-
-            set
-            {
-                outerMargin = value;
-            }
+            get => Borderless ? 0 : outerMargin;
+            set => outerMargin = value;
         }
 
         /// <summary>
         /// Marge exterieur pour l'ombre
         /// </summary>
-        public Thickness OuterMarginSizeThickness { get { return new Thickness(OuterMarginSize); } }
+        public Thickness OuterMarginSizeThickness => new Thickness(OuterMarginSize);
 
         /// <summary>
         /// Radius des angles de la fenêtre
         /// </summary>
         public int WindowRadius
         {
-            get
-            {
-                return window.WindowState == WindowState.Maximized ? 0 : windowRadius;
-            }
-
-            set
-            {
-                windowRadius = value;
-            }
+            get => Borderless ? 0 : windowRadius;
+            set => windowRadius = value;
         }
 
         /// <summary>
         /// Radius des angles de la fenêtre
         /// </summary>
-        public CornerRadius WindowCornerRadius { get { return new CornerRadius(WindowRadius); } }
+        public CornerRadius WindowCornerRadius => new CornerRadius(WindowRadius);
 
         /// <summary>
         /// La taille de la barre de titre / caption de la fenêtre
@@ -80,25 +68,10 @@ namespace FourmilliereAL
         /// <summary>
         /// La taille de la barre de titre / caption de la fenêtre
         /// </summary>
-        public GridLength TitleHeightGridLength { get { return new GridLength(TitleHeight + ResizeBorder); } }
+        public GridLength TitleHeightGridLength => new GridLength(TitleHeight + ResizeBorder);
 
         public string AppTitle { get; set; } = Config.APPLICATION_TITRE;
 
-        public bool IsDeletable { get { return App.fourmilliereVM.FourmisSelect != null ? true : false; } }
-
-        public Fourmi SelectedAnt
-        {
-            get
-            {
-                return selectedAnt;
-            }
-            set
-            {
-                selectedAnt = value;
-                OnPropertyChanged(nameof(SelectedAnt));
-            }
-        }
- 
         #endregion
 
         #region Membres privés
@@ -106,6 +79,8 @@ namespace FourmilliereAL
         /// La fenêtre que ce modèle de vue controle
         /// </summary>
         Window window;
+
+        private WindowResizer windowResizer;
 
         /// <summary>
         /// Marge exterieur pour l'ombre
@@ -116,6 +91,8 @@ namespace FourmilliereAL
         /// Radius des angles de la fenêtre
         /// </summary>
         private int windowRadius = 10;
+
+        private WindowDockPosition dockerPosition = WindowDockPosition.Undocked;
 
         private Fourmi selectedAnt = App.fourmilliereVM.FourmisSelect;
 
@@ -142,16 +119,9 @@ namespace FourmilliereAL
             this.window = window;
 
             window.StateChanged += (sender, e) => {
-
-                OnPropertyChanged(nameof(ResizeBorderThickness));
-                OnPropertyChanged(nameof(OuterMarginSize));
-                OnPropertyChanged(nameof(OuterMarginSizeThickness));
-                OnPropertyChanged(nameof(WindowRadius));
-                OnPropertyChanged(nameof(WindowCornerRadius));
-
+                WindowResized();
             };
 
-            OnPropertyChanged(nameof(SelectedAnt));
 
             // Command init
 
@@ -161,6 +131,14 @@ namespace FourmilliereAL
             MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(window, GetMousePosition()));
             AddAntCommand = new RelayCommand(() => App.fourmilliereVM.AjouterFourmis());
             DeleteAntCommand = new RelayCommand(() => App.fourmilliereVM.SupprimerFourmisSelect());
+
+            windowResizer = new WindowResizer(window);
+
+            windowResizer.WindowDockChanged += (dock) => {
+                dockerPosition = dock;
+
+                WindowResized();
+            };
         }
         #endregion
 
@@ -177,6 +155,17 @@ namespace FourmilliereAL
             App.ThreadManager.StopGrilleExecution();
             window.Close();
         }
+
+        public void WindowResized()
+        {
+            OnPropertyChanged(nameof(Borderless));
+            OnPropertyChanged(nameof(ResizeBorderThickness));
+            OnPropertyChanged(nameof(OuterMarginSize));
+            OnPropertyChanged(nameof(OuterMarginSizeThickness));
+            OnPropertyChanged(nameof(WindowRadius));
+            OnPropertyChanged(nameof(WindowCornerRadius));
+        }
+
         #endregion
     }
 }

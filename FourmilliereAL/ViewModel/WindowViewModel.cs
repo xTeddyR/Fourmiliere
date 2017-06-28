@@ -82,7 +82,7 @@ namespace FourmilliereAL
         /// </summary>
         public GridLength TitleHeightGridLength { get { return new GridLength(TitleHeight + ResizeBorder); } }
 
-        public string AppTitle { get; set; } = Config.ApplicationTitle;
+        public string AppTitle { get; set; } = Config.APPLICATION_TITRE;
 
         public bool IsDeletable { get { return App.fourmilliereVM.FourmisSelect != null ? true : false; } }
 

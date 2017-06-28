@@ -88,8 +88,8 @@ namespace FourmilliereAL
             img.Stretch = Stretch.Fill;
 
             Plateau.Children.Add(img);
-            Grid.SetColumn(img, ConfigFourmi.FourmilierePositionX);
-            Grid.SetRow(img, ConfigFourmi.FourmilierePositionY);
+            Grid.SetColumn(img, ConfigFourmi.FOURMILIERE_POSITION_X);
+            Grid.SetRow(img, ConfigFourmi.FOURMILIERE_POSITION_Y);
         }
     }
 }

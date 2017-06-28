@@ -61,9 +61,6 @@ namespace FourmilliereAL.Core
             environnement.Heure = new Timer(environnement.Meteo);
 
             this.ListeFruit = new ObservableCollection<Objet>();
-            
-            meteo = new Meteo(ref FourmisList);
-            timer = new Timer(meteo);
             random = new Random();
 
 
@@ -149,7 +146,7 @@ namespace FourmilliereAL.Core
             nbTours++;
             Console.WriteLine("nbTours: " + nbTours);
 
-            timer.OnNouveauTour();
+            environnement.Heure.OnNouveauTour();
 
             GenererFourmiRouge();
             GenererObjets();

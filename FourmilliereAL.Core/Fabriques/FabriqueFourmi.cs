@@ -2,9 +2,19 @@
 
 namespace FourmilliereAL.Core
 {
-    class FabriqueFourmi : FabriqueFourmilliere
+    public class FabriqueFourmi : Fabrique
     {
+        public override Attitude CreerAttitude(string nomAttitude)
+        {
+            throw new NotImplementedException();
+        }
+
         public override Case CreerCase(int x, int y)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override Deplacement CreerDeplacement(string nomDeplacement)
         {
             throw new NotImplementedException();
         }
@@ -14,7 +24,7 @@ namespace FourmilliereAL.Core
             return new Fourmi(nom, x, y);
         }
 
-        public override Objet CreerObjet(int x, int y)
+        public override Objet CreerObjet(string objet, int x, int y)
         {
             throw new NotImplementedException();
         }

@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FourmilliereAL"
+             xmlns:core="clr-namespace:FourmilliereAL.Core;assembly=FourmilliereAL.Core"
              mc:Ignorable="d" 
              Height="60"
              d:DesignHeight="60" d:DesignWidth="300">
@@ -47,7 +48,7 @@
                             <StackPanel Grid.Column="2" VerticalAlignment="Center">
                                 <!-- Nom de la fourmi -->
                                 <TextBlock x:Name="nomfourmi"
-                                           Text="{Binding Nom, FallbackValue=TEST}"
+                                           Text="{Binding Nom}"
                                            TextAlignment="Left"
                                            VerticalAlignment="Center"
                                            TextTrimming="CharacterEllipsis"
@@ -59,7 +60,7 @@
                                     <Image Source="../../Media/loop.png" Height="12" Margin="0,0,5,0"></Image>
 
                                     <!-- Tour de la fourmi -->
-                                    <TextBlock  Text="{Binding ListEtape.Count, FallbackValue=5}"
+                                    <TextBlock  Text="{Binding ListEtape.Count}"
                                            TextAlignment="Center"
                                            VerticalAlignment="Center"
                                            TextTrimming="CharacterEllipsis" FontSize="10" Margin="0,0,15,0">
@@ -68,7 +69,7 @@
                                     <Image Source="../../Media/heart.png" Height="12" Margin="0,0,5,0"></Image>
 
                                     <!-- Vie de la fourmi -->
-                                    <TextBlock  Text="{Binding Vie, FallbackValue=5}"
+                                    <TextBlock  Text="{Binding Vie}"
                                            TextAlignment="Center"
                                            VerticalAlignment="Center"
                                            TextTrimming="CharacterEllipsis" FontSize="10">
@@ -104,5 +105,5 @@
         </Style>
     </UserControl.Resources>
 
-    <ContentControl Style="{StaticResource ContentStyle}"/>
+    <ContentControl d:DataContext="{x:Static core:FourmiListItemDesignModel.Instance}" Style="{StaticResource ContentStyle}"/>
 </UserControl>

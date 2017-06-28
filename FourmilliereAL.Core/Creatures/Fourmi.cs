@@ -8,6 +8,7 @@ namespace FourmilliereAL.Core
     public class Fourmi : INotifyPropertyChanged
     {
         private PlateauManager plateauManager;
+        public Attitude comportement { get; set; }
 
         protected static Random Hasard = new Random();
         public string Nom { get; set; }
@@ -23,17 +24,30 @@ namespace FourmilliereAL.Core
         }
         public ObservableCollection<Etape> ListEtape { get; set; }
         public Location Position { get; set; }
-        public Attitude Comportement { get; set; }
+
+        // TODO Ajouter OnPropertyChanged() au Comportement
+        public Attitude Comportement
+        {
+            get
+            {
+                return comportement;
+            }
+            set
+            {
+                comportement = value;
+                OnPropertyChanged();
+            }
+        }
         public Deplacement Deplace { get; set; }
 
         public Fourmi()
         {
             this.Nom = "";
-            this.vie = ConfigFourmi.VieFourmi;
+            this.vie = ConfigFourmi.VIE_FOURMI;
             ListEtape = new ObservableCollection<Etape>();
-            Position = new Location(ConfigFourmi.FourmilierePositionX, ConfigFourmi.FourmilierePositionY);
+            Position = new Location(ConfigFourmi.FOURMILIERE_POSITION_X, ConfigFourmi.FOURMILIERE_POSITION_Y);
             plateauManager = PlateauManager.Instance;
-            Comportement = new AttitudeAucune();
+            comportement = FabriqueSimulation.CreerFabrique("FabriqueAttitude").CreerAttitude("AttitudeAucune");
             int nbEtapes = 0;
             for (int i = 0; i < nbEtapes; i++)
             {
@@ -44,11 +58,11 @@ namespace FourmilliereAL.Core
         public Fourmi(string v, int x, int y)
         {
             this.Nom = v;
-            this.vie = ConfigFourmi.VieFourmi;
+            this.vie = ConfigFourmi.VIE_FOURMI;
             ListEtape = new ObservableCollection<Etape>();
             Position = new Location(x, y);
             plateauManager = PlateauManager.Instance;
-            Comportement = new AttitudeAucune();
+            Comportement = FabriqueSimulation.CreerFabrique("FabriqueAttitude").CreerAttitude("AttitudeAucune");
             int nbEtapes = 0;
             
             for(int i = 0; i < nbEtapes; i++)

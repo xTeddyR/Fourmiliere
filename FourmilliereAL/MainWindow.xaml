@@ -83,7 +83,7 @@
         <Button Grid.Row="3" Grid.Column="0"  Click="Supp_Fourmi_Button_Click" >
 		
             <Button.Content>
-                <TextBlock Text="{Binding FourmisSelect, StringFormat='Supprimer{0}'}"/>
+                <TextBlock Text="{Binding FourmisSelect, StringFormat='Supprimer {0}'}"/>
             </Button.Content>
         </Button>
         <Grid Grid.Row="1" Grid.Column="2" ShowGridLines="true">

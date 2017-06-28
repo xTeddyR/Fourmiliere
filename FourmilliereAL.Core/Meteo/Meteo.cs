@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 
 namespace FourmilliereAL.Core
 {
-    class Meteo : IObservable
+    public class Meteo : IObservable
     {
         private readonly ObservableCollection <Fourmi> observateurList;
 
@@ -27,8 +27,6 @@ namespace FourmilliereAL.Core
 
         public void DisplayObservator()
         {
-            Console.WriteLine("*************************");
-
             foreach (Fourmi o in observateurList)
             {
                 Console.WriteLine(o.Nom);

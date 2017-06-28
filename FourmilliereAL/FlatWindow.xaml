@@ -1,0 +1,187 @@
+﻿<Window x:Class="FourmilliereAL.FlatWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FourmilliereAL"
+        mc:Ignorable="d"
+        x:Name="AppWindow"
+        Title="FlatWindow" Height="640" Width="1024" MinHeight="{Binding MinimumHeight}" MinWidth="{Binding MinimumWidth}"
+        WindowStyle="None" 
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type local:FlatWindow}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Window}">
+                        <!-- Outer border-->
+                        
+                        <Border x:Name="Container" Padding="{Binding OuterMarginSizeThickness, FallbackValue=10}">
+                           
+                            <!-- Main Window Outline -->
+                            
+                            <Grid>
+                                
+                                <!-- Op city Mask -->
+                                <Border x:Name="ClipContainer"
+                                        Background="{StaticResource BackgroundVeryLightBrush}"
+                                        CornerRadius="{Binding WindowCornerRadius, FallbackValue=10}" />
+
+
+                                <!-- Window Border and drop shadow -->
+                                
+                                <Border CornerRadius="{Binding WindowCornerRadius, FallbackValue=10}"
+                                        Background="{StaticResource BackgroundVeryLightBrush}">
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth="0" Opacity="0.2" />
+                                    </Border.Effect>
+                                    
+                                </Border>
+                                
+                                <!-- Main Content -->
+
+                                <Grid>
+    
+                                    <!-- Clip Grid Opacity -->
+                                    <Grid.OpacityMask>
+                                        <VisualBrush Visual="{Binding ElementName=ClipContainer}"/>
+                                    </Grid.OpacityMask>
+                                    
+                                    <Grid.RowDefinitions>
+                                        
+                                        <!-- Title Bar -->
+                                        <RowDefinition Height="{Binding TitleHeightGridLength, FallbackValue=42}" />
+                                        <!-- Shadow-->
+                                        <RowDefinition Height="Auto" />
+                                        <!-- Window Content -->
+                                        <RowDefinition Height="*" />
+                                        
+                                    </Grid.RowDefinitions>
+                                    
+                                    <!-- Title Bar -->
+
+                                    <Grid Grid.Column="0" Panel.ZIndex="1">
+
+                                        <Grid.ColumnDefinitions>
+                                            
+                                            <!-- App Icon -->
+                                            <ColumnDefinition Width="Auto" />
+                                            <!-- App Title -->
+                                            <ColumnDefinition Width="*" />
+                                            <!-- Window Button -->
+                                            <ColumnDefinition Width="Auto" />
+
+                                        </Grid.ColumnDefinitions>
+
+                                        <!-- App Icon -->
+                                        <Button Style="{StaticResource SystemIconButton}" Grid.Column="0" Padding="8" Command="{Binding MenuCommand}">
+                                            <Image Source="Resources/Logo/logo-small.png"></Image>
+                                        </Button>
+
+                                        <!-- App Title -->
+                                        <Viewbox Grid.Column="1" Margin="0">
+                                            <TextBlock Style="{StaticResource HeaderText}" Text="{Binding AppTitle, FallbackValue=EZAntSimulator}"></TextBlock>
+                                        </Viewbox>
+
+                                        <!-- Window Button -->
+                                        <StackPanel Grid.Column="2" Orientation="Horizontal" >
+                                            <Button Style="{StaticResource WindowControlButton}" Command="{Binding MinimizedCommand}" Content="_" />
+                                            <Button Style="{StaticResource WindowControlButton}" Command="{Binding MaximizedCommand}" Content="[ ]" />
+                                            <Button Style="{StaticResource CloseWindowButton}" Command="{Binding CloseCommand}" Content="x" />
+                                        </StackPanel>
+                                        
+
+                                    </Grid>
+                                    
+                                    <!-- Drop Shadow -->
+                                    <Border Grid.Row="1" Height="6" BorderThickness="0 0.2 0 0">
+                                        <!-- Underline -->
+                                        <Border.BorderBrush>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                                <GradientStop Color="{StaticResource BackgroundVeryLight}" Offset="0.0" />
+                                                <GradientStop Color="{StaticResource SelectorDark}" Offset="0.5" />
+                                                <GradientStop Color="{StaticResource BackgroundVeryLight}" Offset="1.0" />
+                                            </LinearGradientBrush>
+                                        </Border.BorderBrush>
+                                        
+                                        <!-- Drop Shadow -->
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                                <GradientStop Color="{StaticResource BackgroundVeryLight}" Offset="0.0" />
+                                                <GradientStop Color="{StaticResource BackgroundAlmostLight}" Offset="1.0" />
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                    </Border>
+                                    
+                                    <!-- Page Content -->
+                                    <Border Grid.Row="2" Padding="0">
+                                        <ContentPresenter Content="{TemplateBinding Content}"></ContentPresenter>
+                                    </Border>
+                                    
+                                </Grid>
+                                
+                            </Grid>
+                            
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome ResizeBorderThickness="{Binding ResizeBorderThickness}"
+                      CaptionHeight="{Binding TitleHeight}"
+                      GlassFrameThickness="0">
+            
+        </WindowChrome>
+        
+    </WindowChrome.WindowChrome>
+
+    <Grid Background="{StaticResource BackgroundLightBrush}">
+        <Grid.ColumnDefinitions>
+            <!-- Left Side Menu -->
+            <ColumnDefinition Width="0.4*" />
+            <!-- Ant Grid -->
+            <ColumnDefinition Width="*" />
+            <!-- Right Side Menu -->
+            <ColumnDefinition Width="0.25*" />
+        </Grid.ColumnDefinitions>
+        
+        <!-- Left Side Menu -->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="0.1*" />
+                <RowDefinition Height="0.1*" />
+            </Grid.RowDefinitions>
+            <local:FourmiListControle Grid.Row="0" ></local:FourmiListControle>
+            <!-- Ajouter fourmi bouton -->
+            <Button Style="{StaticResource ActionButton}" 
+                    Grid.Row="1" 
+                    Content="Ajouter Fourmi"
+                    Command="{Binding AddAntCommand}">
+
+            </Button>
+            <!-- Supprimer fourmi selectioner -->
+            <Button Style="{StaticResource ActionButtonRed}"
+                    Grid.Row="2"
+                    Command="{Binding DeleteAntCommand}">
+                <Button.Content>
+                    <TextBlock DataContext="{x:Static local:App.fourmilliereVM}" Text="{Binding FourmisSelect, StringFormat='Supprimer {0}',FallbackValue=Supprimer}" />
+                </Button.Content>
+
+            </Button>
+        </Grid>
+        
+        <!-- Ant Grid -->
+        <local:Grille Grid.Column="1"></local:Grille>
+        
+        <!-- Right Side Menu -->
+        <local:ParametreControle Grid.Column="2"></local:ParametreControle>
+        
+    </Grid>
+    
+</Window>

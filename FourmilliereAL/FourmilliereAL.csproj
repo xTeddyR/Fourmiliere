@@ -28,6 +28,8 @@
     <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -49,9 +51,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Media\Logo\icon.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Logo\icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Windows.Shell, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Windows.Shell.3.0.1.0\lib\net40\Microsoft.Windows.Shell.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -72,11 +77,33 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controles\Parametre\ParametreControle.xaml.cs">
+      <DependentUpon>ParametreControle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Plateau\Grille.xaml.cs">
+      <DependentUpon>Grille.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\GrilleManager.cs" />
+    <Compile Include="Manager\ThreadManager.cs" />
+    <Compile Include="ViewModel\GrilleViewModel.cs" />
+    <Compile Include="ViewModel\ParametreViewModel.cs" />
+    <Compile Include="ViewModel\WindowViewModel.cs" />
+    <Compile Include="FlatWindow.xaml.cs">
+      <DependentUpon>FlatWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="Controles\Fourmi\FourmiListControle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controles\Fourmi\FourmiListItemControle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\Parametre\ParametreControle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\Plateau\Grille.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -102,7 +129,23 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Styles\Fonts.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Boutons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\Couleurs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FlatWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Texts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -125,6 +168,19 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Resources\Fonts\Roboto-Black.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-BlackItalic.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-Bold.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-BoldItalic.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-Italic.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-Light.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-LightItalic.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-Medium.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-MediumItalic.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-Regular.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-Thin.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-ThinItalic.ttf" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -134,7 +190,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Media\ground-png.png" />
+    <Resource Include="Resources\ground-png.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
@@ -149,19 +205,19 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Media\warrior-ant.png" />
+    <Resource Include="Resources\warrior-ant.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Media\Logo\icon.ico" />
+    <Resource Include="Resources\Logo\icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Media\default-ant.png" />
+    <Resource Include="Resources\default-ant.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Media\loop.png" />
+    <Resource Include="Resources\loop.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Media\heart.png" />
+    <Resource Include="Resources\heart.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FourmilliereAL.Core\FourmilliereAL.Core.csproj">
@@ -170,8 +226,30 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Media\red-ant.png" />
-    <Resource Include="Media\fourmilliere.png" />
+    <Resource Include="Resources\red-ant.png" />
+    <Resource Include="Resources\fourmilliere.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FodyWeavers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Logo\logo-small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\play_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\pause_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\next_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\load_button.png" />
+    <Resource Include="Resources\save_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\apple.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

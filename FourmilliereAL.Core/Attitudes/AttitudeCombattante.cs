@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FourmilliereAL.Core
+﻿namespace FourmilliereAL.Core
 {
     class AttitudeCombattante : Attitude
     {
@@ -14,7 +8,7 @@ namespace FourmilliereAL.Core
         {
             if (destFourmi.Comportement.ToString().Equals("AttitudeEnnemi"))
             {
-                destFourmi.Vie -= 5;
+                destFourmi.Vie = 0;
             }
         }
     }

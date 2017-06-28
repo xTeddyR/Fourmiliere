@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FourmilliereAL.Core
+﻿namespace FourmilliereAL.Core
 {
     class FourmiliereItem
     {
@@ -25,7 +19,7 @@ namespace FourmilliereAL.Core
                 {
                     if (instance == null)
                     {
-                        instance = new FourmiliereItem(ConfigFourmi.FourmilierePositionX, ConfigFourmi.FourmilierePositionY);
+                        instance = new FourmiliereItem(ConfigFourmi.FOURMILIERE_POSITION_X, ConfigFourmi.FOURMILIERE_POSITION_Y);
                     }
                     return instance;
                 }

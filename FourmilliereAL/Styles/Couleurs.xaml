@@ -8,6 +8,9 @@
     <Color x:Key="BackgroundVeryLight">#ffffff</Color>
     <SolidColorBrush x:Key="BackgroundVeryLightBrush" Color="{StaticResource BackgroundVeryLight}" />
 
+    <Color x:Key="BackgroundAlmostLight">#f9f9f9</Color>
+    <SolidColorBrush x:Key="BackgroundAlmostLightBrush" Color="{StaticResource BackgroundAlmostLight}" />
+
     <!-- Primary color section -->
     <Color x:Key="Primary">#dce775</Color>
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>

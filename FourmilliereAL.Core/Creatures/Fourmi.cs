@@ -9,6 +9,7 @@ namespace FourmilliereAL.Core
     {
         private PlateauManager plateauManager;
         private Attitude comportement { get; set; }
+        private Deplacement deplacement { get; set; }
 
         protected static Random Hasard = new Random();
         public string Nom { get; set; }
@@ -89,7 +90,14 @@ namespace FourmilliereAL.Core
 
         public void MisAjour()
         {
+            if (Environnement.Instance.Meteo.Etat == MeteoType.Nuit)
+            {
+                deplacement = FabriqueSimulation.CreerFabrique("FabriqueDeplacement").CreerDeplacement("CourtChemin");
+                deplacement.Avance(this, new Location(ConfigFourmi.FOURMILIERE_POSITION_X, ConfigFourmi.FOURMILIERE_POSITION_Y));
 
+            }
+            deplacement = FabriqueSimulation.CreerFabrique("FabriqueDeplacement").CreerDeplacement("AvanceHazard");
+            deplacement.Avance(this);
         }
     }
 }

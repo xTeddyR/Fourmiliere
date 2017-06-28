@@ -8,6 +8,7 @@ namespace FourmilliereAL.Core
     public class Fourmi : INotifyPropertyChanged
     {
         private PlateauManager plateauManager;
+        public Attitude comportement { get; set; }
 
         protected static Random Hasard = new Random();
         public string Nom { get; set; }
@@ -25,7 +26,18 @@ namespace FourmilliereAL.Core
         public Location Position { get; set; }
 
         // TODO Ajouter OnPropertyChanged() au Comportement
-        public Attitude Comportement { get; set; }
+        public Attitude Comportement
+        {
+            get
+            {
+                return comportement;
+            }
+            set
+            {
+                comportement = value;
+                OnPropertyChanged();
+            }
+        }
         public Deplacement Deplace { get; set; }
 
         public Fourmi()
@@ -35,7 +47,7 @@ namespace FourmilliereAL.Core
             ListEtape = new ObservableCollection<Etape>();
             Position = new Location(ConfigFourmi.FOURMILIERE_POSITION_X, ConfigFourmi.FOURMILIERE_POSITION_Y);
             plateauManager = PlateauManager.Instance;
-            Comportement = FabriqueSimulation.CreerFabrique("FabriqueAttitude").CreerAttitude("AttitudeAucune");
+            comportement = FabriqueSimulation.CreerFabrique("FabriqueAttitude").CreerAttitude("AttitudeAucune");
             int nbEtapes = 0;
             for (int i = 0; i < nbEtapes; i++)
             {

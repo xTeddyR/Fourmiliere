@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 
 namespace FourmilliereAL.Core
 {
-    class Meteo : IObservable
+    public class Meteo : IObservable
     {
         private readonly ObservableCollection <Fourmi> observateurList;
 

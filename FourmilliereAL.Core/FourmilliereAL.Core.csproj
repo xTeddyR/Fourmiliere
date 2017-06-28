@@ -55,9 +55,6 @@
     <Compile Include="Attitudes\AttitudeGarou.cs" />
     <Compile Include="Attitudes\AttitudeReine.cs" />
     <Compile Include="Cases\Case.cs" />
-    <Compile Include="Cases\Eau.cs" />
-    <Compile Include="Cases\Herbe.cs" />
-    <Compile Include="Cases\Terrain.cs" />
     <Compile Include="Configs\Config.cs" />
     <Compile Include="Configs\ConfigFourmi.cs" />
     <Compile Include="Creatures\Design\FourmiListItemDesignModel.cs" />
@@ -67,10 +64,12 @@
     <Compile Include="Deplacement\AvanceHazard.cs" />
     <Compile Include="Deplacement\CourtChemin.cs" />
     <Compile Include="Deplacement\Deplacement.cs" />
+    <Compile Include="Environnement.cs" />
     <Compile Include="Etape.cs" />
     <Compile Include="Expressions\ExpressionHelper.cs" />
     <Compile Include="Fabriques\FabriqueAttitude.cs" />
     <Compile Include="Fabriques\FabriqueCase.cs" />
+    <Compile Include="Fabriques\FabriqueDeplacement.cs" />
     <Compile Include="Fabriques\FabriqueFourmi.cs" />
     <Compile Include="Fabriques\Fabrique.cs" />
     <Compile Include="Fabriques\FabriqueObjet.cs" />
@@ -89,6 +88,7 @@
     <Compile Include="Observateur\IObservable.cs" />
     <Compile Include="PlateauManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SauvegarderPartie.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="Timer\Timer.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />

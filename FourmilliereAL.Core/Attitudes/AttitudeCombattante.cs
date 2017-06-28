@@ -8,7 +8,7 @@
         {
             if (destFourmi.Comportement.ToString().Equals("AttitudeEnnemi"))
             {
-                destFourmi.Vie -= 5;
+                destFourmi.Vie = 0;
             }
         }
     }

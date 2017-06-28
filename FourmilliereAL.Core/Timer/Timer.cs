@@ -4,12 +4,15 @@ namespace FourmilliereAL.Core
     /// <summary>
     /// Une classe gérant le temps écoulé
     /// </summary>
-    class Timer
+    public class Timer
     {
         public Meteo Meteo { get; set; }
         private int Heure;
         private int Minute;
         private int NombreMinuteAjouter;
+
+        public int NbHeure { get { return Heure; } set { Heure = value; } }
+        public int NbMinute { get { return Minute; } set { Minute = value; } }
 
         /// <summary>
         /// Le constructeur par défaut

@@ -6,7 +6,10 @@
 
         public override void ExecuteFourmi(Fourmi destFourmi)
         {
-            destFourmi.Vie -= 5;
+            if (!destFourmi.Comportement.ToString().Equals("AttitudeEnnemi") && !destFourmi.Comportement.ToString().Equals("AttitudeCombattante"))
+            {
+                destFourmi.Vie = 0;
+            }
         }
     }
 }

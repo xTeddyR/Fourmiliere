@@ -8,7 +8,7 @@ namespace FourmilliereAL.Core
     public class Fourmi : INotifyPropertyChanged
     {
         private PlateauManager plateauManager;
-        public Attitude comportement { get; set; }
+        private Attitude comportement { get; set; }
 
         protected static Random Hasard = new Random();
         public string Nom { get; set; }
@@ -53,6 +53,11 @@ namespace FourmilliereAL.Core
             {
                 ListEtape.Add(new Etape());
             }
+        }
+
+        public void ExecuterComportement()
+        {
+            Comportement.ExecuteFourmi(this);
         }
 
         public Fourmi(string v, int x, int y)

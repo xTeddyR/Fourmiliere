@@ -4,12 +4,13 @@
     {
         public AttitudeCombattante() : base() { }
 
-        public override void ExecuteFourmi(Fourmi destFourmi)
+        public override void ExecuteFourmi(Fourmi self)
         {
-            if (destFourmi.Comportement.ToString().Equals("AttitudeEnnemi"))
-            {
-                destFourmi.Vie = 0;
-            }
+            plateauManager.GetCaseFromFourmi(self).GetCreaturesSurCase().ForEach(f => {
+                if(f.Comportement.ToString() == "AttitudeEnnemi") {
+                    f.Vie = 0;
+                }
+            });
         }
     }
 }

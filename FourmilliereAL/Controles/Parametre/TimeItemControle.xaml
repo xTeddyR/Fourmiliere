@@ -11,13 +11,15 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
-        <Image Grid.Column="0" Source="pack://application:,,,/Resources/timer.png"  Margin="5"/>
+        <Image Grid.Column="0" Source="pack://application:,,,/Resources/timer.png"  Margin="15,5,5,5"/>
         <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
-            <TextBlock Text="{Binding Heure, Converter={local:ConvertisseurHeureVersHeureFormatter}, StringFormat=' {0} : '}"/>
-            <TextBlock Text="{Binding Minute, Converter={local:ConvertisseurHeureVersHeureFormatter}}"/>
+            <TextBlock Text="{Binding Heure, Converter={local:ConvertisseurHeureVersHeureFormatter}, StringFormat=' {0} : ', FallbackValue='14 : '}"/>
+            <TextBlock Text="{Binding Minute, Converter={local:ConvertisseurHeureVersHeureFormatter}, FallbackValue=30}"/>
         </StackPanel>
+        <Image Grid.Column="2" DataContext="{Binding Meteo}" Source="{Binding Etat, Converter={local:ConvertisseurMeteoVersImage}}" Height="32" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,15,0" />
 
     </Grid>
 </UserControl>

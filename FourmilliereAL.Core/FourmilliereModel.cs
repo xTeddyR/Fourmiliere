@@ -169,12 +169,22 @@ namespace FourmilliereAL.Core
                 } else {
                     hazard.Avance(FourmisList[i]);
                 }
-                FourmisList[i].Vie--;
-                VerifierVieFourmi(FourmisList[i]);
+                actuel.Vie--;
+                VerifierVieFourmi(actuel);
+
 
                 var objet = plateauManager.GetCaseFromFourmi(FourmisList[i]).Objet;
                 if (objet != null) FourmisList[i].Comportement.ExecuteObjet(objet);
                 VerifierVieFourmi(FourmisList[i]);
+            }
+            // This fail after a while
+            //ExecuterComportement();
+        }
+
+        public void ExecuterComportement()
+        {
+            foreach(var fourmi in FourmisList) {
+                fourmi.ExecuterComportement();
             }
         }
 

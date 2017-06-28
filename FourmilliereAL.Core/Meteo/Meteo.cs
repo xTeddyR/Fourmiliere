@@ -3,11 +3,24 @@ using System.Collections.ObjectModel;
 
 namespace FourmilliereAL.Core
 {
-    public class Meteo : IObservable
+    public class Meteo : AbstractMeteo, IObservable
     {
         private readonly ObservableCollection <Fourmi> observateurList;
 
-        public MeteoType Etat { get; set; }
+        private MeteoType etat;
+
+        public MeteoType Etat
+        {
+            get
+            {
+                return etat;
+            }
+            set
+            {
+                etat = value;
+                this.OnPropertyChanged();
+            }
+        }
 
         public Meteo(ref ObservableCollection<Fourmi> List)
         {

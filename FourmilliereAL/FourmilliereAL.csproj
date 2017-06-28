@@ -87,6 +87,7 @@
       <DependentUpon>Grille.xaml</DependentUpon>
     </Compile>
     <Compile Include="ConvertisseurValeur\ConvertisseurHeureVersHeureFormatter.cs" />
+    <Compile Include="ConvertisseurValeur\ConvertisseurMeteoVersImage.cs" />
     <Compile Include="ConvertisseurValeur\ConvertisseurObjetVersImage.cs" />
     <Compile Include="Manager\GrilleManager.cs" />
     <Compile Include="Manager\ThreadManager.cs" />
@@ -269,6 +270,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\ground_nuit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Meteo\sun.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Meteo\moon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

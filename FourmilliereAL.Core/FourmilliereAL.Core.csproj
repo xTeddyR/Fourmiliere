@@ -79,6 +79,7 @@
     <Compile Include="FourmiListViewModel.cs" />
     <Compile Include="FourmilliereModel.cs" />
     <Compile Include="Location.cs" />
+    <Compile Include="Meteo\AbstractMeteo.cs" />
     <Compile Include="Meteo\Meteo.cs" />
     <Compile Include="Meteo\MeteoType.cs" />
     <Compile Include="Objets\Baton.cs" />

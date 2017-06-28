@@ -118,7 +118,7 @@ namespace FourmilliereAL.Core
         /// </summary>
         public void VerifierChangementEtat()
         {
-            if(TimerConstants.HEURE_JOUR <= heure && Meteo.Etat != MeteoType.Jour) {
+            if(heure >= TimerConstants.HEURE_JOUR && heure < TimerConstants.HEURE_NUIT && Meteo.Etat != MeteoType.Jour) {
                 ChangementMeteo(MeteoType.Jour);
                 return;
             }

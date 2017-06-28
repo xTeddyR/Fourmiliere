@@ -66,10 +66,12 @@ namespace FourmilliereAL
         }
         public void AddingGround()
         {
+            var path = RecupererSolMeteo();
             for (int i = 0; i < App.fourmilliereVM.DimensionX; i++) {
                 for (int j = 0; j < App.fourmilliereVM.DimensionY; j++) {
                     Image img = new Image();
-                    Uri uri = new Uri("pack://application:,,,/Resources/ground-png.png", UriKind.Absolute);
+
+                    Uri uri = new Uri(path, UriKind.Absolute);
                     img.Source = new System.Windows.Media.Imaging.BitmapImage(uri);
                     img.HorizontalAlignment = HorizontalAlignment.Stretch;
                     img.VerticalAlignment = VerticalAlignment.Stretch;
@@ -128,6 +130,15 @@ namespace FourmilliereAL
                 Grid.SetRow(img, objet.Position.Y);
             }
 
+        }
+
+        public string RecupererSolMeteo()
+        {
+            if(Environnement.Instance.Heure.Meteo.Etat == MeteoType.Jour) {
+                return "pack://application:,,,/Resources/ground.png";
+            }
+
+            return "pack://application:,,,/Resources/ground_nuit.png";
         }
     }
 }

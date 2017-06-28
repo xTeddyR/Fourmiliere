@@ -199,7 +199,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\ground-png.png" />
+    <Resource Include="Resources\ground.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
@@ -266,6 +266,9 @@
   <ItemGroup>
     <Resource Include="Resources\axe.png" />
     <Resource Include="Resources\basket.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ground_nuit.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

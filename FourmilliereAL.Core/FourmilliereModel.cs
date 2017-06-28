@@ -118,11 +118,6 @@ namespace FourmilliereAL.Core
 
         public void GenererFourmiRouge()
         {
-            NbTours++;
-            Console.WriteLine("nbTours: " + NbTours);
-
-            environnement.Heure.OnNouveauTour();
-
             Random random = new Random();
 
             if (nbTours % ConfigFourmi.FOURMI_ENNEMIE_NB_TOURS == 0)

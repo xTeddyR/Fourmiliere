@@ -1,18 +1,43 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+
 namespace FourmilliereAL.Core
 {
     /// <summary>
     /// Une classe gérant le temps écoulé
     /// </summary>
-    public class Timer
+    public class Timer : INotifyPropertyChanged
     {
         public Meteo Meteo { get; set; }
-        private int Heure;
-        private int Minute;
+        private int heure;
+        private int minute;
         private int NombreMinuteAjouter;
 
-        public int NbHeure { get { return Heure; } set { Heure = value; } }
-        public int NbMinute { get { return Minute; } set { Minute = value; } }
+        public int Heure {
+            get
+            {
+                return heure;
+            }
+            set
+            {
+                heure = value;
+                OnPropertyChanged();
+            }
+        }
+        public int Minute
+        {
+            get
+            {
+                return minute;
+            }
+            set
+            {
+                minute = value;
+                OnPropertyChanged();
+            }
+
+        }
 
         /// <summary>
         /// Le constructeur par défaut
@@ -37,33 +62,35 @@ namespace FourmilliereAL.Core
 
         public void OnNouveauTour()
         {
-            AjouterTour();
-            FormaterHeureMinute();
+            FormaterHeureMinute(AjouterTour());
             VerifierChangementEtat();
-            Console.WriteLine(GetFormattedTime());
+            //Console.WriteLine(GetFormattedTime());
             Console.WriteLine(Meteo.Etat.ToString());
         }
 
-        public void AjouterTour()
+        public int AjouterTour()
         {
-            Minute += NombreMinuteAjouter;
+            int temps = minute;
+            temps += NombreMinuteAjouter;
 
+            return temps;
         }
 
-        private void FormaterHeureMinute()
+        private void FormaterHeureMinute(int temps)
         {
-            FormaterMinute();
+            FormaterMinute(temps);
             FormaterHeure();
         }
 
-        private void FormaterMinute()
+        private void FormaterMinute(int temps)
         {
-            if(TimerConstants.MINUTE_PAR_HEURE > Minute) {
+            if(TimerConstants.MINUTE_PAR_HEURE > temps) {
+                Minute = temps;
                 return;
             }
 
-            int nbHeure = Minute / TimerConstants.MINUTE_PAR_HEURE;
-            int nbMinute = Minute % TimerConstants.MINUTE_PAR_HEURE;
+            int nbHeure = temps / TimerConstants.MINUTE_PAR_HEURE;
+            int nbMinute = temps % TimerConstants.MINUTE_PAR_HEURE;
 
             if(nbMinute == TimerConstants.MINUTE_PAR_HEURE) {
                 Minute = 0;
@@ -91,12 +118,12 @@ namespace FourmilliereAL.Core
         /// </summary>
         public void VerifierChangementEtat()
         {
-            if(TimerConstants.HEURE_JOUR <= Heure && Meteo.Etat != MeteoType.Jour) {
+            if(TimerConstants.HEURE_JOUR <= heure && Meteo.Etat != MeteoType.Jour) {
                 ChangementMeteo(MeteoType.Jour);
                 return;
             }
 
-            if (TimerConstants.HEURE_NUIT <= Heure || TimerConstants.HEURE_JOUR > Heure && Meteo.Etat != MeteoType.Nuit) {
+            if (TimerConstants.HEURE_NUIT <= heure || TimerConstants.HEURE_JOUR > heure && Meteo.Etat != MeteoType.Nuit) {
                 ChangementMeteo(MeteoType.Nuit);
                 return;
             }
@@ -107,6 +134,11 @@ namespace FourmilliereAL.Core
             Meteo.Etat = Type;
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
     }
 }

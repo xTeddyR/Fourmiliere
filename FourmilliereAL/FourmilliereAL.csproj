@@ -80,9 +80,13 @@
     <Compile Include="Controles\Parametre\ParametreControle.xaml.cs">
       <DependentUpon>ParametreControle.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controles\Parametre\TimeItemControle.xaml.cs">
+      <DependentUpon>TimeItemControle.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controles\Plateau\Grille.xaml.cs">
       <DependentUpon>Grille.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ConvertisseurValeur\ConvertisseurHeureVersHeureFormatter.cs" />
     <Compile Include="Manager\GrilleManager.cs" />
     <Compile Include="Manager\ThreadManager.cs" />
     <Compile Include="ViewModel\GrilleViewModel.cs" />
@@ -100,6 +104,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controles\Parametre\ParametreControle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\Parametre\TimeItemControle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -250,6 +258,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\apple.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\timer.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

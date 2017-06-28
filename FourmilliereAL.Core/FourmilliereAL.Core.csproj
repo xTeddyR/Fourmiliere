@@ -91,8 +91,5 @@
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\RelayParameterizedCommand.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="FodyWeavers.xml" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

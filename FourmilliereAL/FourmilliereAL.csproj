@@ -87,6 +87,7 @@
       <DependentUpon>Grille.xaml</DependentUpon>
     </Compile>
     <Compile Include="ConvertisseurValeur\ConvertisseurHeureVersHeureFormatter.cs" />
+    <Compile Include="ConvertisseurValeur\ConvertisseurObjetVersImage.cs" />
     <Compile Include="Manager\GrilleManager.cs" />
     <Compile Include="Manager\ThreadManager.cs" />
     <Compile Include="ViewModel\GrilleViewModel.cs" />
@@ -261,6 +262,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\timer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\axe.png" />
+    <Resource Include="Resources\basket.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

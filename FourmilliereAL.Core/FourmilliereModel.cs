@@ -75,10 +75,10 @@ namespace FourmilliereAL.Core
 
             AjouterFourmi("Teddy", 0, 10);
             AjouterFourmi("Jeremy", 10, 0);
-            AjouterFourmi("Maxime", 19, 10);
-            AjouterFourmi("Julien", 10, 29);
-            AjouterFourmi("Warrior", 19, 29, "AttitudeCombattante");
-            AjouterFourmi("Bad Ant", 15, 16, "AttitudeEnnemi");
+            AjouterFourmi("Maxime", 5, 5);
+            AjouterFourmi("Julien", 10, 12);
+            AjouterFourmi("Warrior", 2, 15, "AttitudeCombattante");
+            AjouterFourmi("Bad Ant", 6, 6, "AttitudeEnnemi");
             AjouterFourmi("TestCourtChemin", 1, 3);
 
         }
@@ -91,11 +91,16 @@ namespace FourmilliereAL.Core
             FourmisList.Add(fourmi);
         }
 
-        public Objet AjouteObjet(int x, int y, string objet = "")
+        public void AjouteObjet(int x, int y, string objet = "")
         {
             var myObjet = FabriqueSimulation.CreerFabrique("FabriqueObjet").CreerObjet(objet, x, y);
             plateauManager.GetCaseFromPosition(x, y).Objet = myObjet;
-            return myObjet;
+
+            if(objet.Equals("Pomme")) {
+                ListeFruit.Add(myObjet);
+            } else {
+                ListeObjet.Add(myObjet);
+            }
         }
 
         public void AjouterFourmis()
@@ -133,7 +138,7 @@ namespace FourmilliereAL.Core
         {
             if (nbTours % ConfigFourmi.OBJET_NB_TOURS == 0)
             {
-                ListeFruit.Add(AjouteObjet(random.Next(1, Config.GRILLE_LARGEUR), random.Next(Config.GRILLE_HAUTEUR), "Pomme"));
+                AjouteObjet(random.Next(1, Config.GRILLE_LARGEUR), random.Next(Config.GRILLE_HAUTEUR), "Pomme");
                 AjouteObjet(random.Next(1, Config.GRILLE_LARGEUR), random.Next(Config.GRILLE_HAUTEUR), "Panier");
                 AjouteObjet(random.Next(1, Config.GRILLE_LARGEUR), random.Next(Config.GRILLE_HAUTEUR), "Baton");
             }

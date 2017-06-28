@@ -12,6 +12,8 @@ namespace FourmilliereAL
     {
         private Grid plateau { get; set; }
 
+        private ConvertisseurObjetVersImage ConvertisseurObjetVersImage = new ConvertisseurObjetVersImage();
+
         public Grid Plateau
         {
             get
@@ -28,6 +30,7 @@ namespace FourmilliereAL
             InitPlateau();
             AddingGround();
             AjouterFourmilliere();
+            AjouterObjet();
             AjouterFruit();
             foreach (Case caseNotEmpty in App.PlateauManager.CasesList) {
                 var creatureSurCase = caseNotEmpty.GetCreaturesSurCase();
@@ -107,6 +110,24 @@ namespace FourmilliereAL
 
             }
             
+        }
+
+        public void AjouterObjet()
+        {
+            for (int i = 0; i < App.fourmilliereVM.ListeObjet.Count; i++) {
+                var objet = App.fourmilliereVM.ListeObjet[i];
+                Image img = new Image();
+
+                string path = (string)ConvertisseurObjetVersImage.Convert(objet, null, null, CultureInfo.CurrentCulture);
+
+                Uri uri = new Uri(path, UriKind.Absolute);
+                img.Source = new System.Windows.Media.Imaging.BitmapImage(uri);
+
+                Plateau.Children.Add(img);
+                Grid.SetColumn(img, objet.Position.X);
+                Grid.SetRow(img, objet.Position.Y);
+            }
+
         }
     }
 }

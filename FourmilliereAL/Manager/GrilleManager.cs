@@ -28,6 +28,7 @@ namespace FourmilliereAL
             InitPlateau();
             AddingGround();
             AjouterFourmilliere();
+            AjouterFruit();
             foreach (Case caseNotEmpty in App.PlateauManager.CasesList) {
                 var creatureSurCase = caseNotEmpty.GetCreaturesSurCase();
                 if (creatureSurCase.Count() > 0) {
@@ -90,6 +91,22 @@ namespace FourmilliereAL
             Plateau.Children.Add(img);
             Grid.SetColumn(img, ConfigFourmi.FOURMILIERE_POSITION_X);
             Grid.SetRow(img, ConfigFourmi.FOURMILIERE_POSITION_Y);
+        }
+
+        public void AjouterFruit()
+        {
+            for (int i = 0; i < App.fourmilliereVM.ListeFruit.Count; i++) {
+                var fruit = App.fourmilliereVM.ListeFruit[i];
+                Image img = new Image();
+                Uri uri = new Uri("pack://application:,,,/Resources/apple.png", UriKind.Absolute);
+                img.Source = new System.Windows.Media.Imaging.BitmapImage(uri);
+
+                Plateau.Children.Add(img);
+                Grid.SetColumn(img, fruit.Position.X);
+                Grid.SetRow(img, fruit.Position.Y);
+
+            }
+            
         }
     }
 }

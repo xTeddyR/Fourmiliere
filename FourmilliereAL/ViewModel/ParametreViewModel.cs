@@ -1,5 +1,6 @@
 ﻿using FourmilliereAL.Core;
 using Microsoft.Win32;
+using System.Windows;
 using System.Windows.Input;
 
 namespace FourmilliereAL
@@ -39,6 +40,7 @@ namespace FourmilliereAL
         public void SaveData()
         {
             App.fourmilliereVM.SaveDataToXML();
+            MessageBox.Show("Données sauvegardés dans data.xml !");
             IsEnabled = true;
         }
 

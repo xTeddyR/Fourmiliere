@@ -1,6 +1,6 @@
 # EZ Ant Simulator 2K17
 <p align="center">
-  <img src="https://github.com/xTeddyR/Fourmiliere/blob/master/FourmilliereAL/Media/warrior-ant.png" />
+  <img src="https://github.com/xTeddyR/Fourmiliere/blob/master/FourmilliereAL/Resources/warrior-ant.png" />
 </p>
 
 [![GitHub release](https://img.shields.io/github/tag/xTeddyR/Fourmiliere.svg)]()

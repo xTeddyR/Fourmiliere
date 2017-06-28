@@ -94,12 +94,18 @@ namespace FourmilliereAL.Core
         public void AjouteObjet(int x, int y, string objet = "")
         {
             var myObjet = FabriqueSimulation.CreerFabrique("FabriqueObjet").CreerObjet(objet, x, y);
-            plateauManager.GetCaseFromPosition(x, y).Objet = myObjet;
 
-            if(objet.Equals("Pomme")) {
-                ListeFruit.Add(myObjet);
-            } else {
-                ListeObjet.Add(myObjet);
+            if (plateauManager.GetCaseFromPosition(x, y).Objet == null)
+            {
+                plateauManager.GetCaseFromPosition(x, y).Objet = myObjet;
+                if (myObjet.ToString().Equals("Pomme"))
+                {
+                    ListeFruit.Add(myObjet);
+                }
+                else
+                {
+                    ListeObjet.Add(myObjet);
+                }
             }
         }
 
@@ -119,6 +125,19 @@ namespace FourmilliereAL.Core
         {
             plateauManager.GetCaseFromFourmi(fourmiAsupprimer).RetirerCreature(fourmiAsupprimer);
             FourmisList.Remove(fourmiAsupprimer);
+        }
+
+        public void SupprimerObjet(Objet objetASupprimer)
+        {
+            plateauManager.GetCaseFromObjet(objetASupprimer).Objet = null;
+            if (objetASupprimer.ToString().Equals("Pomme"))
+            {
+                ListeFruit.Remove(objetASupprimer);
+            }
+            else
+            {
+                ListeObjet.Remove(objetASupprimer);
+            }
         }
 
         public void GenererFourmiRouge()
@@ -170,22 +189,26 @@ namespace FourmilliereAL.Core
                     hazard.Avance(FourmisList[i]);
                 }
                 actuel.Vie--;
-                VerifierVieFourmi(actuel);
-
+                VerifierVieFourmi();
 
                 var objet = plateauManager.GetCaseFromFourmi(FourmisList[i]).Objet;
-                if (objet != null) FourmisList[i].Comportement.ExecuteObjet(objet);
-                VerifierVieFourmi(FourmisList[i]);
+                if (objet != null)
+                {
+                    FourmisList[i].Comportement.ExecuteObjet(objet);
+                    SupprimerObjet(objet);
+                }
+                VerifierVieFourmi();
             }
             // This fail after a while
-            //ExecuterComportement();
+            ExecuterComportement();
         }
 
         public void ExecuterComportement()
         {
-            foreach(var fourmi in FourmisList) {
-                fourmi.ExecuterComportement();
+            for(int i = 0; i < FourmisList.Count; i++) {
+                if (FourmisList[i].Vie > 0) FourmisList[i].ExecuterComportement();
             }
+            VerifierVieFourmi();
         }
 
         public void Stop()
@@ -203,11 +226,16 @@ namespace FourmilliereAL.Core
             }
         }
 
-        private void VerifierVieFourmi(Fourmi fourmiAVerifier)
+        private void VerifierVieFourmi()
         {
-            if(fourmiAVerifier.Vie < 0) {
-                SupprimerFourmi(fourmiAVerifier);
-            }
+            for (int i = 0; i < FourmisList.Count; i++)
+            {
+                if (FourmisList[i].Vie <= 0)
+                {
+                    SupprimerFourmi(FourmisList[i]);
+                }
+
+            }            
         }
 
         public void SaveDataToXML(string fileName)

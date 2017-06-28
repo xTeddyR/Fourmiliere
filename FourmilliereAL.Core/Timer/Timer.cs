@@ -46,7 +46,7 @@ namespace FourmilliereAL.Core
         public Timer(Meteo Meteo)
         {
             this.Meteo = Meteo;
-            Heure = 0;
+            Heure = TimerConstants.HEURE_DEMARRAGE;
             Minute = 0;
             NombreMinuteAjouter = TimerConstants.MINUTE_PAR_HEURE / 2;
         }

@@ -9,7 +9,7 @@
     <Grid Background="{StaticResource BackgroundVeryLightBrush}">
         <StackPanel Orientation="Vertical">
             <TextBlock Text="Partie" HorizontalAlignment="Center" FontFamily="{StaticResource RobotoRegular}"></TextBlock>
-            <Button Style="{StaticResource LoadButton}" IsEnabled="{Binding IsEnabled}" Content="Charger" Command="{Binding LoadDataCommand}"></Button>
+            <Button Style="{StaticResource LoadButton}" Content="Charger" Command="{Binding LoadDataCommand}"></Button>
             <Button Style="{StaticResource SaveButton}" Content="Sauvegarder" Command="{Binding SaveDataCommand}"></Button>
         </StackPanel>
     </Grid>

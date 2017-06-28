@@ -73,5 +73,18 @@ namespace FourmilliereAL.Core
 
             return allFourmi;
         }
+
+        /// <summary>
+        /// Get all objet in CasesList
+        /// </summary>
+        /// <returns>All objet in CasesList</returns>
+        public List<Objet> GetAllObjet()
+        {
+            var allObjet = new List<Objet>();
+
+            allObjet.AddRange(CasesList.Where(c => c.Objet != null).Select(c => c.Objet));
+
+            return allObjet;
+        }
     }
 }

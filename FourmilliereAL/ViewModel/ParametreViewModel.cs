@@ -1,5 +1,6 @@
 ﻿using FourmilliereAL.Core;
 using Microsoft.Win32;
+using System.IO;
 using System.Windows;
 using System.Windows.Input;
 
@@ -39,9 +40,17 @@ namespace FourmilliereAL
 
         public void SaveData()
         {
-            App.fourmilliereVM.SaveDataToXML();
-            MessageBox.Show("Données sauvegardés dans data.xml !");
-            IsEnabled = true;
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+            saveFileDialog1.Filter = "XML files (*.xml)|*.xml";
+            saveFileDialog1.FilterIndex = 1;
+            saveFileDialog1.RestoreDirectory = true;
+
+            if (saveFileDialog1.ShowDialog() == true)
+            {
+                    App.fourmilliereVM.SaveDataToXML(saveFileDialog1.FileName);
+                    MessageBox.Show("Données sauvegardés !");
+            }
         }
 
         public void LoadData()
@@ -53,7 +62,6 @@ namespace FourmilliereAL
 
             if (fileToLoadXml.ShowDialog() == true) {
                 App.fourmilliereVM.LoadDataFromXml(fileToLoadXml.FileName);
-                IsEnabled = false;
                 App.GrilleManager.Dessine();
             }
         }

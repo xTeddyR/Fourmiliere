@@ -18,7 +18,7 @@ namespace FourmilliereAL.Core
             environnement = Environnement.Instance;
         }
 
-        public void SaveDataToXML()
+        public void SaveDataToXML(string fileName)
         {
             XmlWriterSettings setting = new XmlWriterSettings();
             setting.ConformanceLevel = ConformanceLevel.Auto;
@@ -27,7 +27,7 @@ namespace FourmilliereAL.Core
             setting.NewLineChars = "\r\n";
             setting.NewLineHandling = NewLineHandling.Replace;
 
-            using (XmlWriter writer = XmlWriter.Create("data.xml", setting))
+            using (XmlWriter writer = XmlWriter.Create(fileName, setting))
             {
                 writer.WriteStartElement("Fourmiliere");
                 writer.WriteStartElement("Environnement");

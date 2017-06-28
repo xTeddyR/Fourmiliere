@@ -42,6 +42,8 @@ namespace FourmilliereAL.Core
         public int nbTours = 0;
         public ObservableCollection<Objet> ListeFruit { get; set; }
 
+        public ObservableCollection<Objet> ListeObjet { get; set; }
+
         public FourmilliereModel(ObservableCollection<Fourmi> FourmisList)
         {
             TitreApplication = Config.APPLICATION_TITRE;
@@ -61,6 +63,7 @@ namespace FourmilliereAL.Core
             environnement.Heure = new Timer(environnement.Meteo);
 
             this.ListeFruit = new ObservableCollection<Objet>();
+            ListeObjet = new ObservableCollection<Objet>();
             random = new Random();
 
 
@@ -197,10 +200,10 @@ namespace FourmilliereAL.Core
             }
         }
 
-        public void SaveDataToXML()
+        public void SaveDataToXML(string fileName)
         {
             var saveGame = new SauvegarderPartie();
-            saveGame.SaveDataToXML();
+            saveGame.SaveDataToXML(fileName);
         }
 
         public void LoadDataFromXml(string fileName)
@@ -209,6 +212,9 @@ namespace FourmilliereAL.Core
             saveGame.LoadDataFromXML(fileName);
             FourmisList.Clear();
             plateauManager.GetAllFourmis().ForEach(f => FourmisList.Add(f));
+            var objetList = plateauManager.GetAllObjet();
+            objetList.Where(o => o.ToString().Equals("Pomme")).ToList().ForEach(o => ListeFruit.Add(o));
+            objetList.Where(o => o.ToString() != "Pomme").ToList().ForEach(o => ListeObjet.Add(o));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

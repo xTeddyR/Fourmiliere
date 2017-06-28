@@ -9,10 +9,14 @@
     <Grid Background="{StaticResource BackgroundVeryLightBrush}">
         <StackPanel Orientation="Vertical">
             <TextBlock Text="Simulateur" HorizontalAlignment="Center" FontFamily="{StaticResource RobotoRegular}"></TextBlock>
+            <Border Width="Auto" Height="2" Margin="10" Background="{StaticResource BackgroundLightBrush}"/>
             <local:TimeItemControle/>
+            <Border Width="2" Margin="20" Background="{StaticResource BackgroundLightBrush}"/>
             <TextBlock Text="Partie" HorizontalAlignment="Center" FontFamily="{StaticResource RobotoRegular}"></TextBlock>
+            <Border Width="Auto" Height="2"  Margin="10" Background="{StaticResource BackgroundLightBrush}"/>
             <Button Style="{StaticResource LoadButton}" Content="Charger" Command="{Binding LoadDataCommand}"></Button>
             <Button Style="{StaticResource SaveButton}" Content="Sauvegarder" Command="{Binding SaveDataCommand}"></Button>
         </StackPanel>
+       
     </Grid>
 </UserControl>

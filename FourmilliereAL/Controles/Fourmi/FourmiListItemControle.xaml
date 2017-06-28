@@ -57,7 +57,7 @@
 
                                 <StackPanel Orientation="Horizontal">
 
-                                    <Image Source="../../Media/loop.png" Height="12" Margin="0,0,5,0"></Image>
+                                    <Image Source="pack://application:,,,/Resources/loop.png" Height="12" Margin="0,0,5,0"></Image>
 
                                     <!-- Tour de la fourmi -->
                                     <TextBlock  Text="{Binding ListEtape.Count}"
@@ -66,7 +66,7 @@
                                            TextTrimming="CharacterEllipsis" FontSize="10" Margin="0,0,15,0">
                                     </TextBlock>
 
-                                    <Image Source="../../Media/heart.png" Height="12" Margin="0,0,5,0"></Image>
+                                    <Image Source="pack://application:,,,/Resources/heart.png" Height="12" Margin="0,0,5,0"></Image>
 
                                     <!-- Vie de la fourmi -->
                                     <TextBlock  Text="{Binding Vie}"

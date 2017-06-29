@@ -50,12 +50,32 @@ namespace FourmilliereAL.Core
             destCase.AjouterCreature(fourmi);
         }
 
+        /// <summary>
+        /// Récupération d'une case à partir d'un objet
+        /// </summary>
+        /// <param name="objet">Objet utilisé pour la recherche</param>
+        /// <returns>La case trouvé</returns>
+        public Case GetCaseFromObjet(Objet objet)
+        {
+            return CasesList.Where(c => objet.Equals(c.Objet)).First();
+        }
 
+        /// <summary>
+        /// Récupération d'une case à partir d'une fourmi
+        /// </summary>
+        /// <param name="fourmi">Fourmi utilisé pour la recherche</param>
+        /// <returns>La case trouvé</returns>
         public Case GetCaseFromFourmi(Fourmi fourmi)
         {
             return CasesList.Where(c => c.GetCreaturesSurCase().Contains(fourmi)).First();
         }
 
+        /// <summary>
+        /// Récupération d'une case à partir de coordonnées X et Y
+        /// </summary>
+        /// <param name="x">Coordonnée X utilisé pour la recherche</param>
+        /// <param name="y">Coordonnée Y utilisé pour la recherche</param>
+        /// <returns>La case trouvé</returns>
         public Case GetCaseFromPosition(int x, int y)
         {
             return CasesList.Where(c => c.Position.X == x && c.Position.Y == y).First();

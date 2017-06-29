@@ -6,11 +6,15 @@
 
         public override void ExecuteFourmi(Fourmi self)
         {
-            plateauManager.GetCaseFromFourmi(self).GetCreaturesSurCase().ForEach(f => {
-                if(f.Comportement.ToString() == "AttitudeEnnemi") {
-                    f.Vie = 0;
+            var creatures = plateauManager.GetCaseFromFourmi(self).GetCreaturesSurCase();
+
+            for (int i = 0; i < creatures.Count; i++)
+            {
+                if (creatures[i].Comportement.ToString() == "AttitudeEnnemi")
+                {
+                    creatures[i].Vie = 0;
                 }
-            });
+            }
         }
     }
 }

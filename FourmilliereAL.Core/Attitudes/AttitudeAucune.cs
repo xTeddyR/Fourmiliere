@@ -7,7 +7,7 @@ namespace FourmilliereAL.Core
         public override void ExecuteObjet(Objet destObjet)
         {
             var myCase = plateauManager.CasesList.Where(c => destObjet.Equals(c.Objet)).First();
-            var fourmi = myCase.GetCreaturesSurCase()[0];
+            var fourmi = myCase.GetCreaturesSurCase().First();
 
             switch (destObjet.ToString())
             {
@@ -20,7 +20,6 @@ namespace FourmilliereAL.Core
                 default:
                     break;
             }
-            myCase.Objet = null;
         }
     }
 }

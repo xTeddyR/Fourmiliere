@@ -273,5 +273,8 @@
   <ItemGroup>
     <Resource Include="Resources\Meteo\moon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\cueilleuse.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

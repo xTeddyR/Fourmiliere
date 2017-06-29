@@ -15,6 +15,10 @@ namespace FourmilliereAL
                 return "pack://application:,,,/Resources/red-ant.png";
             }
 
+            if(value.ToString() == "AttitudeCueilleuse") {
+                return "pack://application:,,,/Resources/cueilleuse.png";
+            }
+
             return "pack://application:,,,/Resources/default-ant.png";
         }
 

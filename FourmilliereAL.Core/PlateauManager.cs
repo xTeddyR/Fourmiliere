@@ -86,5 +86,10 @@ namespace FourmilliereAL.Core
 
             return allObjet;
         }
+
+        /*public List<Fourmi> GetEnnemies()
+        {
+            CasesList.SelectMany(c => c.GetCreaturesSurCase().Where(f => f.Comportement.ToString().Equals("AttitudeEnnemi")));
+        }*/
     }
 }

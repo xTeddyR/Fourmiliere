@@ -25,6 +25,7 @@ namespace FourmilliereAL
         #region Commandes
         public ICommand SaveDataCommand { get; set; }
         public ICommand LoadDataCommand { get; set; }
+        public ICommand ShowAboutCommand { get; set; }
         #endregion
 
         #region Constructeur
@@ -35,6 +36,7 @@ namespace FourmilliereAL
         {
             SaveDataCommand = new RelayCommand(() => SaveData());
             LoadDataCommand = new RelayCommand(() => LoadData());
+            ShowAboutCommand = new RelayCommand(() => ShowAbout());
         }
         #endregion
 
@@ -64,6 +66,12 @@ namespace FourmilliereAL
                 App.fourmilliereVM.LoadDataFromXml(fileToLoadXml.FileName);
                 App.GrilleManager.Dessine();
             }
+        }
+
+        public void ShowAbout()
+        {
+            AboutWindow window = new AboutWindow();
+            window.ShowDialog();
         }
     }
 }

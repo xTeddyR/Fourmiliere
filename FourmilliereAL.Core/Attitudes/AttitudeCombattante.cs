@@ -13,7 +13,6 @@
                 if (creatures[i].Comportement.ToString() == "AttitudeEnnemi")
                 {
                     creatures[i].Vie = 0;
-                    //plateauManager.GetCaseFromFourmi(creatures[i]).RetirerCreature(creatures[i]);
                 }
             }
         }

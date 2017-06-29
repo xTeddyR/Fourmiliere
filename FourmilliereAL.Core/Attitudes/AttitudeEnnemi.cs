@@ -13,7 +13,6 @@
                 if (!creatures[i].Comportement.ToString().Equals("AttitudeEnnemi") && !creatures[i].Comportement.ToString().Equals("AttitudeCombattante"))
                 {
                     creatures[i].Vie = 0;
-                    //plateauManager.GetCaseFromFourmi(creatures[i]).RetirerCreature(creatures[i]);
                 }
             }
         }

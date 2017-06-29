@@ -10,6 +10,8 @@ namespace FourmilliereAL.Core
         private PlateauManager plateauManager;
         private Attitude comportement { get; set; }
 
+        public Objet Objet { get; set; }
+
         protected static Random Hasard = new Random();
         public string Nom { get; set; }
         private int vie;

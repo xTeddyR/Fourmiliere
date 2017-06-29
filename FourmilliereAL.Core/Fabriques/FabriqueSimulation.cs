@@ -21,6 +21,8 @@ namespace FourmilliereAL.Core
                     return new FabriqueFourmi();
                 case "FabriqueObjet":
                     return new FabriqueObjet();
+                case "FabriqueDeplacement":
+                    return new FabriqueDeplacement();
                 default:
                     return null;
             }

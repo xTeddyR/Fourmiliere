@@ -9,13 +9,14 @@ namespace FourmilliereAL.Core
     {
         private PlateauManager plateauManager;
         private Attitude comportement { get; set; }
+        private Deplacement deplacement { get; set; }
 
         protected static Random Hasard = new Random();
         public string Nom { get; set; }
         private int vie;
         public int Vie
         {
-            get { return vie; }
+            get => vie;
             set
             {
                 vie = value;
@@ -24,8 +25,6 @@ namespace FourmilliereAL.Core
         }
         public ObservableCollection<Etape> ListEtape { get; set; }
         public Location Position { get; set; }
-
-        // TODO Ajouter OnPropertyChanged() au Comportement
         public Attitude Comportement
         {
             get
@@ -38,7 +37,11 @@ namespace FourmilliereAL.Core
                 OnPropertyChanged();
             }
         }
-        public Deplacement Deplace { get; set; }
+        public Deplacement Deplacement
+        {
+            get => deplacement;
+            set => deplacement = value;
+        }
 
         public Fourmi()
         {
@@ -48,6 +51,7 @@ namespace FourmilliereAL.Core
             Position = new Location(ConfigFourmi.FOURMILIERE_POSITION_X, ConfigFourmi.FOURMILIERE_POSITION_Y);
             plateauManager = PlateauManager.Instance;
             comportement = FabriqueSimulation.CreerFabrique("FabriqueAttitude").CreerAttitude("AttitudeAucune");
+            Deplacement = FabriqueSimulation.CreerFabrique("FabriqueDeplacement").CreerDeplacement("AvanceHazard");
             int nbEtapes = 0;
             for (int i = 0; i < nbEtapes; i++)
             {
@@ -68,6 +72,8 @@ namespace FourmilliereAL.Core
             Position = new Location(x, y);
             plateauManager = PlateauManager.Instance;
             Comportement = FabriqueSimulation.CreerFabrique("FabriqueAttitude").CreerAttitude("AttitudeAucune");
+            Deplacement = FabriqueSimulation.CreerFabrique("FabriqueDeplacement").CreerDeplacement("AvanceHazard");
+
             int nbEtapes = 0;
             
             for(int i = 0; i < nbEtapes; i++)
@@ -89,7 +95,14 @@ namespace FourmilliereAL.Core
 
         public void MisAjour()
         {
+            if (Environnement.Instance.Meteo.Etat == MeteoType.Nuit)
+            {
+                Deplacement = FabriqueSimulation.CreerFabrique("FabriqueDeplacement").CreerDeplacement("CourtChemin");
+                Deplacement.Avance(this, new Location(ConfigFourmi.FOURMILIERE_POSITION_X, ConfigFourmi.FOURMILIERE_POSITION_Y));
 
+            }
+            Deplacement = FabriqueSimulation.CreerFabrique("FabriqueDeplacement").CreerDeplacement("AvanceHazard");
+            Deplacement.Avance(this);
         }
     }
 }

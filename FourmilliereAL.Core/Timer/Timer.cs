@@ -132,6 +132,7 @@ namespace FourmilliereAL.Core
         private void ChangementMeteo(MeteoType Type)
         {
             Meteo.Etat = Type;
+            Meteo.Notify();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
